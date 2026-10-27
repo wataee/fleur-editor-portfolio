@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import Tools from '../../components/Tools.astro';
+import Reviews from '../../components/Reviews.astro';
+import Process from '../../components/Process.astro';
+import WhyMe from '../../components/WhyMe.astro';
+import Pricing from '../../components/Pricing.astro';
+import Faq from '../../components/Faq.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import VideoModal from '../../components/VideoModal.astro';
+import StickyMobileCta from '../../components/StickyMobileCta.astro';
+
+import ruData from '../../data/ru.json';
+import projectsData from '../../data/projects.json';
+import reviewsData from '../../data/reviews.json';
+import contactsData from '../../data/contacts.json';
+
+import '../../styles/global.css';
+
+const telegramContact = contactsData.find((c) => c.id === 'telegram') || contactsData[0];
+---
+
+<Layout
+  title={ruData.meta.title}
+  description={ruData.meta.description}
+  lang="ru"
+  canonicalUrl="https://fareeditor.com/ru/"
+  ogTitle={ruData.meta.ogTitle}
+  ogDescription={ruData.meta.ogDescription}
+  ogImage={ruData.meta.ogImage}
+>
+  <Header lang="ru" nav={ruData.nav} />
+
+  <main id="content">
+    <Hero hero={ruData.hero} lang="ru" />
+    <BeforeAfter data={ruData.theDifference} />
+    <Portfolio data={ruData.portfolio} projects={projectsData} lang="ru" />
+    <Tools data={ruData.tools} />
+    <Reviews data={ruData.reviews} reviews={reviewsData} lang="ru" />
+    <Process data={ruData.process} />
+    <WhyMe data={ruData.why} />
+    <Pricing data={ruData.pricing} lang="ru" />
+    <Faq data={ruData.faq} />
+    <Contact data={ruData.contact} contacts={contactsData} lang="ru" />
+  </main>
+
+  <Footer data={ruData.footer} contacts={contactsData} lang="ru" />
+
+  <!-- Lazy-loaded Video Player Modal -->
+  <VideoModal />
+
+  <!-- Mobile Sticky Telegram CTA Button -->
+  <StickyMobileCta
+    text={ruData.contact.stickyMobileBtn}
+    telegramUrl={telegramContact.url}
+  />
+</Layout>

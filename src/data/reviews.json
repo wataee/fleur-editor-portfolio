@@ -1,0 +1,142 @@
+[
+  {
+    "id": "1",
+    "name_ru": "Сергей Фомин",
+    "name_en": "Sergey Fomin",
+    "channel": "Фомин про Облигации",
+    "subscribers": "145K",
+    "topic_ru": "Финансы и облигации",
+    "topic_en": "Finance & Bonds",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=176&h=176&q=80",
+    "top_metric_value": "6",
+    "top_metric_label_ru": "закрытых проектов",
+    "top_metric_label_en": "Projects completed",
+    "quote_ru": "С Евгением удобно работать: уже на следующий день получаю черновой вариант монтажа, а с учётом доработок ролик продолжительностью 15–20 минут обычно готов в течение двух дней. Отдельно отмечу высокий уровень графических элементов, работу со звуком, быструю реакцию на замечания и постоянную обратную связь в процессе работы.",
+    "quote_en": "Evgeny is easy to work with: I get a first cut the very next day, and, including revisions, a 15–20 minute video is usually ready within two days. I would also highlight the high quality of the graphics, the sound work, the quick response to feedback, and the constant communication throughout the process.",
+    "metrics": [
+      {
+        "value_ru": "20+",
+        "value_en": "20+",
+        "label_ru": "Элементов графики",
+        "label_en": "Graphics elements"
+      },
+      {
+        "value_ru": "2 дня",
+        "value_en": "2 days",
+        "label_ru": "Срок сдачи",
+        "label_en": "Turnaround"
+      },
+      {
+        "value_ru": "100%",
+        "value_en": "100%",
+        "label_ru": "Сдано в срок",
+        "label_en": "Delivered on time"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name_ru": "Валентин Сушнев",
+    "name_en": "Valentin Sushnev",
+    "channel": "Сушнев / Продакшн",
+    "subscribers": "380K",
+    "topic_ru": "Личный бренд и медиа",
+    "topic_en": "Personal Brand & Media",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=176&h=176&q=80",
+    "top_metric_value": "12",
+    "top_metric_label_ru": "выпусков под ключ",
+    "top_metric_label_en": "Episodes produced",
+    "quote_ru": "Критически важно было сохранить авторскую подачу и при этом кардинально поднять динамику. Женя разработал для канала узнаваемый стиль инфографики. Ролики стали смотреть до конца, глубина просмотра выросла до 68%.",
+    "quote_en": "It was critical to preserve my personal voice while radically ramping up retention and pacing. He designed a distinct infographic language for the show. Average view duration climbed to 68%.",
+    "metrics": [
+      {
+        "value_ru": "+45%",
+        "value_en": "+45%",
+        "label_ru": "Удержание аудитории",
+        "label_en": "Audience retention"
+      },
+      {
+        "value_ru": "48ч",
+        "value_en": "48h",
+        "label_ru": "Черновой монтаж",
+        "label_en": "First cut ready"
+      },
+      {
+        "value_ru": "100%",
+        "value_en": "100%",
+        "label_ru": "Без срывов дедлайна",
+        "label_en": "Zero delayed releases"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name_ru": "Максим 'HitOK' Котов",
+    "name_en": "Maxim 'HitOK' Kotov",
+    "channel": "HitOK Gaming",
+    "subscribers": "820K",
+    "topic_ru": "Гейминг и расследования",
+    "topic_en": "Gaming Investigations",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=176&h=176&q=80",
+    "top_metric_value": "1.2M",
+    "top_metric_label_ru": "просмотров серии",
+    "top_metric_label_en": "Series view count",
+    "quote_ru": "Когда на входе только текст сценария и архивы со скриншотами, найти монтажера, который сам соберет 3D-сцены и трекинг, практически нереально. Справился на 10 из 10, визуальный ряд получился уровня стриминговых сервисов.",
+    "quote_en": "When all you have is a research document and archived screenshots, finding an editor who can build 3D scenes and camera tracking from scratch is nearly impossible. Delivered a 10/10 result with cinematic streaming quality.",
+    "metrics": [
+      {
+        "value_ru": "15+",
+        "value_en": "15+",
+        "label_ru": "3D-сцен с нуля",
+        "label_en": "Custom 3D scenes"
+      },
+      {
+        "value_ru": "7 дней",
+        "value_en": "7 days",
+        "label_ru": "Срок на 20 мин",
+        "label_en": "Delivery for 20m"
+      },
+      {
+        "value_ru": "1 круг",
+        "value_en": "1 round",
+        "label_ru": "Минимум правок",
+        "label_en": "Revisions needed"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name_ru": "Елена Романова",
+    "name_en": "Elena Romanova",
+    "channel": "Базис Недвижимость",
+    "subscribers": "65K",
+    "topic_ru": "Девелопмент и бизнес",
+    "topic_en": "Real Estate & PropTech",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=176&h=176&q=80",
+    "top_metric_value": "8",
+    "top_metric_label_ru": "корпоративных фильмов",
+    "top_metric_label_en": "Corporate films",
+    "quote_ru": "Корпоративный контент обычно сухой, но Евгений умеет превращать строительную специфику в увлекательный визуал. Четкая коммуникация, строгое соблюдение регламентов и абсолютная автономность — нам не приходится контролировать каждый шаг.",
+    "quote_en": "B2B real estate content is usually dry, but Evgeny transforms technical development topics into compelling visual stories. Clear communication, zero micromanagement needed, and strict deadline adherence.",
+    "metrics": [
+      {
+        "value_ru": "4K 60fps",
+        "value_en": "4K 60fps",
+        "label_ru": "Мастеринг",
+        "label_en": "Mastering"
+      },
+      {
+        "value_ru": "3 дня",
+        "value_en": "3 days",
+        "label_ru": "Срок производства",
+        "label_en": "Turnaround"
+      },
+      {
+        "value_ru": "100%",
+        "value_en": "100%",
+        "label_ru": "По ТЗ заказчика",
+        "label_en": "Brief alignment"
+      }
+    ]
+  }
+]

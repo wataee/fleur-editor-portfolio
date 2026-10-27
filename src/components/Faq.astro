@@ -1,0 +1,99 @@
+---
+interface FaqItem {
+  q: string;
+  a: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+interface Props {
+  data: {
+    eyebrow: string;
+    title: string;
+    items: FaqItem[];
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="section-head section-head--tight">
+    <span class="eyebrow">{data.eyebrow}</span>
+    <h2 class="section-title" id="faq-title">{data.title}</h2>
+  </div>
+
+  <div class="faq-list" id="faq-accordion-list">
+    {data.items.map((item, index) => {
+      const btnId = `faq-btn-${index}`;
+      const panelId = `faq-panel-${index}`;
+
+      return (
+        <div class="faq-item" data-open="false">
+          <h3 class="faq-heading">
+            <button
+              class="faq-trigger"
+              type="button"
+              id={btnId}
+              aria-expanded="false"
+              aria-controls={panelId}
+            >
+              <span>{item.q}</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div
+            class="faq-panel"
+            id={panelId}
+            role="region"
+            aria-labelledby={btnId}
+          >
+            <div class="faq-panel-inner">
+              <p class="faq-answer">
+                {item.a}
+                {item.linkText && item.linkHref && (
+                  <>
+                    {' '}
+                    <a href={item.linkHref} class="font-medium hover:underline text-accent">
+                      {item.linkText}
+                    </a>.
+                  </>
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<script>
+  // Accordion Logic: At most one item open at a time
+  const accordion = document.getElementById('faq-accordion-list');
+  if (accordion) {
+    const items = accordion.querySelectorAll<HTMLElement>('.faq-item');
+
+    items.forEach((item) => {
+      const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = item.getAttribute('data-open') === 'true';
+
+        // Close all items
+        items.forEach((other) => {
+          other.setAttribute('data-open', 'false');
+          const otherTrigger = other.querySelector<HTMLButtonElement>('.faq-trigger');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle current
+        if (!isOpen) {
+          item.setAttribute('data-open', 'true');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+</script>

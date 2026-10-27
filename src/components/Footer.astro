@@ -1,0 +1,42 @@
+---
+interface ContactChannel {
+  id: string;
+  name: string;
+  handle: string;
+  url: string;
+}
+
+interface Props {
+  data: {
+    copy: string;
+    toTop: string;
+  };
+  contacts: ContactChannel[];
+  lang: 'ru' | 'en';
+}
+
+const { data, contacts, lang } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="wordmark" href={lang === 'ru' ? '/ru/#top' : '/#top'} aria-label="FARE Home">
+      FARE
+    </a>
+
+    <nav class="footer-nav" aria-label="Social links">
+      {contacts.map((c) => (
+        <a
+          class="footer-link"
+          href={c.url}
+          target={c.url.startsWith('mailto:') ? '_self' : '_blank'}
+          rel={c.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+        >
+          {c.name}
+        </a>
+      ))}
+    </nav>
+
+    <span class="footer-copy">{data.copy}</span>
+  </div>
+</footer>

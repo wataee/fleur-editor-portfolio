@@ -1,0 +1,136 @@
+---
+interface Props {
+  lang: 'ru' | 'en';
+  nav: {
+    work: string;
+    process: string;
+    about: string;
+    contact: string;
+    discuss: string;
+    openMenu: string;
+  };
+}
+
+const { lang, nav } = Astro.props;
+---
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="wordmark" href={lang === 'ru' ? '/ru/#top' : '/#top'} aria-label="FARE Home">
+      FARE
+    </a>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <a class="nav-link" href="#work">{nav.work}</a>
+      <a class="nav-link" href="#process">{nav.process}</a>
+      <a class="nav-link" href="#about">{nav.about}</a>
+      <a class="nav-link" href="#contact">{nav.contact}</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language switch">
+        <span>
+          <a
+            class="lang-btn"
+            href="/ru/"
+            aria-current={lang === 'ru' ? 'true' : 'false'}
+          >
+            RU
+          </a>
+        </span>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <span>
+          <a
+            class="lang-btn"
+            href="/"
+            aria-current={lang === 'en' ? 'true' : 'false'}
+          >
+            EN
+          </a>
+        </span>
+      </div>
+
+      <a class="btn-primary header-cta" href="#contact">
+        {nav.discuss}
+      </a>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <details class="nav-toggle" id="mobile-nav-toggle">
+      <summary aria-label={nav.openMenu} aria-expanded="false" aria-controls="nav-panel">
+        <span class="nav-burger" aria-hidden="true"></span>
+      </summary>
+      <div class="nav-panel" id="nav-panel" role="region" aria-label={nav.openMenu}>
+        <nav class="nav-panel-links">
+          <a class="nav-panel-link" href="#work">{nav.work}</a>
+          <a class="nav-panel-link" href="#pricing">{lang === 'ru' ? 'Цены' : 'Pricing'}</a>
+          <a class="nav-panel-link" href="#process">{nav.process}</a>
+          <a class="nav-panel-link" href="#about">{nav.about}</a>
+          <a class="nav-panel-link" href="#faq">FAQ</a>
+          <a class="nav-panel-link" href="#contact">{nav.contact}</a>
+        </nav>
+        <div class="nav-panel-foot">
+          <div class="lang-switch">
+            <a class="lang-btn" href="/ru/" aria-current={lang === 'ru' ? 'true' : 'false'}>RU</a>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <a class="lang-btn" href="/" aria-current={lang === 'en' ? 'true' : 'false'}>EN</a>
+          </div>
+          <a class="btn-primary" href="#contact">
+            {nav.discuss}
+          </a>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>
+
+<script>
+  // Mobile drawer: close on outside click or link click
+  const navToggle = document.getElementById('mobile-nav-toggle') as HTMLDetailsElement | null;
+  if (navToggle) {
+    const summary = navToggle.querySelector('summary');
+    navToggle.addEventListener('toggle', () => {
+      if (summary) {
+        summary.setAttribute('aria-expanded', navToggle.open ? 'true' : 'false');
+      }
+    });
+
+    navToggle.querySelectorAll('.nav-panel-link, .btn-primary').forEach((link) => {
+      link.addEventListener('click', () => {
+        navToggle.open = false;
+        if (summary) summary.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (navToggle.open && !navToggle.contains(e.target as Node)) {
+        navToggle.open = false;
+        if (summary) summary.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Active section spy
+  const navLinks = document.querySelectorAll('.site-nav .nav-link');
+  const sections = ['work', 'process', 'about', 'contact'].map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  if (sections.length && navLinks.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${id}`) {
+              link.setAttribute('aria-current', 'location');
+            } else {
+              link.removeAttribute('aria-current');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  }
+</script>

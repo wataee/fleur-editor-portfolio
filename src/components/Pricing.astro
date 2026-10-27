@@ -1,0 +1,61 @@
+---
+interface Plan {
+  name: string;
+  price: string;
+  description: string;
+  badge: string | null;
+  features: string[];
+}
+
+interface Props {
+  data: {
+    eyebrow: string;
+    title: string;
+    plans: Plan[];
+    cta: string;
+  };
+  lang: 'ru' | 'en';
+}
+
+const { data, lang } = Astro.props;
+---
+
+<section class="section" id="pricing" aria-labelledby="pricing-title">
+  <div class="section-head">
+    <span class="eyebrow">{data.eyebrow}</span>
+    <h2 class="section-title" id="pricing-title">{data.title}</h2>
+  </div>
+
+  <div class="pricing-grid">
+    {data.plans.map((plan) => (
+      <div class="pricing-card">
+        {plan.badge && (
+          <span class="pricing-badge">{plan.badge}</span>
+        )}
+
+        <div>
+          <h3 class="pricing-name">{plan.name}</h3>
+          <p class="pricing-price">{plan.price}</p>
+          <p class="pricing-desc">{plan.description}</p>
+        </div>
+
+        <ul class="pricing-features">
+          {plan.features.map((feature) => (
+            <li class="pricing-feature">
+              <svg class="w-4 h-4 pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="pt-2">
+          <a class="btn-primary w-full text-center" href="#contact">
+            {data.cta}
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

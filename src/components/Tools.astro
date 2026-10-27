@@ -1,0 +1,64 @@
+---
+interface Props {
+  data: {
+    eyebrow: string;
+    title: string;
+    items: Array<{ name: string; category: string }>;
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="section" id="tools" aria-labelledby="tools-title">
+  <div class="section-head">
+    <span class="eyebrow">{data.eyebrow}</span>
+    <h2 class="section-title" id="tools-title">{data.title}</h2>
+  </div>
+
+  <div class="tools-grid">
+    {data.items.map((tool) => (
+      <div class="tool-card">
+        <div class="tool-icon" aria-hidden="true">
+          {tool.name === 'Premiere Pro' && (
+            <svg class="w-8 h-8 text-[#9999FF]" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="10" fill="#00005B" />
+              <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="#9999FF" font-family="Onest, sans-serif" font-weight="800" font-size="20">Pr</text>
+            </svg>
+          )}
+
+          {tool.name === 'After Effects' && (
+            <svg class="w-8 h-8 text-[#D291FF]" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="10" fill="#00005B" />
+              <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="#D291FF" font-family="Onest, sans-serif" font-weight="800" font-size="20">Ae</text>
+            </svg>
+          )}
+
+          {tool.name === 'DaVinci Resolve' && (
+            <svg class="w-8 h-8" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="10" fill="#1A1E24" />
+              <!-- DaVinci icon colored segments -->
+              <path d="M24 10C24 10 16 18 16 24C16 28.4 19.6 32 24 32C28.4 32 32 28.4 32 24C32 18 24 10 24 10Z" fill="#E23E3E" opacity="0.9" />
+              <circle cx="21" cy="22" r="5" fill="#3B82F6" />
+              <circle cx="27" cy="24" r="4.5" fill="#EAB308" />
+            </svg>
+          )}
+
+          {tool.name === 'Blender' && (
+            <svg class="w-8 h-8" viewBox="0 0 48 48" fill="none">
+              <rect width="48" height="48" rx="10" fill="#1E232A" />
+              <circle cx="24" cy="24" r="8" fill="#F5792A" />
+              <circle cx="24" cy="24" r="4" fill="#255E9E" />
+              <path d="M14 24L22 14M24 14L34 24M34 24L26 34M14 24L24 34" stroke="#F5792A" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          )}
+        </div>
+
+        <div class="tool-info">
+          <h3 class="tool-name">{tool.name}</h3>
+          <p class="tool-category">{tool.category}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

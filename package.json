@@ -1,0 +1,17 @@
+{
+  "name": "fare-editor-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio landing page for video editor FARE (RU/EN)",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.1.8",
+    "tailwindcss": "^3.4.19"
+  }
+}

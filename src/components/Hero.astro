@@ -1,0 +1,135 @@
+---
+interface Props {
+  hero: {
+    status: string;
+    aiBadge: string;
+    title: string;
+    sub: string;
+    cta: string;
+    proofStats: Array<{ value: string; label: string }>;
+    industriesNote: string;
+  };
+  lang: 'ru' | 'en';
+}
+
+const { hero, lang } = Astro.props;
+---
+
+<section class="hero" aria-label="Hero">
+  <!-- Top Badges -->
+  <div class="hero-mark">
+    <div class="inline-flex items-center gap-2">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="eyebrow">{hero.status}</span>
+    </div>
+
+    <!-- Improvement: "No Generative AI" Badge -->
+    <div class="badge-pill ml-auto sm:ml-0" title={lang === 'ru' ? 'Весь монтаж и графика создаются вручную' : 'All editing and graphics crafted manually'}>
+      <svg class="w-3.5 h-3.5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <path d="M9 12l2 2 4-4"></path>
+      </svg>
+      <span>{hero.aiBadge}</span>
+    </div>
+  </div>
+
+  <!-- Headline -->
+  <div class="hero-headline">
+    <h1 class="hero-title" lang={lang}>
+      {hero.title}
+    </h1>
+  </div>
+
+  <!-- Foot: Subtitle & CTA -->
+  <div class="hero-foot">
+    <p class="hero-sub">
+      {hero.sub}
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn-primary" href="#work">
+        {hero.cta}
+        <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+      <a class="btn-secondary" href="#difference">
+        <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+        </svg>
+        The Difference
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Grid & Industries (Integrated Proof Row) -->
+<section class="section section--stats pt-0" aria-label="Key Metrics">
+  <ul class="stats-grid" id="stats-counter-grid">
+    {hero.proofStats.map((stat, i) => (
+      <li class="stat card--interactive">
+        <p class="stat-value" data-target={stat.value}>
+          <span class="counter-display">{stat.value}</span>
+        </p>
+        <p class="stat-label">{stat.label}</p>
+      </li>
+    ))}
+  </ul>
+
+  <p class="stats-note">
+    {hero.industriesNote}
+  </p>
+</section>
+
+<script>
+  // Smooth counting animation for stats
+  const grid = document.getElementById('stats-counter-grid');
+  if (grid) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+      let animated = false;
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          observer.disconnect();
+
+          const counters = grid.querySelectorAll('.stat-value');
+          counters.forEach((el) => {
+            const raw = el.getAttribute('data-target') || '';
+            const match = raw.match(/^([^\d]*)(\d+(?:[.,]\d+)?)([\s\S]*)$/);
+            if (!match) return;
+
+            const [, prefix, numStr, suffix] = match;
+            const target = parseFloat(numStr.replace(',', '.'));
+            const isFloat = numStr.includes('.') || numStr.includes(',');
+            const duration = 1200; // ms
+            const start = performance.now();
+            const display = el.querySelector('.counter-display');
+            if (!display) return;
+
+            const update = (now: number) => {
+              const elapsed = now - start;
+              const progress = Math.min(1, elapsed / duration);
+              // Ease-out cubic: 1 - Math.pow(1 - progress, 3)
+              const ease = 1 - Math.pow(1 - progress, 3);
+              const current = target * ease;
+              const formatted = isFloat ? current.toFixed(1) : Math.round(current).toString();
+              display.textContent = `${prefix}${formatted}${suffix}`;
+
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              } else {
+                display.textContent = raw;
+              }
+            };
+
+            requestAnimationFrame(update);
+          });
+        }
+      }, { threshold: 0.2 });
+
+      observer.observe(grid);
+    }
+  }
+</script>

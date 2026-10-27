@@ -1,0 +1,138 @@
+---
+// VideoModal.astro - Accessible Lazy Video Modal with Focus Trap
+---
+
+<div
+  id="video-modal"
+  class="video-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Video Player"
+  data-open="false"
+>
+  <div class="video-modal-dialog" id="video-modal-dialog">
+    <button
+      type="button"
+      class="video-modal-close"
+      id="video-modal-close"
+      aria-label="Close video player"
+    >
+      <span>ESC</span>
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12"></path>
+      </svg>
+    </button>
+    <div id="video-modal-player-container" class="w-full h-full flex items-center justify-center bg-black">
+      <!-- YouTube/Vimeo iframe is dynamically injected ONLY on user click -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // Video Modal Controller
+  class VideoModalController {
+    modal: HTMLElement | null;
+    dialog: HTMLElement | null;
+    closeBtn: HTMLElement | null;
+    container: HTMLElement | null;
+    lastActiveElement: HTMLElement | null = null;
+
+    constructor() {
+      this.modal = document.getElementById('video-modal');
+      this.dialog = document.getElementById('video-modal-dialog');
+      this.closeBtn = document.getElementById('video-modal-close');
+      this.container = document.getElementById('video-modal-player-container');
+
+      if (!this.modal || !this.dialog || !this.container || !this.closeBtn) return;
+
+      // Event listener for opening buttons
+      document.addEventListener('click', (e) => {
+        const trigger = (e.target as HTMLElement).closest('[data-video-id]') as HTMLElement | null;
+        if (trigger) {
+          const videoId = trigger.getAttribute('data-video-id');
+          if (videoId) {
+            this.open(videoId, trigger);
+          }
+        }
+      });
+
+      // Close handlers
+      this.closeBtn.addEventListener('click', () => this.close());
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) {
+          this.close();
+        }
+      });
+
+      // Escape key and focus trap
+      document.addEventListener('keydown', (e) => {
+        if (this.isOpen()) {
+          if (e.key === 'Escape') {
+            this.close();
+          } else if (e.key === 'Tab') {
+            this.handleFocusTrap(e);
+          }
+        }
+      });
+    }
+
+    isOpen(): boolean {
+      return this.modal?.getAttribute('data-open') === 'true';
+    }
+
+    open(videoId: string, trigger: HTMLElement) {
+      if (!this.modal || !this.container) return;
+      this.lastActiveElement = trigger;
+
+      // Lazy load the iframe only on user click
+      this.container.innerHTML = `
+        <iframe
+          class="video-modal-iframe"
+          src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1"
+          title="Video Player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      `;
+
+      this.modal.setAttribute('data-open', 'true');
+      document.body.style.overflow = 'hidden';
+      this.closeBtn?.focus();
+    }
+
+    close() {
+      if (!this.modal || !this.container) return;
+      this.modal.setAttribute('data-open', 'false');
+      // Completely unload the iframe to stop audio & free RAM
+      this.container.innerHTML = '';
+      document.body.style.overflow = '';
+
+      if (this.lastActiveElement) {
+        this.lastActiveElement.focus();
+        this.lastActiveElement = null;
+      }
+    }
+
+    handleFocusTrap(e: KeyboardEvent) {
+      if (!this.modal) return;
+      const focusable = this.modal.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  // Initialize
+  new VideoModalController();
+</script>

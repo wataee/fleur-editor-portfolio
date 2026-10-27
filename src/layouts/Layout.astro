@@ -1,0 +1,102 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: 'ru' | 'en';
+  canonicalUrl: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  lang,
+  canonicalUrl,
+  ogTitle = title,
+  ogDescription = description,
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const siteUrl = 'https://fareeditor.com';
+const ruUrl = `${siteUrl}/ru/`;
+const enUrl = `${siteUrl}/`;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Favicon & Theme -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#FBFCFD" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ru" href={ruUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={ogTitle} />
+    <meta property="twitter:description" content={ogDescription} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <slot name="head" />
+  </head>
+  <body class="bg-bg text-text antialiased selection:bg-accent selection:text-white relative">
+    <!-- Ambient ambient glow background -->
+    <div class="ambient" aria-hidden="true">
+      <div class="ambient-glow"></div>
+      <div class="ambient-glow-body"></div>
+    </div>
+
+    <slot />
+
+    <!-- Scroll To Top Button -->
+    <button
+      type="button"
+      id="to-top"
+      class="to-top"
+      aria-label={lang === 'ru' ? 'Наверх' : 'To top'}
+      data-visible="false"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M12 19V5M5 12l7-7 7 7"></path>
+      </svg>
+    </button>
+
+    <script>
+      // To-Top button logic
+      const toTopBtn = document.getElementById('to-top');
+      if (toTopBtn) {
+        window.addEventListener('scroll', () => {
+          const isScrolled = window.scrollY > window.innerHeight * 0.5;
+          toTopBtn.setAttribute('data-visible', isScrolled ? 'true' : 'false');
+        }, { passive: true });
+
+        toTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    </script>
+  </body>
+</html>

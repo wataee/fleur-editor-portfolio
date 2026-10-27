@@ -1,0 +1,153 @@
+---
+interface Metric {
+  value_ru: string;
+  value_en: string;
+  label_ru: string;
+  label_en: string;
+}
+
+interface Review {
+  id: string;
+  name_ru: string;
+  name_en: string;
+  channel: string;
+  subscribers: string;
+  topic_ru: string;
+  topic_en: string;
+  avatar: string;
+  top_metric_value: string;
+  top_metric_label_ru: string;
+  top_metric_label_en: string;
+  quote_ru: string;
+  quote_en: string;
+  metrics: Metric[];
+}
+
+interface Props {
+  data: {
+    eyebrow: string;
+    title: string;
+    prevAria: string;
+    nextAria: string;
+  };
+  reviews: Review[];
+  lang: 'ru' | 'en';
+}
+
+const { data, reviews, lang } = Astro.props;
+---
+
+<section class="section section--testimonials" aria-labelledby="testimonials-title">
+  <!-- Section Header with Navigation Arrows -->
+  <div class="section-head testimonials-head">
+    <div class="testimonials-title-group">
+      <span class="eyebrow">{data.eyebrow}</span>
+      <h2 class="section-title" id="testimonials-title">{data.title}</h2>
+    </div>
+
+    <div class="testimonials-nav-group">
+      <button
+        type="button"
+        id="review-prev"
+        class="testimonial-nav"
+        aria-label={data.prevAria}
+        aria-controls="testimonials-track"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button
+        type="button"
+        id="review-next"
+        class="testimonial-nav"
+        aria-label={data.nextAria}
+        aria-controls="testimonials-track"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Testimonials Carousel Track -->
+  <ul class="testimonial-track" id="testimonials-track" tabindex="0" aria-label="Client reviews carousel">
+    {reviews.map((review) => {
+      const name = lang === 'ru' ? review.name_ru : review.name_en;
+      const topic = lang === 'ru' ? review.topic_ru : review.topic_en;
+      const topLabel = lang === 'ru' ? review.top_metric_label_ru : review.top_metric_label_en;
+      const quote = lang === 'ru' ? review.quote_ru : review.quote_en;
+
+      return (
+        <li class="testimonial card--interactive">
+          <!-- Client Head Info -->
+          <div class="testimonial-head">
+            <img
+              class="testimonial-logo"
+              src={review.avatar}
+              alt={name}
+              loading="lazy"
+              decoding="async"
+              width="88"
+              height="88"
+            />
+            <div class="testimonial-id">
+              <p class="testimonial-name">{name}</p>
+              <div class="testimonial-subinfo">
+                <span class="font-bold text-text">{review.channel}</span>
+                <span>•</span>
+                <span class="text-accent">{review.subscribers}</span>
+              </div>
+              <span class="text-xs font-mono uppercase text-text-mute">{topic}</span>
+            </div>
+          </div>
+
+          <!-- Top Metric Highlight -->
+          <div class="pt-2">
+            <p class="testimonial-top-value">{review.top_metric_value}</p>
+            <p class="testimonial-top-label">{topLabel}</p>
+          </div>
+
+          <!-- Quote -->
+          <p class="testimonial-quote">
+            "{quote}"
+          </p>
+
+          <!-- Metrics Footer -->
+          <ul class="testimonial-metrics">
+            {review.metrics.map((m) => {
+              const val = lang === 'ru' ? m.value_ru : m.value_en;
+              const lbl = lang === 'ru' ? m.label_ru : m.label_en;
+              return (
+                <li class="testimonial-metric">
+                  <p class="testimonial-metric-value">{val}</p>
+                  <p class="testimonial-metric-label">{lbl}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+<script>
+  // Testimonials Carousel Controls
+  const track = document.getElementById('testimonials-track');
+  const prevBtn = document.getElementById('review-prev');
+  const nextBtn = document.getElementById('review-next');
+
+  if (track && prevBtn && nextBtn) {
+    const scrollAmount = 480;
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+</script>

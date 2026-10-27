@@ -1,0 +1,249 @@
+---
+interface Project {
+  id: string;
+  slug: string;
+  type: 'video' | 'motion';
+  niche: string;
+  featured: boolean;
+  order: number;
+  client_ru: string;
+  client_en: string;
+  format_ru: string;
+  format_en: string;
+  duration: string;
+  title_ru: string;
+  title_en: string;
+  body_ru: string;
+  body_en: string;
+  youtube_id: string;
+  thumbnail: string;
+}
+
+interface Props {
+  data: {
+    eyebrow: string;
+    title: string;
+    filterAll: string;
+    niches: Record<string, string>;
+    subsections: {
+      main: string;
+      motion: string;
+    };
+    watch: string;
+    play: string;
+    thumbAria: string;
+  };
+  projects: Project[];
+  lang: 'ru' | 'en';
+}
+
+const { data, projects, lang } = Astro.props;
+
+// Group projects
+const videoProjects = projects.filter((p) => p.type === 'video');
+const motionProjects = projects.filter((p) => p.type === 'motion');
+
+const nicheEntries = Object.entries(data.niches);
+---
+
+<section class="section section--work" id="work" aria-labelledby="work-title">
+  <!-- Section Header -->
+  <div class="section-head">
+    <span class="eyebrow">{data.eyebrow}</span>
+    <h2 class="section-title" id="work-title">{data.title}</h2>
+  </div>
+
+  <!-- Improvement: Filter Tabs by Niche -->
+  <div class="work-tabs" role="tablist" aria-label={lang === 'ru' ? 'Фильтр проектов по нишам' : 'Filter projects by niche'}>
+    {nicheEntries.map(([key, label], idx) => (
+      <button
+        type="button"
+        role="tab"
+        class={`work-tab ${idx === 0 ? 'active' : ''}`}
+        id={`tab-${key}`}
+        aria-selected={idx === 0 ? 'true' : 'false'}
+        aria-controls="portfolio-grids"
+        data-niche-filter={key}
+      >
+        {label}
+      </button>
+    ))}
+  </div>
+
+  <div id="portfolio-grids" class="flex flex-col gap-16">
+    <!-- Subsection 1: Long-form Videos -->
+    <div class="portfolio-subsection" id="sub-videos">
+      <div class="mb-6 flex items-center justify-between border-b border-hairline pb-3">
+        <h3 class="font-display font-bold text-xl md:text-2xl text-text">
+          {data.subsections.main}
+        </h3>
+        <span class="font-mono text-xs uppercase tracking-wider text-text-mute">
+          16:9 • Long-Form
+        </span>
+      </div>
+
+      <div class="work-grid">
+        {videoProjects.map((project) => {
+          const title = lang === 'ru' ? project.title_ru : project.title_en;
+          const client = lang === 'ru' ? project.client_ru : project.client_en;
+          const format = lang === 'ru' ? project.format_ru : project.format_en;
+          const body = lang === 'ru' ? project.body_ru : project.body_en;
+
+          return (
+            <article
+              class="work-card"
+              data-niche={project.niche}
+              data-type={project.type}
+            >
+              <!-- Thumbnail Button opens Lazy Video Modal -->
+              <button
+                class="work-thumb work-thumb--16x9"
+                type="button"
+                data-video-id={project.youtube_id}
+                aria-label={`${data.thumbAria}${title}`}
+              >
+                <img
+                  class="work-thumb-img"
+                  src={project.thumbnail}
+                  alt={title}
+                  loading="lazy"
+                  decoding="async"
+                  width="1280"
+                  height="720"
+                />
+                <span class="play-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5l11 7-11 7z"></path>
+                  </svg>
+                </span>
+              </button>
+
+              <h4 class="work-title">{title}</h4>
+
+              <p class="work-meta">
+                <span class="work-client">{client}</span>
+                <span>{format}</span>
+                <span>{project.duration}</span>
+                <span class="text-accent">{data.niches[project.niche] || project.niche}</span>
+              </p>
+
+              <p class="work-text">{body}</p>
+
+              <a
+                class="work-link"
+                href={`https://www.youtube.com/watch?v=${project.youtube_id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${data.watch} — ${title}`}
+              >
+                {data.watch}
+              </a>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Subsection 2: Motion Graphics & 3D -->
+    <div class="portfolio-subsection" id="sub-motion">
+      <div class="mb-6 flex items-center justify-between border-b border-hairline pb-3">
+        <h3 class="font-display font-bold text-xl md:text-2xl text-text">
+          {data.subsections.motion}
+        </h3>
+        <span class="font-mono text-xs uppercase tracking-wider text-text-mute">
+          3D • Motion & VFX
+        </span>
+      </div>
+
+      <div class="work-grid">
+        {motionProjects.map((project) => {
+          const title = lang === 'ru' ? project.title_ru : project.title_en;
+          const client = lang === 'ru' ? project.client_ru : project.client_en;
+          const format = lang === 'ru' ? project.format_ru : project.format_en;
+          const body = lang === 'ru' ? project.body_ru : project.body_en;
+
+          return (
+            <article
+              class="work-card"
+              data-niche={project.niche}
+              data-type={project.type}
+            >
+              <button
+                class="work-thumb work-thumb--16x9"
+                type="button"
+                data-video-id={project.youtube_id}
+                aria-label={`${data.thumbAria}${title}`}
+              >
+                <img
+                  class="work-thumb-img"
+                  src={project.thumbnail}
+                  alt={title}
+                  loading="lazy"
+                  decoding="async"
+                  width="1280"
+                  height="720"
+                />
+                <span class="play-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5l11 7-11 7z"></path>
+                  </svg>
+                </span>
+              </button>
+
+              <h4 class="work-title">{title}</h4>
+
+              <p class="work-meta">
+                <span class="work-client">{client}</span>
+                <span>{format}</span>
+                <span>{project.duration}</span>
+                <span class="text-accent">{data.niches[project.niche] || project.niche}</span>
+              </p>
+
+              <p class="work-text">{body}</p>
+
+              <a
+                class="work-link"
+                href={`https://www.youtube.com/watch?v=${project.youtube_id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${data.watch} — ${title}`}
+              >
+                {data.watch}
+              </a>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Niche filter tabs logic
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-niche-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('.work-card');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const selectedNiche = tab.getAttribute('data-niche-filter');
+
+      // Update tab active state
+      tabs.forEach((t) => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Filter cards
+      cards.forEach((card) => {
+        const cardNiche = card.getAttribute('data-niche');
+        if (selectedNiche === 'all' || cardNiche === selectedNiche) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    });
+  });
+</script>

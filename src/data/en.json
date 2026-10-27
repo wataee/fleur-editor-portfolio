@@ -1,0 +1,212 @@
+{
+  "lang": "en",
+  "meta": {
+    "title": "FARE — Long-form video editing and motion graphics",
+    "description": "Complete video editing and motion graphics: from raw footage to final delivery. Assembly, colour correction, graphics and sound design without AI slop.",
+    "ogTitle": "FARE — Long-form video editing and motion graphics",
+    "ogDescription": "I handle the entire editing process: assembly, colour correction, graphics and sound design. You provide the footage and receive a finished video.",
+    "ogImage": "/og-image.png"
+  },
+  "nav": {
+    "work": "My work",
+    "process": "Process",
+    "about": "Why me",
+    "contact": "Contact",
+    "discuss": "Discuss your project",
+    "openMenu": "Open menu"
+  },
+  "hero": {
+    "status": "Available for projects",
+    "aiBadge": "No generative AI",
+    "title": "Complete video editing and motion graphics: from raw footage to final delivery",
+    "sub": "I handle the entire editing process: assembly, colour correction, graphics and sound design. You provide the footage and receive a finished video.",
+    "cta": "View my work",
+    "proofStats": [
+      { "value": "1.5M+", "label": "video views" },
+      { "value": "100+", "label": "projects delivered" },
+      { "value": "3+", "label": "years of experience" },
+      { "value": "10+", "label": "happy clients" }
+    ],
+    "industriesNote": "Across gaming, real estate, personal brands, economics and finance"
+  },
+  "theDifference": {
+    "eyebrow": "Motion graphics and 3D work",
+    "title": "The Difference",
+    "description": "Two silent videos play synchronously under a draggable divider: on the left is the raw camera footage, on the right is the same scene after full editing.",
+    "before": "Before",
+    "after": "After",
+    "playAria": "Start comparison",
+    "handleAria": "Comparison divider position",
+    "videoBefore": "/videos/before.mp4",
+    "videoAfter": "/videos/after.mp4",
+    "posterBefore": "/images/before-poster.webp",
+    "posterAfter": "/images/after-poster.webp"
+  },
+  "portfolio": {
+    "eyebrow": "My work",
+    "title": "Long-form videos",
+    "filterAll": "All",
+    "niches": {
+      "all": "All",
+      "gaming": "Gaming",
+      "real_estate": "Real Estate",
+      "personal_brand": "Personal Brands",
+      "finance": "Economics & Finance"
+    },
+    "subsections": {
+      "main": "Long-form videos",
+      "motion": "Motion graphics & 3D"
+    },
+    "watch": "Watch on YouTube ↗",
+    "play": "Watch",
+    "thumbAria": "Watch — "
+  },
+  "tools": {
+    "eyebrow": "Software stack",
+    "title": "Tools used to craft the final product",
+    "items": [
+      { "name": "Premiere Pro", "category": "Editing & assembly" },
+      { "name": "After Effects", "category": "Motion & 2D compositing" },
+      { "name": "DaVinci Resolve", "category": "Colour grading & finishing" },
+      { "name": "Blender", "category": "3D graphics & animation" }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Transparent and predictable rates",
+    "plans": [
+      {
+        "name": "Long-form video",
+        "price": "from $200",
+        "description": "Full-cycle editing for YouTube & corporate channels (10+ min). Assembly, motion graphics, sound design, color grading.",
+        "badge": "Popular",
+        "features": [
+          "First cut within 24–48 hours",
+          "Sound design & vocal mastering",
+          "2 rounds of revisions included",
+          "Final delivery in 4K"
+        ]
+      },
+      {
+        "name": "Motion Graphics & 3D",
+        "price": "Custom rate",
+        "description": "Infographics, kinetic typography, 3D scenes, custom show branding, and high-impact pre-rolls.",
+        "badge": null,
+        "features": [
+          "Bespoke visual identity from scratch",
+          "Camera tracking, 3D modeling & compositing",
+          "Fully aligned with your brand guidelines",
+          "Milestone preview renders"
+        ]
+      },
+      {
+        "name": "Video Series / Retainer",
+        "price": "Custom rate",
+        "description": "Ongoing dedicated partnership for channel creators or regular monthly multi-video production.",
+        "badge": "Best Value",
+        "features": [
+          "Guaranteed calendar production slot",
+          "Consistent channel pacing and visual style",
+          "Asynchronous communication 24/7",
+          "Volume batch discounts"
+        ]
+      }
+    ],
+    "cta": "Discuss your project"
+  },
+  "reviews": {
+    "eyebrow": "Testimonials",
+    "title": "My work, in my clients' own words",
+    "prevAria": "Previous review",
+    "nextAria": "Next review"
+  },
+  "process": {
+    "eyebrow": "HOW WE WORK",
+    "title": "Our collaboration follows three stages",
+    "steps": [
+      {
+        "tc": "BEFORE YOU SEND THE FOOTAGE",
+        "title": "Project agreement",
+        "body": "We discuss the brief, the volume of source footage, references and deadlines. I accept urgent projects at a higher rate."
+      },
+      {
+        "tc": "DAYS 1–6",
+        "title": "Editing",
+        "body": "Once I receive the footage, I begin editing. I send drafts for your review and approval, incorporating your feedback. You see progress throughout the process."
+      },
+      {
+        "tc": "DAY 7",
+        "title": "Final delivery",
+        "body": "I deliver the final version via your preferred storage service. A 10-minute video with motion graphics typically takes one full week to complete."
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "WHY WORK WITH ME?",
+    "title": "More than effective editing. Here is what I bring to your project",
+    "items": [
+      {
+        "id": "no-ai",
+        "title": "No low-quality AI-generated content",
+        "body": "I do not use generative AI unless you explicitly request it. No AI upscaling, synthetic voices or AI-generated images. All materials are sourced from reputable licensed libraries without platform copyright claims."
+      },
+      {
+        "id": "async",
+        "title": "Asynchronous communication",
+        "body": "I work with creators across different time zones in Russian and English. We communicate asynchronously, ensuring your project is delivered on time."
+      },
+      {
+        "id": "longterm",
+        "title": "Long-term collaboration",
+        "body": "I can move straight from one completed project to the next and remain consistently available over the long term. Most client engagements have ended before my capacity to continue supporting them did."
+      },
+      {
+        "id": "automate",
+        "title": "Automated routine tasks",
+        "body": "I automate routine tasks, such as organising source footage, with custom scripts and plugins. This frees up more time for creative editing and reduces repetitive overhead."
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "F.A.Q",
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "How much do your services cost?",
+        "a": "The final price depends on references, source footage volume and deadlines. Long-form videos start from $200. We agree on the exact budget during our initial discussion."
+      },
+      {
+        "q": "How long does editing take?",
+        "a": "A 10-minute video with a moderate amount of motion graphics is completed within a week. We agree on deadlines in advance, and I guarantee that I will meet them."
+      },
+      {
+        "q": "How should I send you the footage?",
+        "a": "Use whichever method suits you: Google Drive, Dropbox, Nextcloud, your own FTP server or another file-sharing service. The only requirement is high-speed download support."
+      },
+      {
+        "q": "How many revisions are included in the price?",
+        "a": "I include two rounds of revisions in the project budget as standard. Any further rounds are agreed separately, as these usually involve a change in project concept rather than minor edits."
+      },
+      {
+        "q": "Do you work with international clients?",
+        "a": "Yes. I work with clients in CIS and Western markets in Russian and English, delivering the highest quality for clients anywhere in the world."
+      },
+      {
+        "q": "Do you use AI in your work?",
+        "a": "No, unless you explicitly request it. No voice synthesis, no AI graphics, no slop inserts. Everything is crafted manually. Read more in the",
+        "linkText": "\"Why me\"",
+        "linkHref": "#about"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "GET IN TOUCH",
+    "title": "Tell me about your project",
+    "sub": "Briefly describe your task via Telegram, Email, or X. I reply within 24 hours.",
+    "stickyMobileBtn": "Message on Telegram"
+  },
+  "footer": {
+    "copy": "© FARE 2026",
+    "toTop": "To top"
+  }
+}
