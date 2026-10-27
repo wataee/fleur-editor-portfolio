@@ -52,7 +52,7 @@ const { data, reviews, lang = 'ru' } = Astro.props;
 
 <section class="section section--testimonials" id="reviews" aria-labelledby="testimonials-title">
   <!-- Section Header with Navigation Arrows -->
-  <div class="section-head testimonials-head">
+  <div class="section-head testimonials-head" data-reveal="true">
     <div class="testimonials-title-group">
       <span class="eyebrow">{data.eyebrow}</span>
       <h2 class="section-title" id="testimonials-title">{data.title}</h2>
@@ -94,7 +94,7 @@ const { data, reviews, lang = 'ru' } = Astro.props;
       const metric = (lang === 'kz' ? review.metrics_kz : lang === 'en' ? review.metrics_en : review.metrics_ru) || review.top_metric_value;
 
       return (
-        <li class="testimonial card--interactive">
+        <li class="testimonial card--interactive" data-reveal="card">
           <!-- Client Head Info -->
           <div class="testimonial-head">
             <img

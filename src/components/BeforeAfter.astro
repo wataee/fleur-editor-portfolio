@@ -19,7 +19,7 @@ const { data } = Astro.props;
 ---
 
 <section class="section section--ba" id="difference" aria-labelledby="ba-title">
-  <div class="section-head">
+  <div class="section-head" data-reveal="true">
     <span class="eyebrow">{data.eyebrow}</span>
     <h2 class="section-title" id="ba-title">{data.title}</h2>
   </div>
@@ -32,6 +32,7 @@ const { data } = Astro.props;
     class="ba"
     id="ba-container"
     style="--ba-pos: 50%;"
+    data-reveal="true"
   >
     <!-- Background layer: Graded video / image -->
     <video

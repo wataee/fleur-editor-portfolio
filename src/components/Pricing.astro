@@ -21,14 +21,14 @@ const { data, lang } = Astro.props;
 ---
 
 <section class="section" id="pricing" aria-labelledby="pricing-title">
-  <div class="section-head">
+  <div class="section-head" data-reveal="true">
     <span class="eyebrow">{data.eyebrow}</span>
     <h2 class="section-title" id="pricing-title">{data.title}</h2>
   </div>
 
   <div class="pricing-grid">
     {data.plans.map((plan) => (
-      <div class="pricing-card">
+      <div class="pricing-card" data-reveal="card">
         {plan.badge && (
           <span class="pricing-badge">{plan.badge}</span>
         )}

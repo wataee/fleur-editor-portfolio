@@ -20,7 +20,7 @@ const { data } = Astro.props;
 ---
 
 <section class="section" id="faq" aria-labelledby="faq-title">
-  <div class="section-head section-head--tight">
+  <div class="section-head section-head--tight" data-reveal="true">
     <span class="eyebrow">{data.eyebrow}</span>
     <h2 class="section-title" id="faq-title">{data.title}</h2>
   </div>
@@ -31,7 +31,7 @@ const { data } = Astro.props;
       const panelId = `faq-panel-${index}`;
 
       return (
-        <div class="faq-item" data-open="false">
+        <div class="faq-item" data-open="false" data-reveal="card">
           <h3 class="faq-heading">
             <button
               class="faq-trigger"

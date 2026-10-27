@@ -17,7 +17,7 @@ const { hero, lang = 'ru' } = Astro.props;
 
 <section class="hero" aria-label="Hero">
   <!-- Top Badges -->
-  <div class="hero-mark">
+  <div class="hero-mark" data-reveal="true">
     <div class="inline-flex items-center gap-2">
       <span class="status-dot" aria-hidden="true"></span>
       <span class="eyebrow">{hero.status}</span>
@@ -35,18 +35,18 @@ const { hero, lang = 'ru' } = Astro.props;
 
   <!-- Headline -->
   <div class="hero-headline">
-    <h1 class="hero-title" lang={lang}>
+    <h1 class="hero-title" lang={lang} data-reveal="true">
       {hero.title}
     </h1>
   </div>
 
   <!-- Foot: Subtitle & CTA -->
   <div class="hero-foot">
-    <p class="hero-sub">
+    <p class="hero-sub" data-reveal="true">
       {hero.sub}
     </p>
 
-    <div class="hero-actions">
+    <div class="hero-actions" data-reveal="true">
       <a class="btn-primary" href="#work">
         {hero.cta}
         <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -68,7 +68,7 @@ const { hero, lang = 'ru' } = Astro.props;
 <section class="section section--stats pt-0" aria-label="Key Metrics">
   <ul class="stats-grid" id="stats-counter-grid">
     {hero.proofStats.map((stat, i) => (
-      <li class="stat card--interactive">
+      <li class="stat card--interactive" data-reveal="card">
         <p class="stat-value" data-target={stat.value}>
           <span class="counter-display">{stat.value}</span>
         </p>
@@ -77,7 +77,7 @@ const { hero, lang = 'ru' } = Astro.props;
     ))}
   </ul>
 
-  <p class="stats-note">
+  <p class="stats-note" data-reveal="true">
     {hero.industriesNote}
   </p>
 </section>
@@ -103,10 +103,11 @@ const { hero, lang = 'ru' } = Astro.props;
             const [, prefix, numStr, suffix] = match;
             const target = parseFloat(numStr.replace(',', '.'));
             const isFloat = numStr.includes('.') || numStr.includes(',');
-            const duration = 1200; // ms
+            const duration = 1100; // ms
             const start = performance.now();
             const display = el.querySelector('.counter-display');
             if (!display) return;
+            display.textContent = `${prefix}0${suffix}`;
 
             const update = (now: number) => {
               const elapsed = now - start;

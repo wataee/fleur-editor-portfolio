@@ -26,7 +26,7 @@ const { data, contacts, lang = 'ru' } = Astro.props;
 <section class="section" id="contact" aria-labelledby="contact-title">
   <div class="contact-layout">
     <div class="contact-intro">
-      <div class="contact-head">
+      <div class="contact-head" data-reveal="true">
         <span class="eyebrow">{data.eyebrow}</span>
         <h2 class="section-title" id="contact-title">{data.title}</h2>
         <p class="text-text-dim text-base md:text-lg max-w-xl">
@@ -41,7 +41,7 @@ const { data, contacts, lang = 'ru' } = Astro.props;
         const desc = lang === 'kz' ? (c.description_kz || c.description_ru) : lang === 'ru' ? c.description_ru : c.description_en;
 
         return (
-          <li>
+          <li data-reveal="card">
             <a
               class={`contact-card card--interactive ${c.primary ? 'border-accent bg-accent-soft/20' : ''}`}
               href={c.url}

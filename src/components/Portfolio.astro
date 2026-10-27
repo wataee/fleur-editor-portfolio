@@ -52,13 +52,13 @@ const nicheEntries = Object.entries(data.niches);
 
 <section class="section section--work" id="work" aria-labelledby="work-title">
   <!-- Section Header -->
-  <div class="section-head">
+  <div class="section-head" data-reveal="true">
     <span class="eyebrow">{data.eyebrow}</span>
     <h2 class="section-title" id="work-title">{data.title}</h2>
   </div>
 
   <!-- Improvement: Filter Tabs by Niche -->
-  <div class="work-tabs" role="tablist" aria-label={lang === 'kz' ? 'Жобаларды сүзу' : lang === 'en' ? 'Filter projects by niche' : 'Фильтр проектов по нишам'}>
+  <div class="work-tabs" role="tablist" aria-label={lang === 'kz' ? 'Жобаларды сүзу' : lang === 'en' ? 'Filter projects by niche' : 'Фильтр проектов по нишам'} data-reveal="true">
     {nicheEntries.map(([key, label], idx) => (
       <button
         type="button"
@@ -98,6 +98,7 @@ const nicheEntries = Object.entries(data.niches);
               class="work-card"
               data-niche={project.niche}
               data-type={project.type}
+              data-reveal="card"
             >
               <!-- Thumbnail Button opens Lazy Video Modal -->
               <button
@@ -171,6 +172,7 @@ const nicheEntries = Object.entries(data.niches);
               class="work-card"
               data-niche={project.niche}
               data-type={project.type}
+              data-reveal="card"
             >
               <button
                 class="work-thumb work-thumb--16x9"

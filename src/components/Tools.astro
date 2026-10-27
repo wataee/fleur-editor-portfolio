@@ -17,7 +17,7 @@ const { data } = Astro.props;
 const filteredItems = data.items.filter((item) => item.name !== 'Blender');
 ---
 
-<section class="tools-strip-container" id="tools" aria-label={data.title || "Software stack"}>
+<section class="tools-strip-container" id="tools" aria-label={data.title || "Software stack"} data-reveal="true">
   <div class="tools-strip">
     <div class="tools-strip-label">
       <span class="tools-indicator" aria-hidden="true"></span>

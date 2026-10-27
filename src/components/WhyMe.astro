@@ -18,14 +18,14 @@ const { data } = Astro.props;
 ---
 
 <section class="section" id="about" aria-labelledby="about-title">
-  <div class="section-head">
+  <div class="section-head" data-reveal="true">
     <span class="eyebrow">{data.eyebrow}</span>
     <h2 class="section-title" id="about-title">{data.title}</h2>
   </div>
 
   <div class="why-grid">
     {data.items.map((item) => (
-      <div class="why-item" id={item.id ? `why-${item.id}` : undefined}>
+      <div class="why-item" id={item.id ? `why-${item.id}` : undefined} data-reveal="card">
         <h3 class="why-title">{item.title}</h3>
         <p class="why-body">{item.desc || item.body}</p>
       </div>
