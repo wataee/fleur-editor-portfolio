@@ -8,13 +8,17 @@ interface Project {
   order: number;
   client_ru: string;
   client_en: string;
+  client_kz?: string;
   format_ru: string;
   format_en: string;
+  format_kz?: string;
   duration: string;
   title_ru: string;
   title_en: string;
+  title_kz?: string;
   body_ru: string;
   body_en: string;
+  body_kz?: string;
   youtube_id: string;
   thumbnail: string;
 }
@@ -34,10 +38,10 @@ interface Props {
     thumbAria: string;
   };
   projects: Project[];
-  lang: 'ru' | 'en';
+  lang?: string;
 }
 
-const { data, projects, lang } = Astro.props;
+const { data, projects, lang = 'ru' } = Astro.props;
 
 // Group projects
 const videoProjects = projects.filter((p) => p.type === 'video');
@@ -54,7 +58,7 @@ const nicheEntries = Object.entries(data.niches);
   </div>
 
   <!-- Improvement: Filter Tabs by Niche -->
-  <div class="work-tabs" role="tablist" aria-label={lang === 'ru' ? 'Фильтр проектов по нишам' : 'Filter projects by niche'}>
+  <div class="work-tabs" role="tablist" aria-label={lang === 'kz' ? 'Жобаларды сүзу' : lang === 'en' ? 'Filter projects by niche' : 'Фильтр проектов по нишам'}>
     {nicheEntries.map(([key, label], idx) => (
       <button
         type="button"
@@ -84,10 +88,10 @@ const nicheEntries = Object.entries(data.niches);
 
       <div class="work-grid">
         {videoProjects.map((project) => {
-          const title = lang === 'ru' ? project.title_ru : project.title_en;
-          const client = lang === 'ru' ? project.client_ru : project.client_en;
-          const format = lang === 'ru' ? project.format_ru : project.format_en;
-          const body = lang === 'ru' ? project.body_ru : project.body_en;
+          const title = lang === 'kz' ? (project.title_kz || project.title_ru) : lang === 'en' ? project.title_en : project.title_ru;
+          const client = lang === 'kz' ? (project.client_kz || project.client_ru) : lang === 'en' ? project.client_en : project.client_ru;
+          const format = lang === 'kz' ? (project.format_kz || project.format_ru) : lang === 'en' ? project.format_en : project.format_ru;
+          const body = lang === 'kz' ? (project.body_kz || project.body_ru) : lang === 'en' ? project.body_en : project.body_ru;
 
           return (
             <article
@@ -157,10 +161,10 @@ const nicheEntries = Object.entries(data.niches);
 
       <div class="work-grid">
         {motionProjects.map((project) => {
-          const title = lang === 'ru' ? project.title_ru : project.title_en;
-          const client = lang === 'ru' ? project.client_ru : project.client_en;
-          const format = lang === 'ru' ? project.format_ru : project.format_en;
-          const body = lang === 'ru' ? project.body_ru : project.body_en;
+          const title = lang === 'kz' ? (project.title_kz || project.title_ru) : lang === 'en' ? project.title_en : project.title_ru;
+          const client = lang === 'kz' ? (project.client_kz || project.client_ru) : lang === 'en' ? project.client_en : project.client_ru;
+          const format = lang === 'kz' ? (project.format_kz || project.format_ru) : lang === 'en' ? project.format_en : project.format_ru;
+          const body = lang === 'kz' ? (project.body_kz || project.body_ru) : lang === 'en' ? project.body_en : project.body_ru;
 
           return (
             <article

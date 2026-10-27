@@ -2,28 +2,31 @@
   {
     "id": "telegram",
     "name": "Telegram",
-    "handle": "@fareeditor",
-    "url": "https://t.me/fareeditor",
+    "handle": "@ffluere",
+    "url": "https://t.me/ffluere",
     "description_ru": "Быстрый ответ в течение 1–2 часов",
     "description_en": "Fast reply within 1–2 hours",
+    "description_kz": "1–2 сағат ішінде жылдам жауап",
     "primary": true
   },
   {
     "id": "email",
     "name": "Email",
-    "handle": "contact@fareeditor.com",
-    "url": "mailto:contact@fareeditor.com?subject=Work%20inquiry%20/%20Связь%20по%20проекту",
+    "handle": "fluere.work@gmail.com",
+    "url": "mailto:fluere.work@gmail.com?subject=Work%20inquiry%20/%20Связь%20по%20проекту",
     "description_ru": "Для подробных ТЗ и договоров",
     "description_en": "For detailed briefs and contracts",
+    "description_kz": "Толық техникалық тапсырма мен келісімшарттар үшін",
     "primary": false
   },
   {
     "id": "x",
     "name": "X (Twitter)",
-    "handle": "@FareEditor",
-    "url": "https://x.com/FareEditor",
+    "handle": "@fluer_mp4",
+    "url": "https://x.com/fluer_mp4",
     "description_ru": "Прямые сообщения и новости",
     "description_en": "Direct messages and updates",
+    "description_kz": "Тікелей хабарламалар мен жаңалықтар",
     "primary": false
   }
 ]

@@ -33,9 +33,9 @@ const { data } = Astro.props;
     id="ba-container"
     style="--ba-pos: 50%;"
   >
-    <!-- Background layer: After video -->
+    <!-- Background layer: Graded video / image -->
     <video
-      class="ba-video"
+      class="ba-video ba-video--graded"
       id="ba-video-after"
       preload="none"
       muted
@@ -43,15 +43,15 @@ const { data } = Astro.props;
       playsinline
       tabindex="-1"
       aria-hidden="true"
-      poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1280&q=80"
+      poster={data.posterAfter || "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=85"}
     >
-      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+      <source src={data.videoAfter || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"} type="video/mp4" />
     </video>
 
-    <!-- Clipped layer: Before video -->
+    <!-- Clipped layer: Raw flat camera profile (S-Log3 / RAW) -->
     <div class="ba-clip" id="ba-clip">
       <video
-        class="ba-video"
+        class="ba-video ba-video--log"
         id="ba-video-before"
         preload="none"
         muted
@@ -59,9 +59,9 @@ const { data } = Astro.props;
         playsinline
         tabindex="-1"
         aria-hidden="true"
-        poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1280&q=80"
+        poster={data.posterBefore || "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=85"}
       >
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+        <source src={data.videoBefore || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"} type="video/mp4" />
       </video>
     </div>
 

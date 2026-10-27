@@ -29,7 +29,7 @@ const telegramContact = contactsData.find((c) => c.id === 'telegram') || contact
   title={ruData.meta.title}
   description={ruData.meta.description}
   lang="ru"
-  canonicalUrl="https://fareeditor.com/ru/"
+  canonicalUrl="https://fluere.work/ru/"
   ogTitle={ruData.meta.ogTitle}
   ogDescription={ruData.meta.ogDescription}
   ogImage={ruData.meta.ogImage}
@@ -43,7 +43,7 @@ const telegramContact = contactsData.find((c) => c.id === 'telegram') || contact
     <Tools data={ruData.tools} />
     <Reviews data={ruData.reviews} reviews={reviewsData} lang="ru" />
     <Process data={ruData.process} />
-    <WhyMe data={ruData.why} />
+    <WhyMe data={ruData.whyMe} />
     <Pricing data={ruData.pricing} lang="ru" />
     <Faq data={ruData.faq} />
     <Contact data={ruData.contact} contacts={contactsData} lang="ru" />
@@ -56,7 +56,7 @@ const telegramContact = contactsData.find((c) => c.id === 'telegram') || contact
 
   <!-- Mobile Sticky Telegram CTA Button -->
   <StickyMobileCta
-    text={ruData.contact.stickyMobileBtn}
+    text={ruData.stickyMobile?.text || "Написать в Telegram"}
     telegramUrl={telegramContact.url}
   />
 </Layout>

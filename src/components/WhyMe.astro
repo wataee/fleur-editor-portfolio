@@ -2,7 +2,8 @@
 interface Item {
   id?: string;
   title: string;
-  body: string;
+  desc?: string;
+  body?: string;
 }
 
 interface Props {
@@ -26,7 +27,7 @@ const { data } = Astro.props;
     {data.items.map((item) => (
       <div class="why-item" id={item.id ? `why-${item.id}` : undefined}>
         <h3 class="why-title">{item.title}</h3>
-        <p class="why-body">{item.body}</p>
+        <p class="why-body">{item.desc || item.body}</p>
       </div>
     ))}
   </div>

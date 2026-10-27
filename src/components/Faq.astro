@@ -2,6 +2,8 @@
 interface FaqItem {
   q: string;
   a: string;
+  anchorText?: string;
+  anchorId?: string;
   linkText?: string;
   linkHref?: string;
 }
@@ -51,11 +53,11 @@ const { data } = Astro.props;
             <div class="faq-panel-inner">
               <p class="faq-answer">
                 {item.a}
-                {item.linkText && item.linkHref && (
+                {(item.anchorText || item.linkText) && (
                   <>
                     {' '}
-                    <a href={item.linkHref} class="font-medium hover:underline text-accent">
-                      {item.linkText}
+                    <a href={item.linkHref || `#${item.anchorId || 'about'}`} class="font-medium hover:underline text-accent">
+                      {item.anchorText || item.linkText}
                     </a>.
                   </>
                 )}

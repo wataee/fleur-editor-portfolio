@@ -6,6 +6,7 @@ interface ContactChannel {
   url: string;
   description_ru: string;
   description_en: string;
+  description_kz?: string;
   primary: boolean;
 }
 
@@ -16,10 +17,10 @@ interface Props {
     sub: string;
   };
   contacts: ContactChannel[];
-  lang: 'ru' | 'en';
+  lang?: string;
 }
 
-const { data, contacts, lang } = Astro.props;
+const { data, contacts, lang = 'ru' } = Astro.props;
 ---
 
 <section class="section" id="contact" aria-labelledby="contact-title">
@@ -37,7 +38,7 @@ const { data, contacts, lang } = Astro.props;
     <!-- 3 Big Actionable Cards: Telegram, Email, X -->
     <ul class="contact-cards">
       {contacts.map((c) => {
-        const desc = lang === 'ru' ? c.description_ru : c.description_en;
+        const desc = lang === 'kz' ? (c.description_kz || c.description_ru) : lang === 'ru' ? c.description_ru : c.description_en;
 
         return (
           <li>

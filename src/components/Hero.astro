@@ -9,10 +9,10 @@ interface Props {
     proofStats: Array<{ value: string; label: string }>;
     industriesNote: string;
   };
-  lang: 'ru' | 'en';
+  lang?: string;
 }
 
-const { hero, lang } = Astro.props;
+const { hero, lang = 'ru' } = Astro.props;
 ---
 
 <section class="hero" aria-label="Hero">

@@ -9,19 +9,29 @@ interface ContactChannel {
 interface Props {
   data: {
     copy: string;
-    toTop: string;
+    top?: string;
+    toTop?: string;
   };
   contacts: ContactChannel[];
-  lang: 'ru' | 'en';
+  lang?: string;
 }
 
-const { data, contacts, lang } = Astro.props;
+const { data, contacts, lang = 'ru' } = Astro.props;
+const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#top';
 ---
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <a class="wordmark" href={lang === 'ru' ? '/ru/#top' : '/#top'} aria-label="FARE Home">
-      FARE
+    <a class="wordmark" href={homeHref} aria-label=".fleur Home">
+      <img
+        src="/avatar.jpg"
+        alt=".fleur"
+        class="wordmark-avatar"
+        width="28"
+        height="28"
+        loading="lazy"
+      />
+      <span class="wordmark-text">.fleur</span>
     </a>
 
     <nav class="footer-nav" aria-label="Social links">

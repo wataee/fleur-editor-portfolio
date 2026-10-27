@@ -14,7 +14,7 @@ interface Props {
     plans: Plan[];
     cta: string;
   };
-  lang: 'ru' | 'en';
+  lang?: string;
 }
 
 const { data, lang } = Astro.props;
@@ -35,7 +35,7 @@ const { data, lang } = Astro.props;
 
         <div>
           <h3 class="pricing-name">{plan.name}</h3>
-          <p class="pricing-price">{plan.price}</p>
+          <p class={`pricing-price ${plan.price.length > 8 ? 'pricing-price--custom' : ''}`}>{plan.price}</p>
           <p class="pricing-desc">{plan.description}</p>
         </div>
 

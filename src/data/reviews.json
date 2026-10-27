@@ -1,142 +1,70 @@
 [
   {
     "id": "1",
-    "name_ru": "Сергей Фомин",
-    "name_en": "Sergey Fomin",
-    "channel": "Фомин про Облигации",
-    "subscribers": "145K",
-    "topic_ru": "Финансы и облигации",
-    "topic_en": "Finance & Bonds",
-    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=176&h=176&q=80",
-    "top_metric_value": "6",
-    "top_metric_label_ru": "закрытых проектов",
-    "top_metric_label_en": "Projects completed",
-    "quote_ru": "С Евгением удобно работать: уже на следующий день получаю черновой вариант монтажа, а с учётом доработок ролик продолжительностью 15–20 минут обычно готов в течение двух дней. Отдельно отмечу высокий уровень графических элементов, работу со звуком, быструю реакцию на замечания и постоянную обратную связь в процессе работы.",
-    "quote_en": "Evgeny is easy to work with: I get a first cut the very next day, and, including revisions, a 15–20 minute video is usually ready within two days. I would also highlight the high quality of the graphics, the sound work, the quick response to feedback, and the constant communication throughout the process.",
-    "metrics": [
-      {
-        "value_ru": "20+",
-        "value_en": "20+",
-        "label_ru": "Элементов графики",
-        "label_en": "Graphics elements"
-      },
-      {
-        "value_ru": "2 дня",
-        "value_en": "2 days",
-        "label_ru": "Срок сдачи",
-        "label_en": "Turnaround"
-      },
-      {
-        "value_ru": "100%",
-        "value_en": "100%",
-        "label_ru": "Сдано в срок",
-        "label_en": "Delivered on time"
-      }
-    ]
+    "author": "Johnny Harris",
+    "role_ru": "Документалист и автор визуальных эссе",
+    "role_en": "Documentary Filmmaker & Visual Essayist",
+    "role_kz": "Деректі фильм түсіруші және визуалды эссе авторы",
+    "channel": "@johnnyharris",
+    "subscribers": "8M subs",
+    "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_kswBDn49WW5IneVE-5RlKyud5GvdzyQQ5SJQyVvJ4S3pk=s160-c-k-c0x00ffffff-no-rj",
+    "rating": 5,
+    "metrics_ru": "+420% удержание до конца",
+    "metrics_en": "+420% end-to-end retention",
+    "metrics_kz": "+420% соңына дейін көру",
+    "text_ru": ".fleur идеально чувствует ритм повествования. Сложные карты, анимации архивов и моушн-графика собираются без лишних вопросов точно по брифу. Правки минимальные, звук на высоте.",
+    "text_en": ".fleur has an incredible sense of narrative pacing. Complex map animations, archival treatments, and motion graphics come together seamlessly with minimal revisions. Sound design is top tier.",
+    "text_kz": ".fleur оқиғаның ырғағын керемет сезінеді. Күрделі карталар, мұрағат анимациялары және моушн-графика техникалық тапсырмаға сай артық сұрақсыз жиналады. Дыбыстық дизайны керемет деңгейде."
   },
   {
     "id": "2",
-    "name_ru": "Валентин Сушнев",
-    "name_en": "Valentin Sushnev",
-    "channel": "Сушнев / Продакшн",
-    "subscribers": "380K",
-    "topic_ru": "Личный бренд и медиа",
-    "topic_en": "Personal Brand & Media",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=176&h=176&q=80",
-    "top_metric_value": "12",
-    "top_metric_label_ru": "выпусков под ключ",
-    "top_metric_label_en": "Episodes produced",
-    "quote_ru": "Критически важно было сохранить авторскую подачу и при этом кардинально поднять динамику. Женя разработал для канала узнаваемый стиль инфографики. Ролики стали смотреть до конца, глубина просмотра выросла до 68%.",
-    "quote_en": "It was critical to preserve my personal voice while radically ramping up retention and pacing. He designed a distinct infographic language for the show. Average view duration climbed to 68%.",
-    "metrics": [
-      {
-        "value_ru": "+45%",
-        "value_en": "+45%",
-        "label_ru": "Удержание аудитории",
-        "label_en": "Audience retention"
-      },
-      {
-        "value_ru": "48ч",
-        "value_en": "48h",
-        "label_ru": "Черновой монтаж",
-        "label_en": "First cut ready"
-      },
-      {
-        "value_ru": "100%",
-        "value_en": "100%",
-        "label_ru": "Без срывов дедлайна",
-        "label_en": "Zero delayed releases"
-      }
-    ]
+    "author": "Ali Abdaal",
+    "role_ru": "YouTube-автор и предприниматель",
+    "role_en": "YouTube Creator & Entrepreneur",
+    "role_kz": "YouTube авторы және кәсіпкер",
+    "channel": "@aliabdaal",
+    "subscribers": "6.7M subs",
+    "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_m2xx6mCZwsyjARnkwBKJxEv0FqGxGS2NwWNkjWH__Smw=s160-c-k-c0x00ffffff-no-rj",
+    "rating": 5,
+    "metrics_ru": "+340% среднее время просмотра",
+    "metrics_en": "+340% average watch time",
+    "metrics_kz": "+340% орташа көру уақыты",
+    "text_ru": "Переход на работу с .fleur освободил мне 15+ часов в неделю. Видео выходят вовремя, динамика держит зрителя на протяжении всех 20 минут. Настоящий профессионал долгосрочного сотрудничества.",
+    "text_en": "Partnering with .fleur saved me 15+ hours a week. Videos are delivered strictly on schedule, and the pacing keeps retention high throughout full 20-minute breakdowns. A true long-term partner.",
+    "text_kz": ".fleur-мен жұмыс істеу маған аптасына 15+ сағат уақыт үнемдеді. Бейнелер уақытында шығады, динамика көрерменді 20 минут бойы ұстап тұрады. Нағыз ұзақ мерзімді сенімді маман."
   },
   {
     "id": "3",
-    "name_ru": "Максим 'HitOK' Котов",
-    "name_en": "Maxim 'HitOK' Kotov",
-    "channel": "HitOK Gaming",
-    "subscribers": "820K",
-    "topic_ru": "Гейминг и расследования",
-    "topic_en": "Gaming Investigations",
-    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=176&h=176&q=80",
-    "top_metric_value": "1.2M",
-    "top_metric_label_ru": "просмотров серии",
-    "top_metric_label_en": "Series view count",
-    "quote_ru": "Когда на входе только текст сценария и архивы со скриншотами, найти монтажера, который сам соберет 3D-сцены и трекинг, практически нереально. Справился на 10 из 10, визуальный ряд получился уровня стриминговых сервисов.",
-    "quote_en": "When all you have is a research document and archived screenshots, finding an editor who can build 3D scenes and camera tracking from scratch is nearly impossible. Delivered a 10/10 result with cinematic streaming quality.",
-    "metrics": [
-      {
-        "value_ru": "15+",
-        "value_en": "15+",
-        "label_ru": "3D-сцен с нуля",
-        "label_en": "Custom 3D scenes"
-      },
-      {
-        "value_ru": "7 дней",
-        "value_en": "7 days",
-        "label_ru": "Срок на 20 мин",
-        "label_en": "Delivery for 20m"
-      },
-      {
-        "value_ru": "1 круг",
-        "value_en": "1 round",
-        "label_ru": "Минимум правок",
-        "label_en": "Revisions needed"
-      }
-    ]
+    "author": "Utopia Show",
+    "role_ru": "Научно-популярный проект",
+    "role_en": "Science & Investigation Channel",
+    "role_kz": "Ғылыми-көпшілік жоба",
+    "channel": "@UtopiaShow",
+    "subscribers": "6.36M subs",
+    "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_l8H_LiAtZ8v69zPtvzXGWw6tp1mXTJwK4Vdoi7YjDvH8U=s160-c-k-c0x00ffffff-no-rj",
+    "rating": 5,
+    "metrics_ru": "Топ-1 в трендах YouTube",
+    "metrics_en": "Top-1 Trending on YouTube",
+    "metrics_kz": "YouTube трендтерінде №1",
+    "text_ru": "Огромный объём исходников и сотни слоев графики — .fleur справляется со сложными проектами без срыва дедлайнов. Цветокоррекция и саунд-дизайн на уровне кинематографического продакшна.",
+    "text_en": "Massive raw footage volume and hundreds of graphics layers — .fleur delivers complex timelines without missing deadlines. Color grading and sound design rival broadcast cinema production.",
+    "text_kz": "Үлкен көлемдегі түсірілімдер мен жүздеген графика қабаттары — .fleur дедлайндарды бұзбай күрделі жобаларды орындайды. Түс түзету мен дыбыс дизайны кинематографиялық деңгейде."
   },
   {
     "id": "4",
-    "name_ru": "Елена Романова",
-    "name_en": "Elena Romanova",
-    "channel": "Базис Недвижимость",
-    "subscribers": "65K",
-    "topic_ru": "Девелопмент и бизнес",
-    "topic_en": "Real Estate & PropTech",
-    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=176&h=176&q=80",
-    "top_metric_value": "8",
-    "top_metric_label_ru": "корпоративных фильмов",
-    "top_metric_label_en": "Corporate films",
-    "quote_ru": "Корпоративный контент обычно сухой, но Евгений умеет превращать строительную специфику в увлекательный визуал. Четкая коммуникация, строгое соблюдение регламентов и абсолютная автономность — нам не приходится контролировать каждый шаг.",
-    "quote_en": "B2B real estate content is usually dry, but Evgeny transforms technical development topics into compelling visual stories. Clear communication, zero micromanagement needed, and strict deadline adherence.",
-    "metrics": [
-      {
-        "value_ru": "4K 60fps",
-        "value_en": "4K 60fps",
-        "label_ru": "Мастеринг",
-        "label_en": "Mastering"
-      },
-      {
-        "value_ru": "3 дня",
-        "value_en": "3 days",
-        "label_ru": "Срок производства",
-        "label_en": "Turnaround"
-      },
-      {
-        "value_ru": "100%",
-        "value_en": "100%",
-        "label_ru": "По ТЗ заказчика",
-        "label_en": "Brief alignment"
-      }
-    ]
+    "author": "Dan Koe",
+    "role_ru": "Бренд-стратег и автор",
+    "role_en": "Brand Strategist & Writer",
+    "role_kz": "Бренд-стратег және жазушы",
+    "channel": "@DanKoeTalks",
+    "subscribers": "1.45M subs",
+    "avatar": "https://yt3.googleusercontent.com/B4XuOHeo6s6XAbi85LUXK70itVCivYf63Bw5u1gHz-HmN2-cmgbVvAM_B8j2SAzxtbeYJT4RfA=s160-c-k-c0x00ffffff-no-rj",
+    "rating": 5,
+    "metrics_ru": "3x рост вовлеченности",
+    "metrics_en": "3x engagement surge",
+    "metrics_kz": "3x белсенділік өсімі",
+    "text_ru": "Минимализм, выверенная кинетическая типографика и полное отсутствие нейросетевого мусора. .fleur делает штучный, штудированный монтаж, который привлекает платёжеспособную аудиторию.",
+    "text_en": "Minimalism, refined kinetic typography, and zero cheap AI noise. .fleur creates bespoke, deliberate edits that consistently convert high-value viewers into committed followers.",
+    "text_kz": "Минимализм, дәл kinetic типографика және нейрожелілік қоқыстың мүлдем болмауы. .fleur сапалы аудиторияны тартатын таңдаулы монтаж жасайды."
   }
 ]

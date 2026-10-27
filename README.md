@@ -1,8 +1,8 @@
-# FareEditor Portfolio — Лендинг видеомонтажёра
+# .fleur Portfolio — Лендинг-портфолио видеомонтажёра
 
-Современный, сверхбыстрый и адаптивный лендинг-портфолио видеомонтажёра с поддержкой двух языков (RU / EN), интерактивным слайдером «До/После» с синхронным воспроизведением видео, фильтрацией проектов по нишам, lazy-модальным окном с YouTube-плеером, аккордеоном FAQ, карточками цен и прямыми контактами без громоздких форм.
+Современный, сверхбыстрый и кинематографичный лендинг-портфолио видеомонтажёра с поддержкой трёх языков (**RU / EN / KZ**), тёмной и светлой темами в стиле Linear/Raycast, интерактивным модулем сравнения цветокоррекции До/После (S-Log3 vs Rec.709), фильтрацией проектов по нишам, lazy-модальным окном с YouTube-плеером, компактным блоком программного стека, каруселью отзывов реальных креаторов, аккордеоном FAQ, карточками цен и прямыми контактами.
 
-Проект разработан на **Astro 5 + Tailwind CSS** без использования тяжёлых UI-фреймворков.
+Проект разработан на **Astro 5 + Tailwind CSS** без использования тяжёлых сторонних библиотек.
 
 ---
 
@@ -18,7 +18,6 @@
    ```bash
    cd C:\Users\timur\.gemini\antigravity\scratch\fare-editor-portfolio
    ```
-   *(Рекомендуется открыть эту папку как активное рабочее пространство в вашей IDE)*
 
 2. Установите зависимости (если ещё не установлены):
    ```bash
@@ -29,9 +28,10 @@
    ```bash
    npm run dev
    ```
-   Сайт будет доступен по адресам:
+   Сайт доступен по адресам:
    - Английская версия: `http://localhost:4321/`
    - Русская версия: `http://localhost:4321/ru/`
+   - Казахская версия: `http://localhost:4321/kz/`
 
 4. Сборка для продакшена:
    ```bash
@@ -46,199 +46,187 @@
 
 ---
 
+## 🎨 Темы оформления (Dark & Light)
+- По умолчанию включена эстетичная тёмная тема в стиле obsidian/Linear (`#090B0E`, карточки `#12161F`, границы `rgba(255, 255, 255, 0.08)`, неоновый акцент `#3B82F6`).
+- В шапке сайта предусмотрен переключатель тем (Sun/Moon), запоминающий выбор пользователя в `localStorage`.
+- Предотвращение мигания (FOUC) обеспечивается ранним инлайн-скриптом в `<head>`.
+
+---
+
 ## 📁 Структура проекта
 
 ```text
 fare-editor-portfolio/
-├── docs/                      # Дизайн-заметки и скриншоты оригинального сайта
-│   ├── design-notes.md
-│   └── screenshots/
-├── public/                    # Статические ассеты (favicon, og-image, robots, sitemap)
-│   ├── favicon.svg
-│   ├── og-image.png
-│   ├── robots.txt
-│   └── sitemap.xml
+├── public/                    # Статические ассеты
+│   ├── avatar.jpg             # Фото / логотип профиля (.fleur)
+│   ├── logo.jpg               # Копия логотипа
+│   ├── favicon.svg            # Favicon
+│   ├── robots.txt             # Правила для поисковиков
+│   └── sitemap.xml            # Карта сайта
 ├── src/
-│   ├── components/            # Astro-компоненты секций
-│   │   ├── BeforeAfter.astro  # Слайдер До/После с синхронным видео (PointerCapture + a11y)
-│   │   ├── Contact.astro      # Прямые ссылки на контакты (без форм)
-│   │   ├── Faq.astro          # FAQ аккордеон (ровно 1 открытый, smooth grid animation)
-│   │   ├── Footer.astro       # Подвал сайта
-│   │   ├── Header.astro       # Шапка, навигация, языковой переключатель, мобильное меню
+│   ├── components/            # Astro-компоненты
+│   │   ├── BeforeAfter.astro  # Слайдер сравнения колоргрейдинга (S-Log3 vs Rec.709)
+│   │   ├── Contact.astro      # Прямые карточки Telegram, Email, X
+│   │   ├── Faq.astro          # FAQ аккордеон с плавной анимацией
+│   │   ├── Footer.astro       # Подвал с логотипом .fleur и соцсетями
+│   │   ├── Header.astro       # Шапка: аватарка .fleur, nav, темная тема, переключатель RU/EN/KZ
 │   │   ├── Hero.astro         # Главный экран: бейджи, заголовок, анимированные цифры
-│   │   ├── Portfolio.astro    # Фильтр по нишам, сетка видео и моушн-графики
-│   │   ├── Pricing.astro      # Блок цен и тарифов
+│   │   ├── Portfolio.astro    # Фильтр по нишам, YouTube-постеры
+│   │   ├── Pricing.astro      # Карточки цен с защитой от переполнения текста
 │   │   ├── Process.astro      # 3 этапа работы
-│   │   ├── Reviews.astro      # Карусель отзывов клиентов
-│   │   ├── StickyMobileCta.astro # Липкая кнопка Telegram для мобильных
-│   │   ├── Tools.astro        # Стек инструментов (Premiere, AE, DaVinci, Blender)
-│   │   ├── VideoModal.astro   # Доступное модальное окно с ленивой подгрузкой YouTube
-│   │   └── WhyMe.astro        # Преимущества и подход к работе
+│   │   ├── Reviews.astro      # Отзывы реальных креаторов с плавной прокруткой
+│   │   ├── StickyMobileCta.astro # Липкая мобильная кнопка Telegram
+│   │   ├── Tools.astro        # Компактный стек программ (Pr, Ae, DaVinci) в виде ленты
+│   │   ├── VideoModal.astro   # Ленивый плеер YouTube по клику
+│   │   └── WhyMe.astro        # 4 преимущества сотрудничества
 │   ├── data/                  # ВСЕ текстовые и структурные данные (100% без хардкода)
-│   │   ├── contacts.json      # Ссылки на Telegram, Email, X
-│   │   ├── en.json            # Английская локализация интерфейса
+│   │   ├── contacts.json      # Контакты @ffluere, fluere.work@gmail.com, @fluer_mp4
+│   │   ├── ru.json            # Русская локализация
+│   │   ├── en.json            # Английская локализация
+│   │   ├── kz.json            # Казахская локализация
 │   │   ├── projects.json      # Работы в портфолио
-│   │   ├── reviews.json       # Отзывы клиентов
-│   │   └── ru.json            # Русская локализация интерфейса
+│   │   └── reviews.json       # Реальные отзывы креаторов
 │   ├── layouts/
-│   │   └── Layout.astro       # Базовый HTML-шаблон (SEO, OpenGraph, hreflang)
+│   │   └── Layout.astro       # Базовый HTML-шаблон (SEO, i18n, темная тема)
 │   ├── pages/
-│   │   ├── index.astro        # Английская главная страница (/)
-│   │   └── ru/
-│   │       └── index.astro    # Русская главная страница (/ru/)
+│   │   ├── index.astro        # Английская версия (/)
+│   │   ├── ru/index.astro     # Русская версия (/ru/)
+│   │   └── kz/index.astro     # Казахская версия (/kz/)
 │   └── styles/
-│       └── global.css         # Стилизация, шрифты Onest & JetBrains Mono, токены
-├── astro.config.mjs           # Конфигурация Astro и i18n
+│       └── global.css         # Стили, переменные тем, шрифты Onest & JetBrains Mono
+├── astro.config.mjs           # Конфигурация Astro i18n
 ├── package.json
-└── tailwind.config.mjs        # Конфигурация Tailwind CSS с точными дизайн-токенами
+└── tailwind.config.mjs        # Конфигурация Tailwind CSS
 ```
 
 ---
 
 ## ✏️ Управление контентом
 
-Все тексты, работы, отзывы и контакты вынесены в JSON-файлы в папке `src/data/`. Для изменения контента **не требуется редактировать компоненты или код верстки**.
+Все тексты, работы, отзывы и контакты вынесены в JSON-файлы в папке `src/data/`. Для изменения контента **не требуется редактировать компоненты или код вёрстки**.
 
-### 1. Тексты страниц (`src/data/ru.json` и `src/data/en.json`)
-Содержат все текстовые блоки интерфейса:
-- `meta`: заголовок `title`, описание `description`, `ogTitle`, `ogDescription`.
-- `nav`: пункты меню шапки и мобильного меню, текст кнопки звонка/обсуждения.
-- `hero`: бейдж статуса ("Открыт для проектов"), бейдж "Без генеративного ИИ", главный заголовок, подзаголовок, кнопка действия, строка ниш, строка моушна, а также **4 цифры-доказательства** (`stats`):
-  ```json
-  "stats": [
-    { "value": "120M+", "number": 120, "suffix": "M+", "label": "Просмотров роликов" },
-    { "value": "45+", "number": 45, "suffix": "+", "label": "Завершённых проектов" },
-    { "value": "6+", "number": 6, "suffix": "+", "label": "Лет в видеомонтаже" },
-    { "value": "100%", "number": 100, "suffix": "%", "label": "Клиентов довольны" }
-  ]
-  ```
-- `difference`: заголовок, подзаголовок, подписи «До монтажа» и «После монтажа», ссылки на видео/постеры для слайдера.
-- `portfolio`: заголовки секций длинных роликов и моушн-графики, названия фильтр-табов по нишам (`filters`).
-- `tools`: заголовок и подзаголовок блока инструментов.
-- `reviews`: заголовок и подзаголовок блока отзывов.
-- `process`: заголовок, подзаголовок и 3 шага работы (`items`: `day`, `title`, `desc`).
-- `whyMe`: 4 карточки преимуществ (`items`: `title`, `desc`). Первая карточка содержит `id: "about"` для якорной ссылки из FAQ.
-- `pricing`: карточки цен с заголовком, ценой, периодом, фичами и CTA-кнопкой.
-- `faq`: заголовок, подзаголовок и 6 вопросов с ответами. Вопрос про ИИ содержит якорную ссылку `anchorId: "about"` и `anchorText`.
-- `contact`: заголовок, подзаголовок, призыв к действию и подписи под кнопками.
-- `footer`: слоган, копирайт.
+### 1. Тексты страниц (`ru.json`, `en.json`, `kz.json`)
+Каждый файл содержит все текстовые блоки интерфейса:
+- `meta`: `title`, `description`, `ogTitle`, `ogDescription`
+- `nav`: пункты меню шапки, текст кнопки «Обсудить проект»
+- `hero`: бейджи «Открыт для проектов» и «Без генеративного ИИ», заголовок, подзаголовок, 4 цифры-доказательства (`proofStats`), строка ниш
+- `theDifference`: заголовок и описание наглядного модуля цветокоррекции
+- `portfolio`: заголовки секций и названия табов по нишам
+- `tools`: заголовок ленты софта
+- `pricing`: названия тарифов, стоимость и список преимуществ (текст автоматически адаптируется без выпадения за границы карточки)
+- `reviews`: заголовок и подзаголовок отзывов
+- `process`: 3 шага работы (День 0, День 1–6, День 7)
+- `whyMe`: 4 карточки («Никакого нейрослопа», «Асинхронная коммуникация», «Работаю в долгосрок», «Автоматизирую рутину»)
+- `faq`: 6 вопросов и ответов с якорным переходом
+- `contact`: заголовки блока контактов
+- `footer`: копирайт и ссылка «Наверх»
+- `stickyMobile`: текст плавающей кнопки Telegram
 
 ---
 
 ### 2. Портфолио проектов (`src/data/projects.json`)
-Содержит список проектов. Каждая запись имеет следующую структуру:
-
+Каждая запись содержит:
 ```json
 {
-  "id": "project-slug",             // Уникальный строковый идентификатор
-  "type": "video",                  // "video" (длинное видео) или "motion" (моушн-графика / 3D)
-  "niche": "gaming",                // Ниша: "gaming" | "realestate" | "personal" | "finance"
-  "title": {
-    "ru": "Название на русском",
-    "en": "Title in English"
-  },
-  "client": "Имя или канал клиента",
-  "views": "2.4M",                  // Метрика просмотров для бейджа
-  "duration": "14:20",              // Хронометраж ролика
-  "year": "2024",
-  "description": {
-    "ru": "Краткое описание монтажа и задач ролика",
-    "en": "Brief description of video editing and objectives"
-  },
-  "poster": "https://...",          // URL постера / обложки (WebP / JPG)
-  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Ссылка на YouTube/Vimeo
-  "youtubeId": "dQw4w9WgXcQ",       // ID ролика YouTube для ленивой вставки в модалку
-  "aspectRatio": "16:9"             // Соотношение сторон
+  "id": "1",
+  "slug": "magnates-silk-road",
+  "type": "video",                 // "video" | "motion"
+  "niche": "finance",              // "finance" | "real_estate" | "gaming" | "personal_brand"
+  "featured": true,
+  "order": 1,
+  "client_ru": "MagnatesMedia",
+  "client_en": "MagnatesMedia",
+  "client_kz": "MagnatesMedia",
+  "format_ru": "Документальный YouTube",
+  "format_en": "Documentary YouTube",
+  "format_kz": "Деректі YouTube",
+  "duration": "44:32",
+  "title_ru": "Продающая графика для финансового расследования",
+  "title_en": "High-retention visual storytelling for financial deep-dives",
+  "title_kz": "Қаржылық зерттеуге арналған сатушы графика",
+  "body_ru": "Описание проекта на русском...",
+  "body_en": "Project description in English...",
+  "body_kz": "Жоба сипаттамасы қазақ тілінде...",
+  "youtube_id": "fsfoqdqyykI",     // Реальный YouTube ID для модального плеера
+  "thumbnail": "https://img.youtube.com/vi/fsfoqdqyykI/maxresdefault.jpg"
 }
 ```
 
-*При добавлении нового проекта просто добавьте объект в массив `projects.json`.*
-
 ---
 
-### 3. Отзывы клиентов (`src/data/reviews.json`)
-Содержит список отзывов с данными об авторе и статистике:
-
+### 3. Отзывы креаторов (`src/data/reviews.json`)
+Карточки реальных зарубежных и русскоязычных каналов с официальными аватарками, числом подписчиков и метриками удержания:
 ```json
 {
-  "id": "review-1",
-  "author": "Алексей Смирнов",       // Имя клиента
-  "role": {
-    "ru": "YouTube-креатор",
-    "en": "YouTube Creator"
-  },
-  "channel": "@tech_insider",       // Название канала / проекта
-  "subscribers": "850K subs",       // Количество подписчиков
-  "avatar": "https://...",          // URL аватарки автора
-  "rating": 5,                      // Количество звёзд (1-5)
-  "metrics": {
-    "ru": "+340% удержание",
-    "en": "+340% retention"
-  },
-  "text": {
-    "ru": "Текст отзыва на русском языке...",
-    "en": "Review text in English..."
-  }
+  "id": "1",
+  "author": "Johnny Harris",
+  "role_ru": "Документалист и автор визуальных эссе",
+  "role_en": "Documentary Filmmaker & Visual Essayist",
+  "role_kz": "Деректі фильм түсіруші және визуалды эссе авторы",
+  "channel": "@johnnyharris",
+  "subscribers": "8M subs",
+  "avatar": "https://yt3.googleusercontent.com/...",
+  "rating": 5,
+  "metrics_ru": "+420% удержание до конца",
+  "metrics_en": "+420% end-to-end retention",
+  "metrics_kz": "+420% соңына дейін көру",
+  "text_ru": "Текст отзыва...",
+  "text_en": "Review text...",
+  "text_kz": "Пікір мәтіні..."
 }
 ```
 
 ---
 
 ### 4. Контактные ссылки (`src/data/contacts.json`)
-Ссылки на соцсети и мессенджеры:
+Прямые ссылки на контакты автора:
 ```json
-{
-  "telegram": "https://t.me/fareeditor",
-  "email": "work@fareeditor.com",
-  "x": "https://x.com/fareeditor",
-  "youtube": "https://youtube.com/@fareeditor"
-}
+[
+  {
+    "id": "telegram",
+    "name": "Telegram",
+    "handle": "@ffluere",
+    "url": "https://t.me/ffluere",
+    "description_ru": "Быстрый ответ в течение 1–2 часов",
+    "description_en": "Fast reply within 1–2 hours",
+    "description_kz": "1–2 сағат ішінде жылдам жауап",
+    "primary": true
+  },
+  {
+    "id": "email",
+    "name": "Email",
+    "handle": "fluere.work@gmail.com",
+    "url": "mailto:fluere.work@gmail.com?subject=Work%20inquiry%20/%20Связь%20по%20проекту",
+    "description_ru": "Для подробных ТЗ и договоров",
+    "description_en": "For detailed briefs and contracts",
+    "description_kz": "Толық техникалық тапсырма мен келісімшарттар үшін",
+    "primary": false
+  },
+  {
+    "id": "x",
+    "name": "X (Twitter)",
+    "handle": "@fluer_mp4",
+    "url": "https://x.com/fluer_mp4",
+    "description_ru": "Прямые сообщения и новости",
+    "description_en": "Direct messages and updates",
+    "description_kz": "Тікелей хабарламалар мен жаңалықтар",
+    "primary": false
+  }
+]
 ```
-*На сайте нет тяжёлых серверных форм — клик открывает диалог в Telegram или почтовый клиент.*
 
 ---
 
 ## 🌐 Как добавить новый язык
 
-Благодаря встроенному роутингу Astro i18n добавить новый язык (например, испанский `es`) очень просто:
-
 1. **Создайте файл данных:**
-   Скопируйте `src/data/en.json` в `src/data/es.json` и переведите тексты.
+   Скопируйте `src/data/en.json` в `src/data/<язык>.json` (например, `de.json`) и переведите тексты.
 2. **Обновите `astro.config.mjs`:**
+   Добавьте код нового языка в массив `locales`:
    ```javascript
-   i18n: {
-     defaultLocale: 'en',
-     locales: ['en', 'ru', 'es'],
-     routing: {
-       prefixDefaultLocale: false,
-     },
-   }
+   locales: ['en', 'ru', 'kz', 'de']
    ```
-3. **Создайте страницу `src/pages/es/index.astro`:**
-   Скопируйте `src/pages/ru/index.astro` и замените:
-   - Импорт данных: `import esData from '../../data/es.json';`
-   - Переменную `lang`: `const lang = 'es';`
-   - Канонический URL: `canonicalUrl="https://fareeditor.com/es/"`
-4. **Обновите ссылки в `src/components/Header.astro` и `src/layouts/Layout.astro`**, добавив новый язык в переключатель и мета-теги `hreflang`.
-
----
-
-## ⚡ Оптимизации и качество (Lighthouse)
-
-1. **Сверхбыстрая загрузка видео:**
-   - Ролики в слайдере имеют `preload="none"`, `muted`, `playsinline`.
-   - `IntersectionObserver` включает воспроизведение только тогда, когда слайдер виден на экране, и ставит на паузу при скролле.
-2. **Ленивый плеер YouTube:**
-   - Iframe YouTube **НЕ** грузится при открытии страницы.
-   - Загрузка происходит строго в момент нажатия на карточку проекта.
-   - Поддерживается доступность: открытие по Enter/Space, закрытие по `Escape` и клику на оверлей, фокус-трап.
-3. **Слайдер До/После:**
-   - Поддерживает перетаскивание курсором мыши, сенсорный ввод (`PointerCapture`) и стрелки клавиатуры (`ArrowLeft`, `ArrowRight`, `Home`, `End`) с ARIA-атрибутами.
-4. **FAQ аккордеон:**
-   - Плавная 60fps анимация на `grid-template-rows: 0fr -> 1fr`.
-   - Не более одного открытого вопроса одновременно.
-5. **SEO & Доступность:**
-   - Валидные семантические теги (`header`, `main`, `section`, `article`, `footer`, `nav`).
-   - `robots.txt`, `sitemap.xml`, `favicon.svg`, `og-image.png`, `theme-color`.
-   - Поддержка режима пониженного движения (`prefers-reduced-motion`).
-   - Контрастность текста по стандарту WCAG AA.
+3. **Создайте страницу входа:**
+   Создайте `src/pages/de/index.astro` аналогично `src/pages/kz/index.astro`.
+4. **Обновите переключатель:**
+   В `src/components/Header.astro` добавьте кнопку нового языка.
