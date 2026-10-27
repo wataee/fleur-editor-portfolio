@@ -136,7 +136,8 @@ const { data } = Astro.props;
       return ((clientX - rect.left) / rect.width) * 100;
     };
 
-    // Pointer events for smooth drag
+    // Pointer events for ultra-smooth drag
+    let dragRaf: number | null = null;
     container.addEventListener('pointerdown', (e) => {
       if ((e.target as HTMLElement).closest('.ba-toggle')) return;
       container.setPointerCapture(e.pointerId);
@@ -145,7 +146,11 @@ const { data } = Astro.props;
 
     container.addEventListener('pointermove', (e) => {
       if (container.hasPointerCapture(e.pointerId)) {
-        setPosition(calcPosFromClientX(e.clientX));
+        const cx = e.clientX;
+        if (dragRaf) cancelAnimationFrame(dragRaf);
+        dragRaf = requestAnimationFrame(() => {
+          setPosition(calcPosFromClientX(cx));
+        });
       }
     });
 
@@ -153,6 +158,7 @@ const { data } = Astro.props;
       if (container.hasPointerCapture(e.pointerId)) {
         container.releasePointerCapture(e.pointerId);
       }
+      if (dragRaf) cancelAnimationFrame(dragRaf);
     });
 
     // Keyboard accessibility

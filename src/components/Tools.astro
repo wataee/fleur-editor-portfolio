@@ -50,12 +50,30 @@ const filteredItems = data.items.filter((item) => item.name !== 'Blender');
 
             {tool.name === 'DaVinci Resolve' && (
               <svg class="w-7 h-7" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="7" fill="#141820" />
-                <rect x="0.5" y="0.5" width="31" height="31" rx="6.5" stroke="#E04646" stroke-opacity="0.35" />
-                <path d="M16 8.5c2.3 0 5.5 2.8 4.6 7-.6 2.8-3.2 4.2-4.6 4.2s-4-1.4-4.6-4.2c-.9-4.2 2.3-7 4.6-7z" fill="#E53935" />
-                <path d="M22 19.2c1.7-1.7 1.1-6-2.6-7.3-2.6-.8-4.8.5-5.8 1.5s-1.1 3.5-.2 5.1c1.7 2.9 6.9 2.4 8.6.7z" fill="#FDD835" />
-                <path d="M10 19.2c-1.7-1.7-1.1-6 2.6-7.3 2.6-.8 4.8.5 5.8 1.5s1.1 3.5.2 5.1c-1.7 2.9-6.9 2.4-8.6.7z" fill="#1E88E5" />
-                <circle cx="16" cy="16" r="2" fill="#FFFFFF" opacity="0.9" />
+                <defs>
+                  <linearGradient id="dvr-red" x1="12" y1="4" x2="12" y2="13" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FF5252" />
+                    <stop offset="100%" stop-color="#D32F2F" />
+                  </linearGradient>
+                  <linearGradient id="dvr-blue" x1="13" y1="12" x2="20" y2="19" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#42A5F5" />
+                    <stop offset="100%" stop-color="#1565C0" />
+                  </linearGradient>
+                  <linearGradient id="dvr-yellow" x1="5" y1="12" x2="12" y2="19" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFEE58" />
+                    <stop offset="100%" stop-color="#F57F17" />
+                  </linearGradient>
+                </defs>
+                <rect width="32" height="32" rx="7" fill="#12161F" />
+                <rect x="0.5" y="0.5" width="31" height="31" rx="6.5" stroke="rgba(255, 255, 255, 0.16)" />
+                <g transform="translate(16, 16) scale(1.18) translate(-12, -12)">
+                  <!-- Top blade (Red) -->
+                  <path d="M11.961 4.353c-1.976.089-3.204 1.658-3.214 3.29.019 1.443 1.635 3.481 2.884 4.53.12.099.154.109.33.18.062.025.198-.047.327-.135.36-.245.993-.947 1.648-1.738a7.67 7.67 0 0 0 1.031-1.683c.409-.89.261-1.599.235-1.888a3.983 3.983 0 0 0-.99-1.692 3.36 3.36 0 0 0-2.251-.864z" fill="url(#dvr-red)" />
+                  <!-- Bottom-right blade (Blue) -->
+                  <path d="M16.133 12.275a10.185 10.185 0 0 0-3.244.61c-.15.058-.26.1-.374.17-.057.036-.11.135-.105.292.017.433.29 1.278.624 2.27.384 1.135 1.066 2.27 1.844 2.74a3.23 3.23 0 0 0 2.53.342c.832-.243 1.595-.868 1.962-1.546.986-1.818.19-3.548-1.121-4.417-.447-.296-1.133-.445-1.89-.46-.074 0-.15-.002-.226-.001z" fill="url(#dvr-blue)" />
+                  <!-- Bottom-left blade (Yellow) -->
+                  <path d="M7.701 12.313a6.201 6.201 0 0 0-.752.047c-.596.078-.932.273-1.29.51a3.177 3.177 0 0 0-1.365 1.979c-.075.552-.086 1.053.033 1.507.433 1.389 1.326 2.222 2.847 2.452.636.028 1.37-.063 1.99-.45 1.269-.782 2.08-3.17 2.412-4.742.053-.176.035-.357-.013-.42-.005-.067-.044-.113-.19-.183-.398-.192-1.32-.417-2.375-.6a7.68 7.68 0 0 0-1.297-.1z" fill="url(#dvr-yellow)" />
+                </g>
               </svg>
             )}
           </div>

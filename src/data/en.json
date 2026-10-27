@@ -1,9 +1,9 @@
 {
   "lang": "en",
   "meta": {
-    "title": ".fleur — Long-form video editing and motion graphics",
+    "title": "fleur — Long-form video editing and motion graphics",
     "description": "Complete video editing and motion graphics: from raw footage to final delivery. Assembly, colour correction, graphics and sound design without AI slop.",
-    "ogTitle": ".fleur — Long-form video editing and motion graphics",
+    "ogTitle": "fleur — Long-form video editing and motion graphics",
     "ogDescription": "I handle the entire editing process: assembly, colour correction, graphics and sound design. You provide the footage and receive a finished video.",
     "ogImage": "/og-image.png"
   },
@@ -208,7 +208,7 @@
     "sub": "Reach out on Telegram or via email. Let's discuss your timeline, format, and goals."
   },
   "footer": {
-    "copy": "© .fleur 2026. Video editing & motion design.",
+    "copy": "© fleur 2026. Video editing & motion design.",
     "top": "Back to top"
   },
   "stickyMobile": {

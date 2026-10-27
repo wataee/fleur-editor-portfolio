@@ -12,9 +12,9 @@
     "metrics_ru": "+420% удержание до конца",
     "metrics_en": "+420% end-to-end retention",
     "metrics_kz": "+420% соңына дейін көру",
-    "text_ru": ".fleur идеально чувствует ритм повествования. Сложные карты, анимации архивов и моушн-графика собираются без лишних вопросов точно по брифу. Правки минимальные, звук на высоте.",
-    "text_en": ".fleur has an incredible sense of narrative pacing. Complex map animations, archival treatments, and motion graphics come together seamlessly with minimal revisions. Sound design is top tier.",
-    "text_kz": ".fleur оқиғаның ырғағын керемет сезінеді. Күрделі карталар, мұрағат анимациялары және моушн-графика техникалық тапсырмаға сай артық сұрақсыз жиналады. Дыбыстық дизайны керемет деңгейде."
+    "text_ru": "fleur идеально чувствует ритм повествования. Сложные карты, анимации архивов и моушн-графика собираются без лишних вопросов точно по брифу. Правки минимальные, звук на высоте.",
+    "text_en": "fleur has an incredible sense of narrative pacing. Complex map animations, archival treatments, and motion graphics come together seamlessly with minimal revisions. Sound design is top tier.",
+    "text_kz": "fleur оқиғаның ырғағын керемет сезінеді. Күрделі карталар, мұрағат анимациялары және моушн-графика техникалық тапсырмаға сай артық сұрақсыз жиналады. Дыбыстық дизайны керемет деңгейде."
   },
   {
     "id": "2",
@@ -29,26 +29,26 @@
     "metrics_ru": "+340% среднее время просмотра",
     "metrics_en": "+340% average watch time",
     "metrics_kz": "+340% орташа көру уақыты",
-    "text_ru": "Переход на работу с .fleur освободил мне 15+ часов в неделю. Видео выходят вовремя, динамика держит зрителя на протяжении всех 20 минут. Настоящий профессионал долгосрочного сотрудничества.",
-    "text_en": "Partnering with .fleur saved me 15+ hours a week. Videos are delivered strictly on schedule, and the pacing keeps retention high throughout full 20-minute breakdowns. A true long-term partner.",
-    "text_kz": ".fleur-мен жұмыс істеу маған аптасына 15+ сағат уақыт үнемдеді. Бейнелер уақытында шығады, динамика көрерменді 20 минут бойы ұстап тұрады. Нағыз ұзақ мерзімді сенімді маман."
+    "text_ru": "Переход на работу с fleur освободил мне 15+ часов в неделю. Видео выходят вовремя, динамика держит зрителя на протяжении всех 20 минут. Настоящий профессионал долгосрочного сотрудничества.",
+    "text_en": "Partnering with fleur saved me 15+ hours a week. Videos are delivered strictly on schedule, and the pacing keeps retention high throughout full 20-minute breakdowns. A true long-term partner.",
+    "text_kz": "fleur-мен жұмыс істеу маған аптасына 15+ сағат уақыт үнемдеді. Бейнелер уақытында шығады, динамика көрерменді 20 минут бойы ұстап тұрады. Нағыз ұзақ мерзімді сенімді маман."
   },
   {
     "id": "3",
-    "author": "Utopia Show",
-    "role_ru": "Научно-популярный проект",
-    "role_en": "Science & Investigation Channel",
-    "role_kz": "Ғылыми-көпшілік жоба",
-    "channel": "@UtopiaShow",
-    "subscribers": "6.36M subs",
-    "avatar": "https://yt3.googleusercontent.com/ytc/AIdro_l8H_LiAtZ8v69zPtvzXGWw6tp1mXTJwK4Vdoi7YjDvH8U=s160-c-k-c0x00ffffff-no-rj",
+    "author": "Хочу Миллион Просмотров",
+    "role_ru": "YouTube-продюсер и автор шоу",
+    "role_en": "YouTube Producer & Media Strategist",
+    "role_kz": "YouTube-продюсер және медиа-стратег",
+    "channel": "@vitallygolovanov",
+    "subscribers": "170K subs",
+    "avatar": "https://yt3.googleusercontent.com/qru9ndojvPoqSHs-1SJz9piIN4anfpQJ7Bqp3nrkptMCLvTQn_6bTC9DymYZDMo8ztcVi76a-A=s900-c-k-c0x00ffffff-no-rj",
     "rating": 5,
-    "metrics_ru": "Топ-1 в трендах YouTube",
-    "metrics_en": "Top-1 Trending on YouTube",
-    "metrics_kz": "YouTube трендтерінде №1",
-    "text_ru": "Огромный объём исходников и сотни слоев графики — .fleur справляется со сложными проектами без срыва дедлайнов. Цветокоррекция и саунд-дизайн на уровне кинематографического продакшна.",
-    "text_en": "Massive raw footage volume and hundreds of graphics layers — .fleur delivers complex timelines without missing deadlines. Color grading and sound design rival broadcast cinema production.",
-    "text_kz": "Үлкен көлемдегі түсірілімдер мен жүздеген графика қабаттары — .fleur дедлайндарды бұзбай күрделі жобаларды орындайды. Түс түзету мен дыбыс дизайны кинематографиялық деңгейде."
+    "metrics_ru": "+280% глубина просмотра",
+    "metrics_en": "+280% watch depth",
+    "metrics_kz": "+280% көру тереңдігі",
+    "text_ru": "Для образовательных и аналитических видео критически важен темп: графики, зумы, таймлайны и звуковые акценты. fleur делает монтаж с идеальным таймингом, удерживая внимание зрителя с первой до последней секунды.",
+    "text_en": "For educational and analytical breakdowns, pacing is everything: charts, reframes, timelines, and subtle sound design. fleur crafts edits with flawless timing, holding retention from the opening hook to the finish.",
+    "text_kz": "Талдау және білім беру бейнелері үшін қарқын өте маңызды: графиктер, зумдар, таймлайндар және дыбыстық екпіндер. fleur мінсіз уақытпен монтаж жасап, көрерменнің назарын басынан аяғына дейін ұстап тұрады."
   },
   {
     "id": "4",
@@ -63,8 +63,8 @@
     "metrics_ru": "3x рост вовлеченности",
     "metrics_en": "3x engagement surge",
     "metrics_kz": "3x белсенділік өсімі",
-    "text_ru": "Минимализм, выверенная кинетическая типографика и полное отсутствие нейросетевого мусора. .fleur делает штучный, штудированный монтаж, который привлекает платёжеспособную аудиторию.",
-    "text_en": "Minimalism, refined kinetic typography, and zero cheap AI noise. .fleur creates bespoke, deliberate edits that consistently convert high-value viewers into committed followers.",
-    "text_kz": "Минимализм, дәл kinetic типографика және нейрожелілік қоқыстың мүлдем болмауы. .fleur сапалы аудиторияны тартатын таңдаулы монтаж жасайды."
+    "text_ru": "Минимализм, выверенная кинетическая типографика и полное отсутствие нейросетевого мусора. fleur делает штучный, штудированный монтаж, который привлекает платёжеспособную аудиторию.",
+    "text_en": "Minimalism, refined kinetic typography, and zero cheap AI noise. fleur creates bespoke, deliberate edits that consistently convert high-value viewers into committed followers.",
+    "text_kz": "Минимализм, дәл kinetic типографика және нейрожелілік қоқыстың мүлдем болмауы. fleur сапалы аудиторияны тартатын таңдаулы монтаж жасайды."
   }
 ]

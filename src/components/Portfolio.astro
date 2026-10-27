@@ -223,7 +223,7 @@ const nicheEntries = Object.entries(data.niches);
 </section>
 
 <script>
-  // Niche filter tabs logic
+  // Niche filter tabs logic with smooth animated transition
   const tabs = document.querySelectorAll<HTMLButtonElement>('[data-niche-filter]');
   const cards = document.querySelectorAll<HTMLElement>('.work-card');
 
@@ -235,17 +235,36 @@ const nicheEntries = Object.entries(data.niches);
       tabs.forEach((t) => {
         const isActive = t === tab;
         t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
       });
 
-      // Filter cards
+      // Filter cards smoothly
       cards.forEach((card) => {
         const cardNiche = card.getAttribute('data-niche');
-        if (selectedNiche === 'all' || cardNiche === selectedNiche) {
+        const matches = selectedNiche === 'all' || cardNiche === selectedNiche;
+
+        if (matches) {
           card.style.display = 'flex';
-          card.style.opacity = '1';
+          requestAnimationFrame(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.pointerEvents = 'auto';
+          });
         } else {
-          card.style.display = 'none';
           card.style.opacity = '0';
+          card.style.transform = 'translateY(12px) scale(0.97)';
+          card.style.pointerEvents = 'none';
+          setTimeout(() => {
+            const currentTab = document.querySelector<HTMLButtonElement>('[data-niche-filter][aria-selected="true"]');
+            const currentFilter = currentTab?.getAttribute('data-niche-filter');
+            if (currentFilter && currentFilter !== 'all' && card.getAttribute('data-niche') !== currentFilter) {
+              card.style.display = 'none';
+            }
+          }, 300);
         }
       });
     });
