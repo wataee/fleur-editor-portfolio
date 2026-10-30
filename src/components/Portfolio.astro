@@ -349,13 +349,7 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
         card.style.display = matches ? 'flex' : 'none';
         if (matches) {
           visibleCount++;
-          card.animate(
-            [
-              { opacity: 0, transform: 'translateY(8px)' },
-              { opacity: 1, transform: 'translateY(0)' },
-            ],
-            { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
-          );
+          const anim = card.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }); anim.onfinish = () => { card.style.opacity = '1'; card.style.transform = ''; anim.cancel(); };
         }
       });
 
