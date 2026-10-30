@@ -1,238 +1,239 @@
 {
   "lang": "en",
   "meta": {
-    "title": "fleur — Long-form video editing and motion graphics",
-    "description": "Complete video editing and motion graphics: from raw footage to final delivery. Assembly, colour correction, graphics and sound design without AI slop.",
-    "ogTitle": "fleur — Long-form video editing and motion graphics",
-    "ogDescription": "I handle the entire editing process: assembly, colour correction, graphics and sound design. You provide the footage and receive a finished video.",
-    "ogImage": "/og-image.png"
+    "title": ".fleur — Video Editor & Motion Designer",
+    "description": "Long-form YouTube video editing, podcasts, and high-retention vertical reels. Precise storytelling cadence, DaVinci Resolve color grading, custom motion, and tactile sound design with zero AI slop.",
+    "ogTitle": ".fleur — Video Editor & Motion Designer",
+    "ogDescription": "Full-cycle post-production: offline assembly, narrative pacing, custom motion typography, S-Log3/Rec.709 color grading, and multi-track sound mastering.",
+    "ogImage": "/avatar.jpg"
   },
   "nav": {
-    "work": "My work",
+    "work": "Work",
+    "difference": "Color",
     "process": "Process",
-    "about": "Why me",
-    "pricing": "Pricing",
+    "pricing": "Rates",
+    "reviews": "Reviews",
+    "about": "Principles",
     "faq": "FAQ",
     "contact": "Contact",
-    "discuss": "Let's talk",
-    "openMenu": "Open menu"
+    "discuss": "Start a Project",
+    "openMenu": "Menu"
   },
   "hero": {
-    "status": "Available for projects",
-    "aiBadge": "No generative AI",
-    "title": "Complete video editing and motion graphics: from raw footage to final delivery",
-    "sub": "I handle the entire editing process: assembly, colour correction, graphics and sound design. You provide the footage and receive a finished video.",
-    "cta": "Explore my work",
+    "status": "Available for Select Projects",
+    "aiBadge": "No Generative AI Slop",
+    "title": "Editing focused on rhythm and story, not gratuitous effects",
+    "sub": "Crafting long-form YouTube essays, studio podcasts, and kinetic reels. You supply the raw footage from the shoot — I deliver a cohesive film with cinematic grading, broadcast-clean audio, and deliberate motion design.",
+    "cta": "Explore Selected Work",
     "proofStats": [
       {
         "value": "01",
-        "label": "Video editing"
+        "label": "Offline assembly & story cadence"
       },
       {
         "value": "02",
-        "label": "Color grading"
+        "label": "DaVinci Resolve color grading"
       },
       {
         "value": "03",
-        "label": "Motion graphics"
+        "label": "Kinetic typography & motion"
       },
       {
         "value": "04",
-        "label": "Sound design"
+        "label": "Multi-track audio & foley mastering"
       }
     ],
-    "industriesNote": "Editing tailored to your footage and brief: YouTube videos, vertical short-form, and motion graphics."
+    "industriesNote": "Comfortable with demanding formats: podcasts, investigative essays, automotive & real estate, gaming, creator media."
   },
   "theDifference": {
-    "eyebrow": "Professional Color Grading",
-    "title": "With vs. Without Color Grading",
-    "description": "A comparison using one source image: a natural, neutral look on the left and a more expressive contrast and color treatment on the right.",
-    "before": "WITHOUT COLOR GRADE",
-    "after": "COLOR GRADED",
-    "handleAria": "Color grading slider position",
-    "posterBefore": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=85",
-    "posterAfter": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=85"
+    "eyebrow": "DaVinci Resolve Grading",
+    "title": "Sony S-Log3 ➔ Cinematic Rec.709",
+    "description": "Interactive frame comparison: on the left is flat raw sensor data straight from camera, on the right is an authentic film-emulation grade with rich contrast and natural skin tones.",
+    "before": "RAW / S-LOG3",
+    "after": "REC.709 FILM GRADE",
+    "handleAria": "Color grading comparison slider position",
+    "posterBefore": "/videos/posters/car-rental-reel.jpg",
+    "posterAfter": "/videos/posters/vroomclub-reel.jpg"
   },
   "portfolio": {
-    "eyebrow": "Selected work",
-    "title": "Video editing and motion graphics",
-    "filterAll": "All",
+    "eyebrow": "Selected Work",
+    "title": "Featured Projects & Formats",
+    "filterAll": "All Projects",
     "niches": {
-      "all": "All",
-      "gaming": "Gaming",
-      "real_estate": "Real Estate",
-      "personal_brand": "Personal Brands",
-      "finance": "Economics & Finance"
+      "all": "All Projects",
+      "personal_brand": "Podcasts & Brands",
+      "real_estate": "Real Estate & Auto",
+      "gaming": "Gaming & Kinetic"
     },
     "subsections": {
-      "main": "Horizontal videos",
-      "motion": "Motion Graphics & 3D",
-      "vertical": "Vertical videos · Reels / Shorts"
+      "main": "Long-Form Releases · 16:9",
+      "motion": "Motion Design & 3D",
+      "vertical": "Short-Form · Reels & Shorts (9:16)"
     },
     "watch": "Watch on YouTube ↗",
-    "play": "Watch",
-    "thumbAria": "Watch — ",
-    "conceptLabel": "SPEC CONCEPT"
+    "play": "Play Video",
+    "thumbAria": "Play video — ",
+    "conceptLabel": "PROJECT"
   },
   "tools": {
-    "eyebrow": "Software stack",
-    "title": "Core editing suite",
+    "eyebrow": "Software Stack",
+    "title": "Daily Production Environment",
     "items": [
       {
         "name": "Premiere Pro",
-        "category": "Assembly & Narrative",
+        "category": "Assembly & Offline Editing",
         "badge": "Pr"
       },
       {
         "name": "After Effects",
-        "category": "Motion & VFX",
+        "category": "Motion, Tracking & VFX",
         "badge": "Ae"
       },
       {
         "name": "DaVinci Resolve",
-        "category": "Color Grading",
+        "category": "Color Grading & Mastering",
         "badge": "Color"
       }
     ]
   },
   "pricing": {
-    "eyebrow": "Pricing tiers",
-    "title": "Transparent and straightforward rates",
+    "eyebrow": "Rates & Packages",
+    "title": "Predictable, transparent project pricing",
     "plans": [
       {
-        "name": "Long-form Video",
+        "name": "Long-Form Video",
         "price": "from $200",
-        "description": "Full production cycle for YouTube creators and corporate essays from 10 minutes. Assembly, motion, sound, grading.",
-        "badge": "Popular",
+        "description": "Full-cycle production for YouTube creators and podcasts from 10 minutes. Assembly, motion titles, audio mix, and color grade.",
+        "badge": "Flagship Format",
         "features": [
-          "Rough cut within 24–48 hours",
-          "Voice mastering and sound design",
-          "2 rounds of timestamp revisions included",
-          "Final 4K broadcast render"
+          "First draft delivered within 48 hours",
+          "Audio cleanup & voice leveling",
+          "2 comprehensive revision rounds included",
+          "Master export in 4K with timecodes"
         ]
       },
       {
-        "name": "Motion Graphics & 3D",
-        "price": "Custom quote",
-        "description": "Infographics, kinetic typography, 3D broadcast packages, custom channel intros and bumpers.",
+        "name": "Motion & Graphics",
+        "price": "Custom Quote",
+        "description": "Custom visual packaging, kinetic typography, title sequences, 3D tracking, and animated document treatments.",
         "badge": null,
         "features": [
-          "Bespoke visual identity from scratch",
-          "Planar tracking, 3D camera mapping & comp",
-          "Full brand identity adaptation",
-          "Progressive stage pre-renders"
+          "Bespoke brand-aligned motion identity",
+          "Planar tracking & roto-masking",
+          "Custom charts & financial visualizers",
+          "Milestone previews at every phase"
         ]
       },
       {
-        "name": "Video Series / Retainer",
-        "price": "Custom quote",
-        "description": "Dedicated monthly video editing partnership for regular high-performing channel releases.",
-        "badge": "Best value",
+        "name": "Monthly Retainer",
+        "price": "Custom Quote",
+        "description": "Ongoing dedicated partnership: guaranteed calendar slots and regular video production on an agreed schedule.",
+        "badge": "Best Value",
         "features": [
-          "Priority calendar scheduling slot",
-          "Signature cohesive editing pace & tone",
-          "Asynchronous 24/7 direct communication",
-          "Volume discount scaling"
+          "Reserved monthly production capacity",
+          "Consistent visual signature & pacing",
+          "Direct async communication 7 days a week",
+          "Preferred volume-based project rates"
         ]
       }
     ],
-    "cta": "Discuss your project"
+    "cta": "Discuss Your Timeline"
   },
   "reviews": {
-    "eyebrow": "Testimonials · demo",
-    "title": "Testimonial layout preview",
-    "sub": "Review copy and channel names are fictional demo content for the interface preview.",
-    "demoLabel": "Demo copy · fictional review"
+    "eyebrow": "Client Feedback",
+    "title": "What creators and producers say",
+    "sub": "Real working experiences: async speed, deadline discipline, and finished visual fidelity.",
+    "demoLabel": "Review draft · draft"
   },
   "process": {
-    "eyebrow": "How we collaborate",
-    "title": "From brief to final cut in three clear steps",
+    "eyebrow": "Workflow",
+    "title": "3 clear steps with zero unnecessary meetings",
     "steps": [
       {
         "num": "01",
-        "title": "Project agreement",
+        "title": "Brief & Footage Intake",
         "period": "Day 0",
-        "desc": "We establish running time, references, pacing and narrative objectives. We lock deadlines and transfer raw assets through cloud storage."
+        "desc": "We align on duration, pacing references, and core takeaways. Raw camera files drop into shared cloud storage."
       },
       {
         "num": "02",
-        "title": "Editing & Craft",
-        "period": "Days 1–6",
-        "desc": "Assembly cut, dynamic pacing, accent motion graphics, multi-track sound engineering, and cinematic color grading."
+        "title": "Assembly, Motion & Sound",
+        "period": "Days 1–4",
+        "desc": "Rough cut, cadence refinement, motion typography, tactile sound design, and analog DaVinci grading."
       },
       {
         "num": "03",
-        "title": "Final delivery",
-        "period": "Day 7",
-        "desc": "You receive a master 4K high-bitrate file ready for immediate publishing, along with chapter timestamps and promotional clips."
+        "title": "Revisions & Final Master",
+        "period": "Days 5–7",
+        "desc": "Timestamped revisions applied promptly. You receive a pristine 4K master file ready for upload."
       }
     ]
   },
   "whyMe": {
-    "eyebrow": "Why work with me",
-    "title": "What you can expect when we work together",
+    "eyebrow": "Principles",
+    "title": "Why long-term creators keep working together",
     "items": [
       {
         "id": "about",
-        "title": "No low-quality AI slop",
-        "desc": "No generic automated generators or cheap template art. Every graphic element, subtitle animation, and cut is crafted by hand."
+        "title": "Zero AI Slop",
+        "desc": "No generic auto-generators or synthetic AI art. Every cut, title card, and audio transition is placed with deliberate intent."
       },
       {
         "id": "async",
-        "title": "Asynchronous communication",
-        "desc": "No endless Zoom calls. Concise Telegram updates, frame-accurate review links, and structured progress logs save hours of your time."
+        "title": "True Async Workflow",
+        "desc": "No bloated video calls. Concise Telegram updates, Frame.io timecode notes, and structured summaries keep everyone focused."
       },
       {
         "id": "longterm",
-        "title": "Long-term collaboration",
-        "desc": "I immerse myself in your channel's unique voice. By the second video, turnarounds accelerate because I already understand your aesthetic."
+        "title": "Built for the Long Run",
+        "desc": "I immerse myself in your channel's pacing. From the second video onwards, collaboration doubles in speed."
       },
       {
-        "id": "automation",
-        "title": "Automated routine tasks",
-        "desc": "I employ proprietary scripts for footage logging, audio levelling, and motion presets, giving all focus to narrative and visual craft."
+        "id": "sound",
+        "title": "Obsessive Audio Standards",
+        "desc": "Balanced voice presence, room-noise elimination, and tactile foley cues that turn static shots into an engaging watch."
       }
     ]
   },
   "faq": {
     "eyebrow": "FAQ",
-    "title": "Frequently asked questions",
+    "title": "Frequently Asked Questions",
     "items": [
       {
-        "q": "How much do your services cost?",
-        "a": "Pricing depends on duration, graphics complexity, and raw footage volume. A standard long-form edit starts from $200. Accurate quotes provided upon review."
+        "q": "What is the starting rate for a single video?",
+        "a": "Pricing depends on duration, graphic density, and raw footage volume. Base long-form YouTube editing starts from $200. A firm quote is provided after reviewing your brief and footage sample."
       },
       {
-        "q": "How long does editing take?",
-        "a": "Typical turnaround for a 10–15 minute video is 3 to 7 business days. An initial rough draft is delivered within 2–3 days."
+        "q": "What is the typical turnaround timeline?",
+        "a": "A standard 10–15 minute video takes 3 to 7 business days. An initial review draft is typically delivered on days 2–3 for feedback."
       },
       {
-        "q": "How should I send you the footage?",
-        "a": "Via any high-speed cloud platform: Google Drive, Dropbox, or Telegram. Large RAW archives are transferred using unthrottled direct links."
+        "q": "How do we transfer raw video files?",
+        "a": "Via Google Drive, Dropbox, Telegram, or any cloud host of your choice. High-speed direct transfer protocols are supported for massive archives."
       },
       {
-        "q": "How many revisions are included in the price?",
-        "a": "Two comprehensive rounds of timestamped revisions are included with every project, which is plenty since structure is locked early."
+        "q": "How many revision cycles are included?",
+        "a": "Every project includes 2 full rounds of timestamped revisions. This is more than enough because the structure is validated during the initial draft."
       },
       {
         "q": "Do you work with international clients?",
-        "a": "Yes, I work with creators and brands worldwide (US, Europe, Asia). Invoicing available in standard fiat or crypto (USDT/crypto transfers)."
+        "a": "Yes, I regularly collaborate with creators in the US, Europe, and CIS. Payments are accepted via crypto (USDT) and international bank transfers."
       },
       {
-        "q": "Do you use AI in your work?",
-        "a": "No, all storytelling and animation are manually edited without generative AI noise. Learn more in the",
-        "anchorText": "Why Me section",
+        "q": "Is AI used in the creative editing process?",
+        "a": "No, all storytelling, cuts, and typography are crafted manually by a human editor. More details in the",
+        "anchorText": "«Principles» section",
         "anchorId": "about"
       }
     ]
   },
   "contact": {
-    "eyebrow": "Contact",
-    "title": "Tell me about your project",
-    "sub": "Reach out on Telegram or via email. Let's discuss your timeline, format, and goals."
+    "eyebrow": "Inquiries",
+    "title": "Tell me about your upcoming project",
+    "sub": "Reach out via Telegram or email. Let's discuss your timeline, pacing, and target launch date."
   },
   "footer": {
-    "copy": "© fleur 2026. Video editing & motion design.",
+    "copy": "© .fleur 2026. Video Editing & Motion Design.",
     "top": "Back to top"
   },
   "stickyMobile": {
