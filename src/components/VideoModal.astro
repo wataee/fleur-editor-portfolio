@@ -166,6 +166,7 @@
         this.dialog.setAttribute('open', '');
       }
 
+      window.dispatchEvent(new CustomEvent('fleur:modal-open'));
       this.closeBtn?.focus();
     }
 
@@ -180,6 +181,7 @@
       }
 
       // CRITICAL: Unload iframe immediately to stop audio, network, and RAM consumption
+      window.dispatchEvent(new CustomEvent('fleur:modal-close'));
       this.container.innerHTML = '';
 
       // Return focus to invoker

@@ -47,6 +47,19 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
       ))}
     </nav>
 
+    <div class="footer-motion-wrap">
+      <button
+        type="button"
+        id="motion-toggle-footer"
+        class="footer-motion-btn"
+        aria-label={lang === 'kz' ? 'Анимацияларды басқару' : lang === 'ru' ? 'Управление анимацией' : 'Toggle animations'}
+        title="Toggle motion effects"
+      >
+        <span class="motion-dot" aria-hidden="true"></span>
+        <span class="font-mono text-xs">FX: <span class="motion-state-text">ON</span></span>
+      </button>
+    </div>
+
     <span class="footer-copy">{data.copy}</span>
   </div>
 </footer>

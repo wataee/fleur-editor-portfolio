@@ -78,6 +78,7 @@
 
   --dur-instant: 0.1s;
   --dur-fast: 0.24s;
+  --dur-normal: 0.32s;
   --dur: 0.38s;
   --dur-slow: 0.65s;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -179,8 +180,7 @@ html.light .film-grain {
               height 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               border-radius 0.32s ease,
-              background-color 0.32s ease,
-              box-shadow 0.32s ease;
+              background-color 0.32s ease;
 }
 .custom-cursor.is-active {
   opacity: 1;
@@ -305,7 +305,7 @@ html.lenis, html.lenis body {
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 .btn-primary:hover {
   background: #FFF;
@@ -391,7 +391,7 @@ html.lenis, html.lenis body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: var(--shadow-header);
-  transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease);
 }
 .wordmark {
   display: inline-flex;
@@ -419,7 +419,7 @@ html.lenis, html.lenis body {
   border-radius: 999px;
   object-fit: cover;
   border: 1.5px solid var(--accent);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .wordmark-text {
   font-family: var(--font-display);
@@ -513,8 +513,7 @@ html.lenis, html.lenis body {
   transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.38s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.38s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+              color 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .theme-toggle:hover {
   color: var(--accent);
@@ -786,10 +785,8 @@ html.light .theme-icon-moon {
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 .showreel-monitor:hover {
   transform: translateY(-4px) scale(1.01);
   border-color: rgba(226, 133, 34, 0.5);
@@ -907,8 +904,7 @@ html.light .theme-icon-moon {
   justify-content: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 .showreel-screen:hover .hud-play-btn {
@@ -966,8 +962,7 @@ html.light .theme-icon-moon {
   flex-direction: column;
   gap: 6px;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .pillar-card:hover {
   border-color: var(--accent);
@@ -1129,7 +1124,6 @@ html.light .theme-icon-moon {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 12px rgba(226, 133, 34, 0.4);
   z-index: 5;
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.32s ease;
 }
 .ba-handle:hover .ba-handle-grip {
@@ -1173,8 +1167,7 @@ html.light .theme-icon-moon {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+              color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 .work-tab:hover {
@@ -1230,10 +1223,8 @@ html.light .theme-icon-moon {
   padding: var(--sp-4);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .work-card--horizontal:hover {
   border-color: rgba(226, 133, 34, 0.45);
   transform: translateY(-6px);
@@ -1256,10 +1247,8 @@ html.light .theme-icon-moon {
   padding: var(--sp-3);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .work-card--vertical:hover {
   border-color: rgba(226, 133, 34, 0.45);
   transform: translateY(-6px);
@@ -1344,7 +1333,6 @@ html.light .theme-icon-moon {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               color 0.4s ease;
   will-change: transform;
 }
@@ -1434,8 +1422,7 @@ html.light .theme-icon-moon {
   cursor: pointer;
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+              color 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .work-cta-watch svg {
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1482,7 +1469,7 @@ html.light .theme-icon-moon {
   border-radius: var(--radius-md);
   padding: var(--sp-4) var(--sp-5);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease);
 }
 .tools-strip:hover {
   border-color: var(--accent-line);
@@ -1569,10 +1556,8 @@ html.light .theme-icon-moon {
   position: relative;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .review-quote-card:hover {
   border-color: var(--accent);
   transform: translateY(-5px);
@@ -1674,10 +1659,8 @@ html.light .theme-icon-moon {
   background: var(--surface);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .process-step:hover {
   transform: translateY(-5px);
   border-color: var(--accent);
@@ -1741,10 +1724,8 @@ html.light .theme-icon-moon {
   border-radius: var(--radius-md);
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .why-item:hover {
   transform: translateY(-5px);
   border-color: var(--accent);
@@ -1796,10 +1777,8 @@ html.light .theme-icon-moon {
   position: relative;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .pricing-card:hover {
   border-color: var(--accent);
   box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(226, 133, 34, 0.25);
@@ -1875,8 +1854,7 @@ html.light .theme-icon-moon {
   background: var(--surface);
   overflow: hidden;
   transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+              background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .faq-item:hover {
   border-color: rgba(226, 133, 34, 0.4);
@@ -1955,10 +1933,8 @@ html.light .theme-icon-moon {
   color: var(--text);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
+  }
 .contact-card:hover {
   border-color: var(--accent);
   transform: translateY(-4px) translateX(4px);
@@ -2209,8 +2185,7 @@ html.light .theme-icon-moon {
   transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.3s ease,
-              color 0.3s ease,
-              box-shadow 0.3s ease;
+              color 0.3s ease;
 }
 .to-top[data-visible="true"] {
   opacity: 1;
@@ -2325,15 +2300,70 @@ html.light .theme-icon-moon {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Reduced Motion */
+/* ==========================================================================
+   Motion System & Reduced Motion
+   - data-motion="on": Explicit full cinematic smoothness (overrides OS default)
+   - data-motion="off" or (prefers-reduced-motion: reduce) when data-motion != "on":
+     Simplifies large transforms, parallax, scale, and disables custom cursor,
+     while preserving gentle opacity & color micro-transitions.
+   ========================================================================== */
+
+/* Immediate reveal and zero heavy transforms when motion is explicitly OFF */
+html[data-motion="off"] [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+html[data-motion="off"] .hero-lens-ring,
+html[data-motion="off"] .film-grain {
+  animation: none !important;
+}
+
+html[data-motion="off"] .custom-cursor {
+  display: none !important;
+}
+
+html[data-motion="off"] .work-card,
+html[data-motion="off"] .work-card--horizontal,
+html[data-motion="off"] .process-step,
+html[data-motion="off"] .why-item,
+html[data-motion="off"] .pricing-card,
+html[data-motion="off"] .contact-card,
+html[data-motion="off"] .btn-primary,
+html[data-motion="off"] .btn-secondary,
+html[data-motion="off"] .nav-link {
+  transform: none !important;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease !important;
+}
+
+/* Reduced motion from OS (only when user has NOT explicitly turned motion ON) */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  html:not([data-motion="on"]) [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: opacity 0.2s ease !important;
   }
-  .custom-cursor {
+
+  html:not([data-motion="on"]) .hero-lens-ring,
+  html:not([data-motion="on"]) .film-grain {
+    animation: none !important;
+  }
+
+  html:not([data-motion="on"]) .custom-cursor {
     display: none !important;
+  }
+
+  html:not([data-motion="on"]) .work-card,
+  html:not([data-motion="on"]) .work-card--horizontal,
+  html:not([data-motion="on"]) .process-step,
+  html:not([data-motion="on"]) .why-item,
+  html:not([data-motion="on"]) .pricing-card,
+  html:not([data-motion="on"]) .contact-card,
+  html:not([data-motion="on"]) .btn-primary,
+  html:not([data-motion="on"]) .btn-secondary,
+  html:not([data-motion="on"]) .nav-link {
+    transform: none !important;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease !important;
   }
 }

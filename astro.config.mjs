@@ -13,7 +13,7 @@ export default defineConfig({
       }
     }
   },
-  integrations: [tailwind()],
+  integrations: [tailwind({ applyBaseStyles: false })],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ru', 'kz'],
