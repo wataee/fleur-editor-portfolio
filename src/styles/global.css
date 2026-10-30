@@ -5,28 +5,29 @@
 @tailwind utilities;
 
 :root {
-  /* Matte Graphite & Tungsten Amber Palette (Cinematic NLE Dark Theme) */
+  /* Matte Graphite & Dark Velvet Rose Palette (Cinematic NLE Dark Theme) */
   --bg: #0D0E12;
-  --surface: #14171E;
-  --surface-raised: #1C212B;
-  --line: #262C38;
-  --hairline: rgba(255, 255, 255, 0.08);
-  --text: #F2F4F8;
-  --text-dim: #9BA3AF;
-  --text-mute: #626A7A;
-  --accent: #E28522; /* Tungsten Amber */
-  --accent-warm: #F59E0B;
-  --live: #10B981;
-  --danger: #EF4444;
-  --accent-soft: rgba(226, 133, 34, 0.12);
-  --accent-line: rgba(226, 133, 34, 0.38);
-  --bg-blur: rgba(13, 14, 18, 0.88);
-  --live-halo: rgba(16, 185, 129, 0.35);
-  --live-halo-0: rgba(16, 185, 129, 0);
-  --scrim: rgba(0, 0, 0, 0.82);
-  --shadow-header: 0 4px 24px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 8px 30px -8px rgba(226, 133, 34, 0.22);
-  --shadow-glow-hover: 0 16px 40px -10px rgba(226, 133, 34, 0.35);
+  --surface: #131419;
+  --surface-raised: #1A1C23;
+  --surface-overlay: rgba(19, 20, 25, 0.88);
+  --line: #22242D;
+  --hairline: #181920;
+  --text: #F0F0F3;
+  --text-dim: #9A9EAB;
+  --text-muted: #5E6270;
+  --accent: #9E2A38; /* Dark Velvet Rose (exact match to .fleur avatar) */
+  --accent-hover: #BD4353; /* Petal Highlight Rose */
+  --accent-warm: #BD4353;
+  --accent-glow: #7A202A;
+  --accent-soft: rgba(158, 42, 56, 0.16);
+  --accent-line: rgba(184, 58, 73, 0.42);
+  --live-rec: #EF4444;
+  --live-halo: rgba(239, 68, 68, 0.35);
+  --live-halo-0: rgba(239, 68, 68, 0);
+  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+  --shadow-header: 0 12px 32px -8px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 8px 30px -8px rgba(158, 42, 56, 0.28);
+  --shadow-glow-hover: 0 16px 40px -10px rgba(189, 67, 83, 0.4);
   --card-hover-scale: 1.01;
 
   --font-display: "Unbounded", "Onest", system-ui, sans-serif;
@@ -111,19 +112,18 @@ html.light, html[data-theme="light"], [data-theme="light"] {
   --text: #121418;
   --text-dim: #4B5565;
   --text-mute: #6B7280;
-  --accent: #B85C0A; /* Warm Amber - WCAG AA > 4.8:1 */
-  --accent-warm: #9A6212;
-  --live: #1B7A4F;
-  --danger: #B3261E;
-  --accent-soft: rgba(184, 92, 10, 0.1);
-  --accent-line: rgba(184, 92, 10, 0.32);
-  --bg-blur: rgba(248, 249, 250, 0.88);
-  --live-halo: rgba(27, 122, 79, 0.38);
-  --live-halo-0: rgba(27, 122, 79, 0);
-  --scrim: rgba(18, 20, 24, 0.65);
-  --shadow-header: 0 2px 16px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 8px 24px -8px rgba(184, 92, 10, 0.2);
-  --shadow-glow-hover: 0 16px 36px -10px rgba(184, 92, 10, 0.28);
+  --accent: #8E202E; /* Rich Wine Rose - WCAG AA > 6:1 on light */
+  --accent-hover: #A62838;
+  --accent-warm: #A62838;
+  --accent-soft: rgba(142, 32, 46, 0.1);
+  --accent-line: rgba(142, 32, 46, 0.35);
+  --live-rec: #DC2626;
+  --live-halo: rgba(220, 38, 38, 0.25);
+  --live-halo-0: rgba(220, 38, 38, 0);
+  --shadow-card: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+  --shadow-header: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 8px 24px -8px rgba(142, 32, 46, 0.2);
+  --shadow-glow-hover: 0 16px 36px -10px rgba(142, 32, 46, 0.28);
 }
 
 html {
@@ -297,7 +297,7 @@ html.lenis, html.lenis body {
   font-family: var(--font-body);
   font-weight: var(--wt-semibold);
   font-size: var(--fs-sm);
-  color: #000;
+  color: #FFF;
   background: var(--accent);
   border: 0;
   padding: 10px 20px;
@@ -308,10 +308,10 @@ html.lenis, html.lenis body {
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 .btn-primary:hover {
-  background: #FFF;
-  color: #000;
+  background: var(--accent-hover);
+  color: #FFF;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(226, 133, 34, 0.3);
+  box-shadow: 0 4px 16px rgba(189, 67, 83, 0.4);
 }
 .btn-primary:active {
   transform: scale(0.98);
@@ -411,7 +411,7 @@ html.lenis, html.lenis body {
 }
 .wordmark:hover .wordmark-avatar {
   transform: scale(1.12) rotate(6deg);
-  box-shadow: 0 0 16px rgba(226, 133, 34, 0.5);
+  box-shadow: 0 0 16px rgba(189, 67, 83, 0.5);
 }
 .wordmark-avatar {
   width: 30px;
@@ -484,7 +484,7 @@ html.lenis, html.lenis body {
 }
 .lang-btn:hover {
   color: var(--accent);
-  background: rgba(226, 133, 34, 0.1);
+  background: rgba(189, 67, 83, 0.1);
   transform: translateY(-1px);
 }
 .lang-btn[aria-current="true"] {
@@ -519,7 +519,7 @@ html.lenis, html.lenis body {
   color: var(--accent);
   border-color: var(--accent);
   transform: scale(1.1) rotate(15deg);
-  box-shadow: 0 0 16px rgba(226, 133, 34, 0.35);
+  box-shadow: 0 0 16px rgba(189, 67, 83, 0.35);
 }
 .theme-toggle:active {
   transform: scale(0.95);
@@ -789,8 +789,8 @@ html.light .theme-icon-moon {
   }
 .showreel-monitor:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: rgba(226, 133, 34, 0.5);
-  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px -5px rgba(226, 133, 34, 0.3);
+  border-color: rgba(189, 67, 83, 0.5);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px -5px rgba(189, 67, 83, 0.3);
 }
 .monitor-topbar {
   display: flex;
@@ -910,7 +910,7 @@ html.light .theme-icon-moon {
 .showreel-screen:hover .hud-play-btn {
   transform: scale(1.18);
   background: #FFF;
-  box-shadow: 0 0 35px rgba(226, 133, 34, 0.6);
+  box-shadow: 0 0 35px rgba(189, 67, 83, 0.6);
 }
 .hud-play-label {
   font-family: var(--font-mono);
@@ -1121,7 +1121,7 @@ html.light .theme-icon-moon {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 12px rgba(226, 133, 34, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 12px rgba(189, 67, 83, 0.4);
   z-index: 5;
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.32s ease;
@@ -1129,11 +1129,11 @@ html.light .theme-icon-moon {
 .ba-handle:hover .ba-handle-grip {
   transform: scale(1.18);
   border-color: #FFF;
-  box-shadow: 0 0 24px rgba(226, 133, 34, 0.9);
+  box-shadow: 0 0 24px rgba(189, 67, 83, 0.9);
 }
 .ba-handle:active .ba-handle-grip {
   transform: scale(1.28);
-  box-shadow: 0 0 32px rgba(226, 133, 34, 1);
+  box-shadow: 0 0 32px rgba(189, 67, 83, 1);
 }
 .ba-bottom-bar {
   display: flex;
@@ -1179,10 +1179,10 @@ html.light .theme-icon-moon {
 .work-tab.active, .work-tab[aria-selected="true"] {
   background: var(--accent);
   border-color: var(--accent);
-  color: #000;
+  color: #FFF;
   font-weight: 700;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -4px rgba(226, 133, 34, 0.45);
+  box-shadow: 0 8px 24px -4px rgba(189, 67, 83, 0.45);
 }
 .work-tab-count {
   font-size: 11px;
@@ -1226,9 +1226,9 @@ html.light .theme-icon-moon {
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 .work-card--horizontal:hover {
-  border-color: rgba(226, 133, 34, 0.45);
+  border-color: rgba(189, 67, 83, 0.45);
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(226, 133, 34, 0.2);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(189, 67, 83, 0.2);
 }
 
 /* Vertical Work Grid (9:16) */
@@ -1250,9 +1250,9 @@ html.light .theme-icon-moon {
               background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 .work-card--vertical:hover {
-  border-color: rgba(226, 133, 34, 0.45);
+  border-color: rgba(189, 67, 83, 0.45);
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(226, 133, 34, 0.2);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 24px -4px rgba(189, 67, 83, 0.2);
 }
 
 /* Facade Clickable Container */
@@ -1325,7 +1325,7 @@ html.light .theme-icon-moon {
   height: 48px;
   border-radius: 50%;
   background: var(--accent);
-  color: #000;
+  color: #FFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1341,9 +1341,9 @@ html.light .theme-icon-moon {
 }
 .work-facade:hover .work-play-badge {
   transform: scale(1.18);
-  background: #FFF;
-  color: #000;
-  box-shadow: 0 0 32px rgba(226, 133, 34, 0.65);
+  background: var(--accent-hover);
+  color: #FFF;
+  box-shadow: 0 0 32px rgba(189, 67, 83, 0.65);
 }
 
 .work-info {
@@ -1414,7 +1414,7 @@ html.light .theme-icon-moon {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  color: #000;
+  color: #FFF;
   background: var(--accent);
   border: 0;
   border-radius: 4px;
@@ -1428,10 +1428,10 @@ html.light .theme-icon-moon {
   transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .work-cta-watch:hover {
-  background: #FFF;
-  color: #000;
+  background: var(--accent-hover);
+  color: #FFF;
   transform: translateY(-1.5px) scale(1.03);
-  box-shadow: 0 6px 18px rgba(226, 133, 34, 0.4);
+  box-shadow: 0 6px 18px rgba(189, 67, 83, 0.4);
 }
 .work-cta-watch:hover svg {
   transform: translateX(2px) scale(1.1);
@@ -1561,7 +1561,7 @@ html.light .theme-icon-moon {
 .review-quote-card:hover {
   border-color: var(--accent);
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(226, 133, 34, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(189, 67, 83, 0.2);
 }
 .review-card-top {
   display: flex;
@@ -1577,7 +1577,7 @@ html.light .theme-icon-moon {
 .review-draft-pill {
   padding: 2px 6px;
   border-radius: 4px;
-  background: rgba(226, 133, 34, 0.15);
+  background: rgba(189, 67, 83, 0.15);
   border: 1px solid var(--accent);
   color: var(--accent);
   font-weight: 700;
@@ -1664,7 +1664,7 @@ html.light .theme-icon-moon {
 .process-step:hover {
   transform: translateY(-5px);
   border-color: var(--accent);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(226, 133, 34, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(189, 67, 83, 0.2);
   background: var(--surface-raised);
 }
 .step-topline {
@@ -1729,7 +1729,7 @@ html.light .theme-icon-moon {
 .why-item:hover {
   transform: translateY(-5px);
   border-color: var(--accent);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(226, 133, 34, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(189, 67, 83, 0.2);
   background: var(--surface-raised);
 }
 .why-item-topline {
@@ -1781,7 +1781,7 @@ html.light .theme-icon-moon {
   }
 .pricing-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(226, 133, 34, 0.25);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(189, 67, 83, 0.25);
   transform: translateY(-6px);
 }
 .pricing-badge {
@@ -1857,7 +1857,7 @@ html.light .theme-icon-moon {
               background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .faq-item:hover {
-  border-color: rgba(226, 133, 34, 0.4);
+  border-color: rgba(189, 67, 83, 0.4);
   box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
 }
 .faq-trigger {
@@ -1938,7 +1938,7 @@ html.light .theme-icon-moon {
 .contact-card:hover {
   border-color: var(--accent);
   transform: translateY(-4px) translateX(4px);
-  box-shadow: 0 18px 36px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(226, 133, 34, 0.25);
+  box-shadow: 0 18px 36px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(189, 67, 83, 0.25);
 }
 .contact-card-icon {
   width: 44px;
@@ -1956,7 +1956,7 @@ html.light .theme-icon-moon {
 .contact-card:hover .contact-card-icon {
   transform: scale(1.1) rotate(5deg);
   border-color: var(--accent);
-  background: rgba(226, 133, 34, 0.2);
+  background: rgba(189, 67, 83, 0.2);
 }
 .contact-card-icon svg {
   width: 22px;
@@ -2155,7 +2155,7 @@ html.light .theme-icon-moon {
   left: 16px;
   right: 16px;
   z-index: 85;
-  box-shadow: 0 10px 24px rgba(226, 133, 34, 0.4);
+  box-shadow: 0 10px 24px rgba(189, 67, 83, 0.4);
 }
 @media (max-width: 768px) {
   .sticky-mobile-cta[data-visible="true"] {
@@ -2196,7 +2196,7 @@ html.light .theme-icon-moon {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 8px 24px rgba(226, 133, 34, 0.4);
+  box-shadow: 0 8px 24px rgba(189, 67, 83, 0.4);
 }
 .to-top svg {
   width: 20px;
