@@ -16,7 +16,7 @@
 
 1. Перейдите в директорию проекта:
    ```bash
-   cd C:\Users\timur\.gemini\antigravity\scratch\fare-editor-portfolio
+   cd "C:\Users\timur\Desktop\fleur-editor-portfolio"
    ```
 
 2. Установите зависимости (если ещё не установлены):
@@ -56,7 +56,7 @@
 ## 📁 Структура проекта
 
 ```text
-fare-editor-portfolio/
+fleur-editor-portfolio/
 ├── public/                    # Статические ассеты
 │   ├── avatar.jpg             # Фото / логотип профиля (.fleur)
 │   ├── logo.jpg               # Копия логотипа

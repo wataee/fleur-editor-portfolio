@@ -35,7 +35,8 @@ const enUrl = `${siteUrl}/`;
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Favicon & Theme -->
-    <link rel="icon" type="image/jpeg" href="/avatar.jpg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
     <meta name="theme-color" content="#090B0E" />
 
     <!-- Inline script to immediately set theme before paint and prevent flash -->
@@ -59,7 +60,7 @@ const enUrl = `${siteUrl}/`;
 
       // Activate reveal animations system immediately
       try {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
           document.documentElement.classList.add('js-reveal');
         }
       } catch (_) {}
@@ -192,6 +193,8 @@ const enUrl = `${siteUrl}/`;
           document.querySelectorAll('[data-reveal]:not(.hero [data-reveal])').forEach((el) => {
             revealObserver.observe(el);
           });
+        } else {
+          document.querySelectorAll('[data-reveal]').forEach((el) => el.setAttribute('data-revealed', '1'));
         }
       } else {
         document.querySelectorAll('[data-reveal]').forEach((el) => {

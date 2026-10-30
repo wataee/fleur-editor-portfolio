@@ -24,8 +24,12 @@ const { data } = Astro.props;
   </div>
 
   <div class="why-grid">
-    {data.items.map((item) => (
+    {data.items.map((item, index) => (
       <div class="why-item" id={item.id ? `why-${item.id}` : undefined} data-reveal="card">
+        <div class="why-item-topline">
+          <span class="why-index">{String(index + 1).padStart(2, '0')}</span>
+          <span class="why-marker" aria-hidden="true">✳</span>
+        </div>
         <h3 class="why-title">{item.title}</h3>
         <p class="why-body">{item.desc || item.body}</p>
       </div>

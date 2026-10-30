@@ -1,8 +1,9 @@
 ---
 interface Step {
-  tc: string;
+  num: string;
+  period: string;
   title: string;
-  body: string;
+  desc: string;
 }
 
 interface Props {
@@ -25,9 +26,13 @@ const { data } = Astro.props;
   <ol class="process-list" role="list">
     {data.steps.map((step) => (
       <li class="process-step" data-reveal="card">
-        <span class="step-tc">{step.tc}</span>
+        <div class="step-topline">
+          <span class="step-tc">{step.num}</span>
+          <span class="step-period">{step.period}</span>
+        </div>
         <h3 class="step-title">{step.title}</h3>
-        <p class="step-body">{step.body}</p>
+        <p class="step-body">{step.desc}</p>
+        <span class="step-progress" aria-hidden="true"></span>
       </li>
     ))}
   </ol>

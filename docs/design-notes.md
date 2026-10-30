@@ -1,4 +1,4 @@
-# Результаты разведки дизайна fareeditor.com (RU / EN)
+# Результаты разведки дизайна fleureditor.com (RU / EN)
 
 ## 1. Дизайн-система и CSS-токены (Computed / CSS Variables)
 
@@ -65,7 +65,7 @@
   - Специфические задержки для Hero: `--hero-delay-1: 0ms`, `--hero-delay-2: 80ms`, `--hero-delay-3: 160ms`.
 
 ### Пульсация индикатора доступности («Открыт для проектов»)
-- `@keyframes fare-pulse`:
+- `@keyframes fleur-pulse`:
   - `0%, 100% { box-shadow: 0 0 0 0 rgba(27,122,79,.38); }`
   - `70% { box-shadow: 0 0 0 6px rgba(27,122,79,0); }` (период 2.4s)
 

@@ -1,176 +1,35 @@
 ---
-interface Metric {
-  value_ru?: string;
-  value_en?: string;
-  label_ru?: string;
-  label_en?: string;
-}
-
-interface Review {
-  id: string;
-  author?: string;
-  name_ru?: string;
-  name_en?: string;
-  name_kz?: string;
-  role_ru?: string;
-  role_en?: string;
-  role_kz?: string;
-  topic_ru?: string;
-  topic_en?: string;
-  channel?: string;
-  subscribers?: string;
-  avatar: string;
-  rating?: number;
-  metrics_ru?: string;
-  metrics_en?: string;
-  metrics_kz?: string;
-  top_metric_value?: string;
-  top_metric_label_ru?: string;
-  top_metric_label_en?: string;
-  text_ru?: string;
-  text_en?: string;
-  text_kz?: string;
-  quote_ru?: string;
-  quote_en?: string;
-  metrics?: Metric[];
-}
-
 interface Props {
-  data: {
-    eyebrow: string;
-    title: string;
-    sub?: string;
-    prevAria?: string;
-    nextAria?: string;
-  };
-  reviews: Review[];
+  data: { eyebrow: string; title: string; sub?: string; demoLabel: string };
+  reviews: Array<{
+    id: string; initials: string; channel: string;
+    name_ru: string; name_en: string; name_kz: string;
+    role_ru: string; role_en: string; role_kz: string;
+    quote_ru: string; quote_en: string; quote_kz: string;
+  }>;
   lang?: string;
 }
-
 const { data, reviews, lang = 'ru' } = Astro.props;
 ---
-
 <section class="section section--testimonials" id="reviews" aria-labelledby="testimonials-title">
-  <!-- Section Header with Navigation Arrows -->
-  <div class="section-head testimonials-head" data-reveal="true">
-    <div class="testimonials-title-group">
-      <span class="eyebrow">{data.eyebrow}</span>
-      <h2 class="section-title" id="testimonials-title">{data.title}</h2>
-      {data.sub && <p class="section-sub text-text-dim text-sm mt-1">{data.sub}</p>}
-    </div>
-
-    <div class="testimonials-nav-group">
-      <button
-        type="button"
-        id="review-prev"
-        class="testimonial-nav"
-        aria-label={data.prevAria || (lang === 'kz' ? 'Алдыңғы пікір' : lang === 'en' ? 'Previous review' : 'Предыдущий отзыв')}
-        aria-controls="testimonials-track"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="w-5 h-5">
-          <path d="M15 19l-7-7 7-7"></path>
-        </svg>
-      </button>
-      <button
-        type="button"
-        id="review-next"
-        class="testimonial-nav"
-        aria-label={data.nextAria || (lang === 'kz' ? 'Келесі пікір' : lang === 'en' ? 'Next review' : 'Следующий отзыв')}
-        aria-controls="testimonials-track"
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="w-5 h-5">
-          <path d="M9 5l7 7-7 7"></path>
-        </svg>
-      </button>
-    </div>
+  <div class="section-head" data-reveal="true">
+    <span class="eyebrow">{data.eyebrow}</span>
+    <h2 class="section-title" id="testimonials-title">{data.title}</h2>
+    {data.sub && <p class="section-sub text-text-dim text-sm mt-1">{data.sub}</p>}
   </div>
-
-  <!-- Testimonials Carousel Track -->
-  <ul class="testimonial-track" id="testimonials-track" tabindex="0" aria-label="Client reviews carousel">
+  <div class="demo-review-grid">
     {reviews.map((review) => {
-      const author = review.author || (lang === 'kz' ? review.name_kz : lang === 'en' ? review.name_en : review.name_ru);
-      const role = (lang === 'kz' ? review.role_kz : lang === 'en' ? review.role_en : review.role_ru) || (lang === 'en' ? review.topic_en : review.topic_ru);
-      const quote = (lang === 'kz' ? review.text_kz : lang === 'en' ? review.text_en : review.text_ru) || (lang === 'en' ? review.quote_en : review.quote_ru);
-      const metric = (lang === 'kz' ? review.metrics_kz : lang === 'en' ? review.metrics_en : review.metrics_ru) || review.top_metric_value;
-
+      const suffix = lang === 'kz' ? 'kz' : lang === 'en' ? 'en' : 'ru';
       return (
-        <li class="testimonial card--interactive" data-reveal="card">
-          <!-- Client Head Info -->
-          <div class="testimonial-head">
-            <img
-              class="testimonial-logo"
-              src={review.avatar}
-              alt={author || 'Client'}
-              loading="lazy"
-              decoding="async"
-              width="56"
-              height="56"
-            />
-            <div class="testimonial-id">
-              <p class="testimonial-name">{author}</p>
-              <div class="testimonial-subinfo">
-                {review.channel && <span class="font-bold text-text">{review.channel}</span>}
-                {review.channel && review.subscribers && <span>•</span>}
-                {review.subscribers && <span class="text-accent font-medium">{review.subscribers}</span>}
-              </div>
-              {role && <span class="text-xs font-mono uppercase text-text-mute mt-0.5">{role}</span>}
-            </div>
+        <article class="demo-review-card" data-reveal="card">
+          <span class="demo-review-label">{data.demoLabel}</span>
+          <div class="demo-review-person">
+            <span class="demo-review-avatar" aria-hidden="true">{review.initials}</span>
+            <div><h3>{review[`name_${suffix}`]}</h3><p>{review.channel} · {review[`role_${suffix}`]}</p></div>
           </div>
-
-          <!-- Top Metric Highlight if available -->
-          {metric && (
-            <div class="testimonial-metric-banner">
-              <span class="testimonial-metric-pill">
-                <svg class="w-3.5 h-3.5 text-accent" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                </svg>
-                {metric}
-              </span>
-            </div>
-          )}
-
-          <!-- Quote -->
-          <p class="testimonial-quote">
-            "{quote}"
-          </p>
-
-          <!-- Star Rating -->
-          <div class="testimonial-stars" aria-label="Rating: 5 out of 5 stars">
-            {Array.from({ length: review.rating || 5 }).map(() => (
-              <svg class="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-        </li>
+          <blockquote>“{review[`quote_${suffix}`]}”</blockquote>
+        </article>
       );
     })}
-  </ul>
+  </div>
 </section>
-
-<script>
-  // Smooth Testimonials Carousel Controls
-  const track = document.getElementById('testimonials-track');
-  const prevBtn = document.getElementById('review-prev');
-  const nextBtn = document.getElementById('review-next');
-
-  if (track && prevBtn && nextBtn) {
-    const getScrollStep = () => {
-      const card = track.querySelector('.testimonial');
-      if (card) {
-        const style = window.getComputedStyle(card);
-        const gap = parseInt(window.getComputedStyle(track).gap) || 24;
-        return card.getBoundingClientRect().width + gap;
-      }
-      return 420;
-    };
-
-    prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-    });
-
-    nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
-    });
-  }
-</script>

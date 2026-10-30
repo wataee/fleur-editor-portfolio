@@ -6,10 +6,7 @@ interface Props {
     description: string;
     before: string;
     after: string;
-    playAria: string;
     handleAria: string;
-    videoBefore: string;
-    videoAfter: string;
     posterBefore: string;
     posterAfter: string;
   };
@@ -34,36 +31,26 @@ const { data } = Astro.props;
     style="--ba-pos: 50%;"
     data-reveal="true"
   >
-    <!-- Background layer: Graded video / image -->
-    <video
+    <!-- Same source image on both sides; CSS shows a restrained neutral/graded comparison. -->
+    <img
       class="ba-video ba-video--graded"
-      id="ba-video-after"
-      preload="none"
-      muted
-      loop
-      playsinline
-      tabindex="-1"
+      src={data.posterAfter || data.posterBefore || "/og-image.png"}
+      alt=""
       aria-hidden="true"
-      poster={data.posterAfter || "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=85"}
-    >
-      <source src={data.videoAfter || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"} type="video/mp4" />
-    </video>
+      loading="lazy"
+      decoding="async"
+    />
 
     <!-- Clipped layer: Raw flat camera profile (S-Log3 / RAW) -->
     <div class="ba-clip" id="ba-clip">
-      <video
+      <img
         class="ba-video ba-video--log"
-        id="ba-video-before"
-        preload="none"
-        muted
-        loop
-        playsinline
-        tabindex="-1"
+        src={data.posterBefore || data.posterAfter || "/og-image.png"}
+        alt=""
         aria-hidden="true"
-        poster={data.posterBefore || "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1920&q=85"}
-      >
-        <source src={data.videoBefore || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"} type="video/mp4" />
-      </video>
+        loading="lazy"
+        decoding="async"
+      />
     </div>
 
     <!-- Labels -->
@@ -89,20 +76,6 @@ const { data } = Astro.props;
       </span>
     </div>
 
-    <!-- Play / Pause Toggle -->
-    <button
-      class="ba-toggle"
-      id="ba-toggle-btn"
-      type="button"
-      aria-label={data.playAria}
-    >
-      <svg id="ba-icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M8 5l11 7-11 7z"></path>
-      </svg>
-      <svg id="ba-icon-pause" class="hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-      </svg>
-    </button>
   </div>
 </section>
 
@@ -110,19 +83,8 @@ const { data } = Astro.props;
   // Before / After Slider Logic
   const container = document.getElementById('ba-container');
   const handle = document.getElementById('ba-handle');
-  const videoBefore = document.getElementById('ba-video-before') as HTMLVideoElement | null;
-  const videoAfter = document.getElementById('ba-video-after') as HTMLVideoElement | null;
-  const toggleBtn = document.getElementById('ba-toggle-btn');
-  const iconPlay = document.getElementById('ba-icon-play');
-  const iconPause = document.getElementById('ba-icon-pause');
-
-  if (container && handle && videoBefore && videoAfter && toggleBtn) {
+  if (container && handle) {
     let pos = 50;
-    let isPlaying = false;
-    let userPaused = false;
-    let lastSyncTime = 0;
-    const SYNC_INTERVAL = 1000; // ms
-    const DRIFT_TOLERANCE = 0.15; // s
 
     const setPosition = (newPos: number) => {
       pos = Math.min(100, Math.max(0, newPos));
@@ -140,7 +102,6 @@ const { data } = Astro.props;
     // Pointer events for ultra-smooth drag
     let dragRaf: number | null = null;
     container.addEventListener('pointerdown', (e) => {
-      if ((e.target as HTMLElement).closest('.ba-toggle')) return;
       container.setPointerCapture(e.pointerId);
       setPosition(calcPosFromClientX(e.clientX));
     });
@@ -161,6 +122,10 @@ const { data } = Astro.props;
       }
       if (dragRaf) cancelAnimationFrame(dragRaf);
     });
+    container.addEventListener('pointercancel', (e) => {
+      if (container.hasPointerCapture(e.pointerId)) container.releasePointerCapture(e.pointerId);
+      if (dragRaf) cancelAnimationFrame(dragRaf);
+    });
 
     // Keyboard accessibility
     handle.addEventListener('keydown', (e) => {
@@ -176,66 +141,5 @@ const { data } = Astro.props;
       setPosition(newPos);
     });
 
-    // Synchronized playback controls
-    const playBoth = async () => {
-      try {
-        await Promise.all([videoBefore.play(), videoAfter.play()]);
-        isPlaying = true;
-        iconPlay?.classList.add('hidden');
-        iconPause?.classList.remove('hidden');
-      } catch (err) {
-        console.warn('Playback prevented', err);
-      }
-    };
-
-    const pauseBoth = () => {
-      videoBefore.pause();
-      videoAfter.pause();
-      isPlaying = false;
-      iconPlay?.classList.remove('hidden');
-      iconPause?.classList.add('hidden');
-    };
-
-    toggleBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        userPaused = true;
-        pauseBoth();
-      } else {
-        userPaused = false;
-        playBoth();
-      }
-    });
-
-    // Video sync check
-    videoAfter.addEventListener('timeupdate', () => {
-      const now = performance.now();
-      if (now - lastSyncTime < SYNC_INTERVAL) return;
-      lastSyncTime = now;
-
-      if (!videoBefore.seeking && !videoAfter.seeking) {
-        const drift = Math.abs(videoAfter.currentTime - videoBefore.currentTime);
-        if (drift > DRIFT_TOLERANCE) {
-          videoBefore.currentTime = videoAfter.currentTime;
-        }
-      }
-    });
-
-    // IntersectionObserver: Play only when in viewport (unless user paused or reduced motion)
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          if (!userPaused && !isPlaying) {
-            playBoth();
-          }
-        } else {
-          if (isPlaying) {
-            pauseBoth();
-          }
-        }
-      }, { threshold: 0.15 });
-
-      observer.observe(container);
-    }
   }
 </script>

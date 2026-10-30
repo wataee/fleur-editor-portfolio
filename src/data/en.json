@@ -24,29 +24,38 @@
     "sub": "I handle the entire editing process: assembly, colour correction, graphics and sound design. You provide the footage and receive a finished video.",
     "cta": "Explore my work",
     "proofStats": [
-      { "value": "20M+", "label": "combined video views" },
-      { "value": "120+", "label": "completed projects" },
-      { "value": "4+", "label": "years of experience" },
-      { "value": "100%", "label": "client satisfaction" }
+      {
+        "value": "01",
+        "label": "Video editing"
+      },
+      {
+        "value": "02",
+        "label": "Color grading"
+      },
+      {
+        "value": "03",
+        "label": "Motion graphics"
+      },
+      {
+        "value": "04",
+        "label": "Sound design"
+      }
     ],
-    "industriesNote": "Specializing in — Gaming, Real Estate, Personal Brands, Economics & Finance"
+    "industriesNote": "Editing tailored to your footage and brief: YouTube videos, vertical short-form, and motion graphics."
   },
   "theDifference": {
     "eyebrow": "Professional Color Grading",
     "title": "With vs. Without Color Grading",
-    "description": "Direct comparison: on the left is raw flat camera profile (S-Log3 / RAW), on the right is the cinematic master with rich depth and tonal contrast (Rec.709).",
+    "description": "A comparison using one source image: a natural, neutral look on the left and a more expressive contrast and color treatment on the right.",
     "before": "WITHOUT COLOR GRADE",
     "after": "COLOR GRADED",
-    "playAria": "Toggle playback",
     "handleAria": "Color grading slider position",
-    "videoBefore": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    "videoAfter": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "posterBefore": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=85",
     "posterAfter": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=85"
   },
   "portfolio": {
     "eyebrow": "Selected work",
-    "title": "Long-form videos",
+    "title": "Video editing and motion graphics",
     "filterAll": "All",
     "niches": {
       "all": "All",
@@ -56,20 +65,34 @@
       "finance": "Economics & Finance"
     },
     "subsections": {
-      "main": "Long-form videos",
-      "motion": "Motion Graphics & 3D"
+      "main": "Horizontal videos",
+      "motion": "Motion Graphics & 3D",
+      "vertical": "Vertical videos · Reels / Shorts"
     },
     "watch": "Watch on YouTube ↗",
     "play": "Watch",
-    "thumbAria": "Watch — "
+    "thumbAria": "Watch — ",
+    "conceptLabel": "SPEC CONCEPT"
   },
   "tools": {
     "eyebrow": "Software stack",
     "title": "Core editing suite",
     "items": [
-      { "name": "Premiere Pro", "category": "Assembly & Narrative", "badge": "Pr" },
-      { "name": "After Effects", "category": "Motion & VFX", "badge": "Ae" },
-      { "name": "DaVinci Resolve", "category": "Color Grading", "badge": "Color" }
+      {
+        "name": "Premiere Pro",
+        "category": "Assembly & Narrative",
+        "badge": "Pr"
+      },
+      {
+        "name": "After Effects",
+        "category": "Motion & VFX",
+        "badge": "Ae"
+      },
+      {
+        "name": "DaVinci Resolve",
+        "category": "Color Grading",
+        "badge": "Color"
+      }
     ]
   },
   "pricing": {
@@ -116,13 +139,14 @@
     "cta": "Discuss your project"
   },
   "reviews": {
-    "eyebrow": "Testimonials",
-    "title": "My work, in my clients' own words",
-    "sub": "Trusted by creators with over 20M+ collective subscribers"
+    "eyebrow": "Testimonials · demo",
+    "title": "Testimonial layout preview",
+    "sub": "Review copy and channel names are fictional demo content for the interface preview.",
+    "demoLabel": "Demo copy · fictional review"
   },
   "process": {
     "eyebrow": "How we collaborate",
-    "title": "Our collaboration follows three clear stages",
+    "title": "From brief to final cut in three clear steps",
     "steps": [
       {
         "num": "01",
@@ -146,7 +170,7 @@
   },
   "whyMe": {
     "eyebrow": "Why work with me",
-    "title": "More than effective editing. Here is what I bring to your project",
+    "title": "What you can expect when we work together",
     "items": [
       {
         "id": "about",

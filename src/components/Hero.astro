@@ -58,14 +58,14 @@ const { hero, lang = 'ru' } = Astro.props;
           <circle cx="12" cy="12" r="10"></circle>
           <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
         </svg>
-        The Difference
+        {lang === 'ru' ? 'До и после цветокоррекции' : lang === 'kz' ? 'Түс түзетуге дейін және кейін' : 'See color grading'}
       </a>
     </div>
   </div>
 </section>
 
 <!-- Stats Grid & Industries (Integrated Proof Row) -->
-<section class="section section--stats pt-0" aria-label="Key Metrics">
+<section class="section section--stats pt-0" aria-label="Services">
   <ul class="stats-grid" id="stats-counter-grid">
     {hero.proofStats.map((stat, i) => (
       <li class="stat card--interactive" data-reveal="card">
