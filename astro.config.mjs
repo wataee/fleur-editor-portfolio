@@ -3,6 +3,16 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://fluere.work',
+  devToolbar: {
+    enabled: false
+  },
+  vite: {
+    server: {
+      fs: {
+        strict: false
+      }
+    }
+  },
   integrations: [tailwind()],
   i18n: {
     defaultLocale: 'en',
