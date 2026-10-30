@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description: string;
@@ -23,8 +25,6 @@ const siteUrl = 'https://fluere.work';
 const ruUrl = `${siteUrl}/ru/`;
 const kzUrl = `${siteUrl}/kz/`;
 const enUrl = `${siteUrl}/`;
-
-import '../styles/global.css';
 ---
 
 <!doctype html>
@@ -95,6 +95,10 @@ import '../styles/global.css';
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Onest:wght@300;400;500;600;700;800;900&family=Unbounded:wght@400;600;700;800;900&display=swap"
     />
+
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/global.css" />
 
     <slot name="head" />
   </head>

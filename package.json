@@ -4,9 +4,10 @@
   "description": "Portfolio landing page for video editor FLEUR (RU/EN/KZ)",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "build:css": "tailwindcss -i ./src/styles/global.css -o ./public/global.css --minify",
+    "dev": "npm run build:css && astro dev",
+    "start": "npm run build:css && astro dev",
+    "build": "npm run build:css && astro build",
     "preview": "astro preview",
     "videos": "node scripts/fetch-video-meta.mjs",
     "postinstall": "node scripts/patch-vite.mjs"
