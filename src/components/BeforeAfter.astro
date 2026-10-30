@@ -13,76 +13,128 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+// High quality cinema frame
+const frameSource = data.posterAfter || "/videos/posters/vroomclub-reel.jpg";
 ---
 
 <section class="section section--ba" id="difference" aria-labelledby="ba-title">
   <div class="section-head" data-reveal="true">
-    <span class="eyebrow">{data.eyebrow}</span>
+    <div class="inline-flex items-center gap-2">
+      <span class="tape-index font-mono" aria-hidden="true">[COLOR // DAVINCI]</span>
+      <span class="eyebrow">{data.eyebrow}</span>
+    </div>
     <h2 class="section-title" id="ba-title">{data.title}</h2>
   </div>
 
-  <p class="sr-only">
+  <p class="section-lead max-w-2xl text-text-dim text-sm sm:text-base mb-8" data-reveal="true">
     {data.description}
   </p>
 
+  <!-- Interactive Comparison Frame -->
   <div
-    class="ba"
+    class="ba-suite-wrapper"
     id="ba-container"
     style="--ba-pos: 50%;"
     data-reveal="true"
   >
-    <!-- Same source image on both sides; CSS shows a restrained neutral/graded comparison. -->
-    <img
-      class="ba-video ba-video--graded"
-      src={data.posterAfter || data.posterBefore || "/og-image.png"}
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-      decoding="async"
-    />
-
-    <!-- Clipped layer: Raw flat camera profile (S-Log3 / RAW) -->
-    <div class="ba-clip" id="ba-clip">
-      <img
-        class="ba-video ba-video--log"
-        src={data.posterBefore || data.posterAfter || "/og-image.png"}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-      />
+    <!-- Top Monitor HUD Strip -->
+    <div class="ba-monitor-bar font-mono text-[11px]" aria-hidden="true">
+      <div class="flex items-center gap-2">
+        <span class="ba-status-rec">● GRADED PREVIEW</span>
+        <span class="text-text-mute">·</span>
+        <span>DA VINCI RESOLVE STUDIO</span>
+      </div>
+      <div class="flex items-center gap-4 text-text-dim">
+        <span>3840×2160 UHD</span>
+        <span class="hidden sm:inline">10-BIT 4:2:2</span>
+        <span class="text-accent">24.00 FPS</span>
+      </div>
     </div>
 
-    <!-- Labels -->
-    <span class="ba-label ba-label--before">{data.before}</span>
-    <span class="ba-label ba-label--after">{data.after}</span>
+    <!-- The Split Screen Container -->
+    <div class="ba-viewport">
+      <!-- Right/Under layer: Graded Rec.709 film profile -->
+      <div class="ba-layer ba-layer--graded">
+        <img
+          class="ba-image"
+          src={frameSource}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width="1920"
+          height="1080"
+        />
+        <div class="ba-badge ba-badge--after">
+          <span class="ba-badge-dot"></span>
+          <span>{data.after}</span>
+        </div>
+        <div class="ba-hud-tag ba-hud-tag--right font-mono" aria-hidden="true">
+          <span>TARGET: REC.709 · KODAK 2383 D65</span>
+        </div>
+      </div>
 
-    <!-- Draggable divider handle with accessibility slider role -->
-    <div
-      class="ba-handle"
-      id="ba-handle"
-      role="slider"
-      tabindex="0"
-      aria-label={data.handleAria}
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-valuenow="50"
-      aria-valuetext="50%"
-    >
-      <span class="ba-handle-grip" aria-hidden="true">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M8 7l-5 5 5 5M16 7l5 5-5 5"></path>
-        </svg>
-      </span>
+      <!-- Left layer: Clipped Raw S-Log3 profile -->
+      <div class="ba-clip" id="ba-clip">
+        <div class="ba-layer ba-layer--log">
+          <img
+            class="ba-image ba-image--slog"
+            src={frameSource}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            width="1920"
+            height="1080"
+          />
+          <div class="ba-badge ba-badge--before">
+            <span class="ba-badge-dot ba-badge-dot--raw"></span>
+            <span>{data.before}</span>
+          </div>
+          <div class="ba-hud-tag ba-hud-tag--left font-mono" aria-hidden="true">
+            <span>INPUT: SONY S-LOG3 / S-GAMUT3.CINE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Scrub Handle -->
+      <div
+        class="ba-handle"
+        id="ba-handle"
+        role="slider"
+        tabindex="0"
+        aria-label={data.handleAria}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="50"
+        aria-valuetext="50%"
+      >
+        <div class="ba-handle-line"></div>
+        <div class="ba-handle-grip" aria-hidden="true">
+          <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24">
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5"></path>
+          </svg>
+        </div>
+      </div>
     </div>
 
+    <!-- Bottom Waveform / Metadata Strip -->
+    <div class="ba-bottom-bar font-mono text-[11px]" aria-hidden="true">
+      <div class="flex items-center gap-3 text-text-dim">
+        <span class="text-accent">TC: 00:00:24:18</span>
+        <span>SCOPE: RGB PARADE</span>
+        <span class="hidden sm:inline">GAMMA: 2.4</span>
+      </div>
+      <div class="text-text-mute text-right">
+        <span>DRAG TO REVEAL THE GRADE ↔</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
-  // Before / After Slider Logic
   const container = document.getElementById('ba-container');
   const handle = document.getElementById('ba-handle');
+
   if (container && handle) {
     let pos = 50;
 
@@ -93,14 +145,14 @@ const { data } = Astro.props;
       handle.setAttribute('aria-valuetext', `${Math.round(pos)}%`);
     };
 
-    // Calculate position from clientX
     const calcPosFromClientX = (clientX: number) => {
       const rect = container.getBoundingClientRect();
       return ((clientX - rect.left) / rect.width) * 100;
     };
 
-    // Pointer events for ultra-smooth drag
+    // Pointer events with full touch and desktop support
     let dragRaf: number | null = null;
+
     container.addEventListener('pointerdown', (e) => {
       container.setPointerCapture(e.pointerId);
       setPosition(calcPosFromClientX(e.clientX));
@@ -122,12 +174,15 @@ const { data } = Astro.props;
       }
       if (dragRaf) cancelAnimationFrame(dragRaf);
     });
+
     container.addEventListener('pointercancel', (e) => {
-      if (container.hasPointerCapture(e.pointerId)) container.releasePointerCapture(e.pointerId);
+      if (container.hasPointerCapture(e.pointerId)) {
+        container.releasePointerCapture(e.pointerId);
+      }
       if (dragRaf) cancelAnimationFrame(dragRaf);
     });
 
-    // Keyboard accessibility
+    // Keyboard support
     handle.addEventListener('keydown', (e) => {
       const step = 5;
       let newPos = pos;
@@ -140,6 +195,5 @@ const { data } = Astro.props;
       e.preventDefault();
       setPosition(newPos);
     });
-
   }
 </script>

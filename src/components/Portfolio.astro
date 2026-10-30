@@ -1,92 +1,371 @@
 ---
+// Portfolio.astro - Cinematic NLE Work Showcase with Lite Facades
 interface Project {
   id: string;
-  type: 'video' | 'motion' | 'vertical';
+  slug: string;
+  youtube_id: string;
+  youtube_url: string;
+  orientation: 'horizontal' | 'vertical';
   niche: string;
-  video_path: string;
-  poster_path: string;
+  duration: string;
+  featured: boolean;
+  order: number;
+  year?: string;
+  thumbnail: string;
   client_ru: string; client_en: string; client_kz?: string;
   format_ru: string; format_en: string; format_kz?: string;
-  duration: string;
   title_ru: string; title_en: string; title_kz?: string;
   body_ru: string; body_en: string; body_kz?: string;
 }
+
 interface Props {
   data: {
-    eyebrow: string; title: string; filterAll: string; niches: Record<string, string>;
+    eyebrow: string;
+    title: string;
+    filterAll: string;
+    niches: Record<string, string>;
     conceptLabel: string;
     subsections: { main: string; motion: string; vertical: string };
+    watch: string;
+    play: string;
+    thumbAria: string;
   };
-  projects: Project[]; lang?: string;
+  projects: Project[];
+  lang?: string;
 }
+
 const { data, projects, lang = 'ru' } = Astro.props;
-const groups = [
-  { type: 'video', title: data.subsections.main, ratio: '16:9 · LONG-FORM' },
-  { type: 'vertical', title: data.subsections.vertical, ratio: '9:16 · SHORT-FORM' },
-];
+
 const field = (project: Project, key: 'title' | 'client' | 'format' | 'body') => {
   const suffix = lang === 'kz' ? 'kz' : lang === 'en' ? 'en' : 'ru';
-  const value = project[`${key}_${suffix}` as keyof Project];
-  const fallback = project[`${key}_ru` as keyof Project];
-  return typeof value === 'string' && value ? value : fallback;
+  const val = project[`${key}_${suffix}` as keyof Project];
+  return typeof val === 'string' && val ? val : project[`${key}_ru` as keyof Project] || '';
 };
+
+// Count per niche for brackets [04]
+const countNiche = (nicheKey: string) => {
+  if (nicheKey === 'all') return projects.length;
+  return projects.filter((p) => p.niche === nicheKey).length;
+};
+
+const horizontalProjects = projects.filter((p) => p.orientation === 'horizontal');
+const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
 ---
 
 <section class="section section--work" id="work" aria-labelledby="work-title">
+  <!-- Section Header -->
   <div class="section-head" data-reveal="true">
-    <span class="eyebrow">{data.eyebrow}</span>
+    <div class="inline-flex items-center gap-2">
+      <span class="tape-index" aria-hidden="true">[REEL // 2026]</span>
+      <span class="eyebrow">{data.eyebrow}</span>
+    </div>
     <h2 class="section-title" id="work-title">{data.title}</h2>
   </div>
-  <div class="work-tabs" role="tablist" aria-label={lang === 'kz' ? 'Бейне түрі бойынша сүзу' : lang === 'en' ? 'Filter videos by niche' : 'Фильтр видео по нишам'} data-reveal="true">
-    {Object.entries(data.niches).map(([key, label], idx) => (
-      <button type="button" role="tab" class={`work-tab ${idx === 0 ? 'active' : ''}`} id={`tab-${key}`} aria-selected={idx === 0 ? 'true' : 'false'} aria-controls="portfolio-grids" data-niche-filter={key}>{label}</button>
-    ))}
-  </div>
-  <div id="portfolio-grids" class="portfolio-groups">
-    {groups.map((group) => {
-      const groupProjects = projects.filter((project) => project.type === group.type);
-      if (!groupProjects.length) return null;
+
+  <!-- Niche Filter Tabs with brackets [COUNT] -->
+  <div
+    class="work-tabs"
+    role="tablist"
+    aria-label={lang === 'kz' ? 'Жобалар сүзгісі' : lang === 'en' ? 'Filter by niche' : 'Фильтр по нишам'}
+    data-reveal="true"
+  >
+    {Object.entries(data.niches).map(([key, label], idx) => {
+      const count = countNiche(key);
+      if (count === 0 && key !== 'all') return null;
       return (
-        <section class="portfolio-subsection" aria-label={group.title}>
-          <div class="portfolio-subhead">
-            <h3>{group.title}</h3><span>{group.ratio}</span>
-          </div>
-          <div class={`work-grid ${group.type === 'vertical' ? 'work-grid--vertical' : ''}`}>
-            {groupProjects.map((project) => (
-              <article class="work-card" data-niche={project.niche} data-type={project.type} data-reveal="card">
-                <div class={`work-video-frame ${group.type === 'vertical' ? 'work-video-frame--portrait' : ''}`}>
-                  <video controls playsinline preload="none" poster={project.poster_path} aria-label={field(project, 'title')}>
-                    <source src={project.video_path} type="video/mp4" />
-                  </video>
-                </div>
-                <h4 class="work-title">{field(project, 'title')}</h4>
-                <p class="work-meta"><span class="work-client">{field(project, 'client')}</span><span>{field(project, 'format')}</span><span>{project.duration}</span><span class="text-accent">{data.niches[project.niche] || project.niche}</span></p>
-                <p class="work-text">{field(project, 'body')}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+        <button
+          type="button"
+          role="tab"
+          class={`work-tab ${idx === 0 ? 'active' : ''}`}
+          id={`tab-${key}`}
+          aria-selected={idx === 0 ? 'true' : 'false'}
+          aria-controls="portfolio-content"
+          data-niche-filter={key}
+        >
+          <span>{label}</span>
+          <span class="work-tab-count">[{String(count).padStart(2, '0')}]</span>
+        </button>
       );
     })}
+  </div>
+
+  <!-- Portfolio Content -->
+  <div id="portfolio-content" class="portfolio-groups">
+    <!-- 1. Horizontal Long-Form Section -->
+    {horizontalProjects.length > 0 && (
+      <div class="portfolio-subsection" data-subsection="horizontal">
+        <div class="portfolio-subhead" data-reveal="true">
+          <div class="flex items-center gap-3">
+            <span class="nle-badge">16:9</span>
+            <h3 class="text-xl font-bold tracking-tight">{data.subsections.main}</h3>
+          </div>
+          <span class="portfolio-format-tag font-mono text-xs">LONG-FORM · 4K UHD</span>
+        </div>
+
+        <div class="work-grid work-grid--horizontal">
+          {horizontalProjects.map((project) => {
+            const title = field(project, 'title');
+            const client = field(project, 'client');
+            const format = field(project, 'format');
+            const body = field(project, 'body');
+
+            return (
+              <article
+                class="work-card work-card--horizontal"
+                data-niche={project.niche}
+                data-orientation="horizontal"
+                data-reveal="card"
+              >
+                <!-- Clickable Lite Facade Container -->
+                <button
+                  type="button"
+                  class="work-facade"
+                  data-video-id={project.youtube_id}
+                  data-orientation="horizontal"
+                  data-video-title={title}
+                  data-video-duration={project.duration}
+                  aria-label={`${data.thumbAria} ${title}`}
+                >
+                  <img
+                    class="work-thumb"
+                    src={project.thumbnail}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="1280"
+                    height="720"
+                  />
+                  <!-- Viewfinder frame overlays -->
+                  <div class="viewfinder-frame" aria-hidden="true">
+                    <div class="vf-corner vf-tl"></div>
+                    <div class="vf-corner vf-tr"></div>
+                    <div class="vf-corner vf-bl"></div>
+                    <div class="vf-corner vf-br"></div>
+                    <span class="vf-rec">● REC</span>
+                    <span class="vf-timecode">{project.duration}</span>
+                  </div>
+
+                  <!-- Play button overlay -->
+                  <div class="work-play-badge" aria-hidden="true">
+                    <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <span>{data.play}</span>
+                  </div>
+                </button>
+
+                <!-- Project Meta Details -->
+                <div class="work-info">
+                  <div class="work-meta-top">
+                    <span class="work-client">{client}</span>
+                    <span class="work-duration font-mono">{project.duration}</span>
+                    <span class="work-niche-pill">{data.niches[project.niche] || project.niche}</span>
+                  </div>
+
+                  <h4 class="work-title">
+                    <button
+                      type="button"
+                      class="work-title-btn"
+                      data-video-id={project.youtube_id}
+                      data-orientation="horizontal"
+                      data-video-title={title}
+                      data-video-duration={project.duration}
+                    >
+                      {title}
+                    </button>
+                  </h4>
+
+                  <p class="work-body">{body}</p>
+
+                  <div class="work-actions">
+                    <button
+                      type="button"
+                      class="work-cta-watch"
+                      data-video-id={project.youtube_id}
+                      data-orientation="horizontal"
+                      data-video-title={title}
+                      data-video-duration={project.duration}
+                    >
+                      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                      {data.play}
+                    </button>
+
+                    <a
+                      href={project.youtube_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="work-yt-link"
+                    >
+                      {data.watch}
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    )}
+
+    <!-- 2. Vertical Short-Form Section (Shorts / Reels 9:16) -->
+    {verticalProjects.length > 0 && (
+      <div class="portfolio-subsection mt-16" data-subsection="vertical">
+        <div class="portfolio-subhead" data-reveal="true">
+          <div class="flex items-center gap-3">
+            <span class="nle-badge">9:16</span>
+            <h3 class="text-xl font-bold tracking-tight">{data.subsections.vertical}</h3>
+          </div>
+          <span class="portfolio-format-tag font-mono text-xs">SHORT-FORM · REELS / SHORTS</span>
+        </div>
+
+        <div class="work-grid work-grid--vertical">
+          {verticalProjects.map((project) => {
+            const title = field(project, 'title');
+            const client = field(project, 'client');
+            const body = field(project, 'body');
+
+            return (
+              <article
+                class="work-card work-card--vertical"
+                data-niche={project.niche}
+                data-orientation="vertical"
+                data-reveal="card"
+              >
+                <!-- Clickable Lite Facade Container -->
+                <button
+                  type="button"
+                  class="work-facade work-facade--portrait"
+                  data-video-id={project.youtube_id}
+                  data-orientation="vertical"
+                  data-video-title={title}
+                  data-video-duration={project.duration}
+                  aria-label={`${data.thumbAria} ${title}`}
+                >
+                  <img
+                    class="work-thumb work-thumb--portrait"
+                    src={project.thumbnail}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="720"
+                    height="1280"
+                  />
+                  <!-- Viewfinder frame overlays -->
+                  <div class="viewfinder-frame" aria-hidden="true">
+                    <div class="vf-corner vf-tl"></div>
+                    <div class="vf-corner vf-tr"></div>
+                    <div class="vf-corner vf-bl"></div>
+                    <div class="vf-corner vf-br"></div>
+                    <span class="vf-rec">● 9:16</span>
+                    <span class="vf-timecode">{project.duration}</span>
+                  </div>
+
+                  <!-- Play button overlay -->
+                  <div class="work-play-badge work-play-badge--sm" aria-hidden="true">
+                    <svg class="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </div>
+                </button>
+
+                <!-- Project Meta Details -->
+                <div class="work-info">
+                  <div class="work-meta-top">
+                    <span class="work-client">{client}</span>
+                    <span class="work-duration font-mono">{project.duration}</span>
+                  </div>
+
+                  <h4 class="work-title">
+                    <button
+                      type="button"
+                      class="work-title-btn"
+                      data-video-id={project.youtube_id}
+                      data-orientation="vertical"
+                      data-video-title={title}
+                      data-video-duration={project.duration}
+                    >
+                      {title}
+                    </button>
+                  </h4>
+
+                  <p class="work-body work-body--clamp">{body}</p>
+
+                  <div class="work-actions">
+                    <button
+                      type="button"
+                      class="work-cta-watch"
+                      data-video-id={project.youtube_id}
+                      data-orientation="vertical"
+                      data-video-title={title}
+                      data-video-duration={project.duration}
+                    >
+                      <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                      </svg>
+                      {data.play}
+                    </button>
+
+                    <a
+                      href={project.youtube_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="work-yt-link text-xs"
+                    >
+                      YouTube ↗
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    )}
   </div>
 </section>
 
 <script>
+  // Tab filtering logic with smooth reveal
   const tabs = document.querySelectorAll<HTMLButtonElement>('[data-niche-filter]');
   const cards = document.querySelectorAll<HTMLElement>('.work-card');
-  tabs.forEach((tab) => tab.addEventListener('click', () => {
-    const selected = tab.dataset.nicheFilter;
-    tabs.forEach((item) => {
-      const active = item === tab;
-      item.setAttribute('aria-selected', String(active));
-      item.classList.toggle('active', active);
+  const subsections = document.querySelectorAll<HTMLElement>('.portfolio-subsection');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const selected = tab.dataset.nicheFilter || 'all';
+
+      tabs.forEach((t) => {
+        const isActive = t === tab;
+        t.setAttribute('aria-selected', String(isActive));
+        t.classList.toggle('active', isActive);
+      });
+
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const cardNiche = card.dataset.niche;
+        const matches = selected === 'all' || cardNiche === selected;
+        card.style.display = matches ? 'flex' : 'none';
+        if (matches) {
+          visibleCount++;
+          card.animate(
+            [
+              { opacity: 0, transform: 'translateY(8px)' },
+              { opacity: 1, transform: 'translateY(0)' },
+            ],
+            { duration: 240, easing: 'cubic-bezier(.22,.61,.36,1)' }
+          );
+        }
+      });
+
+      // Hide subsection headers if all cards inside it are hidden
+      subsections.forEach((sub) => {
+        const hasVisible = Array.from(sub.querySelectorAll<HTMLElement>('.work-card')).some(
+          (c) => c.style.display !== 'none'
+        );
+        sub.style.display = hasVisible ? 'block' : 'none';
+      });
     });
-    cards.forEach((card) => {
-      const match = selected === 'all' || card.dataset.niche === selected;
-      card.style.display = match ? 'flex' : 'none';
-      if (match) {
-        card.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 260, easing: 'cubic-bezier(.22,.61,.36,1)' });
-      }
-    });
-  }));
+  });
 </script>

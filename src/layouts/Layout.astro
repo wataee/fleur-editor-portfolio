@@ -37,7 +37,7 @@ const enUrl = `${siteUrl}/`;
     <!-- Favicon & Theme -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/logo.jpg" />
-    <meta name="theme-color" content="#090B0E" />
+    <meta name="theme-color" content="#0D0E12" />
 
     <!-- Inline script to immediately set theme before paint and prevent flash -->
     <script is:inline>
@@ -86,22 +86,28 @@ const enUrl = `${siteUrl}/`;
     <meta property="twitter:description" content={ogDescription} />
     <meta property="twitter:image" content={ogImage} />
 
-    <!-- Google Fonts Preconnect -->
+    <!-- Google Fonts Preconnect & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Onest:wght@300;400;500;600;700;800;900&family=Unbounded:wght@400;600;700;800;900&display=swap"
+    />
 
     <slot name="head" />
   </head>
   <body class="antialiased selection:bg-accent selection:text-white relative">
+    <!-- Film Grain Subtle Texture Overlay -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Video Editor Custom Cursor (Desktop Only) -->
+    <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+      <span class="cursor-pill" id="cursor-pill"></span>
+    </div>
+
     <!-- Video Editor Timeline Playhead Progress Bar -->
     <div class="playhead" aria-hidden="true">
       <div class="playhead-fill" id="playhead-fill"></div>
-    </div>
-
-    <!-- Ambient glow background -->
-    <div class="ambient" aria-hidden="true">
-      <div class="ambient-glow"></div>
-      <div class="ambient-glow-body"></div>
     </div>
 
     <slot />
@@ -213,6 +219,60 @@ const enUrl = `${siteUrl}/`;
         toTopBtn.addEventListener('click', () => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+      }
+
+      // 6. NLE Video Editor Custom Cursor (Desktop fine pointer only)
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const cursor = document.getElementById('custom-cursor');
+        const pill = document.getElementById('cursor-pill');
+
+        if (cursor && pill) {
+          let mouseX = -100;
+          let mouseY = -100;
+          let currentX = -100;
+          let currentY = -100;
+          let isHoveringInteractive = false;
+          let activeLabel = '';
+
+          window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.classList.add('is-active');
+
+            // Check if hovering actionable element
+            const target = (e.target as HTMLElement)?.closest('[data-cursor], .work-facade, .showreel-monitor, .ba-suite');
+            if (target) {
+              const customLabel = target.getAttribute('data-cursor');
+              if (customLabel) {
+                activeLabel = customLabel;
+              } else if (target.classList.contains('work-facade') || target.classList.contains('showreel-monitor')) {
+                activeLabel = 'PLAY';
+              } else if (target.classList.contains('ba-suite')) {
+                activeLabel = 'DRAG';
+              }
+              isHoveringInteractive = true;
+              cursor.classList.add('has-label');
+              pill.textContent = activeLabel;
+            } else {
+              isHoveringInteractive = false;
+              cursor.classList.remove('has-label');
+              pill.textContent = '';
+            }
+          }, { passive: true });
+
+          document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('is-active');
+          });
+
+          const renderCursor = () => {
+            const ease = 0.22;
+            currentX += (mouseX - currentX) * ease;
+            currentY += (mouseY - currentY) * ease;
+            cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+            requestAnimationFrame(renderCursor);
+          };
+          requestAnimationFrame(renderCursor);
+        }
       }
     </script>
   </body>

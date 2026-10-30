@@ -1,138 +1,195 @@
 ---
-// VideoModal.astro - Accessible Lazy Video Modal with Focus Trap
+// VideoModal.astro - Modern Web Guidance Compliant Accessible Video Dialog
 ---
 
-<div
+<dialog
   id="video-modal"
   class="video-modal"
-  role="dialog"
+  aria-labelledby="modal-video-title"
   aria-modal="true"
-  aria-label="Video Player"
-  data-open="false"
+  closedby="any"
 >
-  <div class="video-modal-dialog" id="video-modal-dialog">
-    <button
-      type="button"
-      class="video-modal-close"
-      id="video-modal-close"
-      aria-label="Close video player"
-    >
-      <span>ESC</span>
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M18 6L6 18M6 6l12 12"></path>
-      </svg>
-    </button>
-    <div id="video-modal-player-container" class="w-full h-full flex items-center justify-center bg-black">
-      <!-- YouTube/Vimeo iframe is dynamically injected ONLY on user click -->
+  <div class="video-modal-wrapper" id="video-modal-wrapper">
+    <!-- Header bar with title, timecode, and close button -->
+    <div class="video-modal-bar">
+      <div class="video-modal-info">
+        <span class="video-modal-rec" aria-hidden="true">● REC</span>
+        <h3 id="modal-video-title" class="video-modal-title">Video Preview</h3>
+        <span id="modal-video-meta" class="video-modal-meta">16:9 · 4K UHD</span>
+      </div>
+      <button
+        type="button"
+        class="video-modal-close"
+        id="video-modal-close"
+        aria-label="Close video player (Esc)"
+      >
+        <span class="video-modal-key" aria-hidden="true">ESC</span>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Video Stage: dynamic aspect ratio container for 16:9 or 9:16 -->
+    <div class="video-modal-stage">
+      <div id="video-modal-player-container" class="video-modal-container" data-orientation="horizontal">
+        <!-- YouTube iframe injected ONLY upon user trigger -->
+      </div>
+    </div>
+
+    <!-- Mobile swipe indicator -->
+    <div class="video-modal-swipe-hint" aria-hidden="true">
+      <span></span>
     </div>
   </div>
-</div>
+</dialog>
 
 <script>
-  // Video Modal Controller
-  class VideoModalController {
-    modal: HTMLElement | null;
-    dialog: HTMLElement | null;
-    closeBtn: HTMLElement | null;
+  class AccessibleVideoModal {
+    dialog: HTMLDialogElement | null;
+    wrapper: HTMLElement | null;
     container: HTMLElement | null;
+    closeBtn: HTMLElement | null;
+    titleEl: HTMLElement | null;
+    metaEl: HTMLElement | null;
     lastActiveElement: HTMLElement | null = null;
+    touchStartY = 0;
+    touchCurrentY = 0;
 
     constructor() {
-      this.modal = document.getElementById('video-modal');
-      this.dialog = document.getElementById('video-modal-dialog');
-      this.closeBtn = document.getElementById('video-modal-close');
+      this.dialog = document.getElementById('video-modal') as HTMLDialogElement | null;
+      this.wrapper = document.getElementById('video-modal-wrapper');
       this.container = document.getElementById('video-modal-player-container');
+      this.closeBtn = document.getElementById('video-modal-close');
+      this.titleEl = document.getElementById('modal-video-title');
+      this.metaEl = document.getElementById('modal-video-meta');
 
-      if (!this.modal || !this.dialog || !this.container || !this.closeBtn) return;
+      if (!this.dialog || !this.container) return;
 
-      // Event listener for opening buttons
+      // Event delegation for all video launch buttons
       document.addEventListener('click', (e) => {
         const trigger = (e.target as HTMLElement).closest('[data-video-id]') as HTMLElement | null;
         if (trigger) {
+          e.preventDefault();
           const videoId = trigger.getAttribute('data-video-id');
+          const orientation = trigger.getAttribute('data-orientation') || 'horizontal';
+          const title = trigger.getAttribute('data-video-title') || 'Video Preview';
+          const duration = trigger.getAttribute('data-video-duration') || '';
           if (videoId) {
-            this.open(videoId, trigger);
+            this.open(videoId, orientation, title, duration, trigger);
           }
         }
       });
 
-      // Close handlers
-      this.closeBtn.addEventListener('click', () => this.close());
-      this.modal.addEventListener('click', (e) => {
-        if (e.target === this.modal) {
+      // Close button
+      this.closeBtn?.addEventListener('click', () => this.close());
+
+      // Light-dismiss click outside dialog wrapper
+      this.dialog.addEventListener('click', (e) => {
+        if (e.target === this.dialog) {
           this.close();
         }
       });
 
-      // Escape key and focus trap
-      document.addEventListener('keydown', (e) => {
-        if (this.isOpen()) {
-          if (e.key === 'Escape') {
-            this.close();
-          } else if (e.key === 'Tab') {
-            this.handleFocusTrap(e);
-          }
+      // Dialog native cancel event (Esc key)
+      this.dialog.addEventListener('cancel', (e) => {
+        e.preventDefault();
+        this.close();
+      });
+
+      // Keyboard shortcuts inside modal
+      this.dialog.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          this.close();
         }
       });
+
+      // Mobile swipe down to close gesture
+      if (this.wrapper) {
+        this.wrapper.addEventListener('touchstart', (e) => {
+          this.touchStartY = e.touches[0].clientY;
+          this.touchCurrentY = this.touchStartY;
+        }, { passive: true });
+
+        this.wrapper.addEventListener('touchmove', (e) => {
+          this.touchCurrentY = e.touches[0].clientY;
+          const deltaY = this.touchCurrentY - this.touchStartY;
+          if (deltaY > 0 && this.wrapper) {
+            this.wrapper.style.transform = `translateY(${Math.min(deltaY * 0.7, 120)}px)`;
+            this.wrapper.style.opacity = `${Math.max(0.4, 1 - deltaY / 300)}`;
+          }
+        }, { passive: true });
+
+        this.wrapper.addEventListener('touchend', () => {
+          const deltaY = this.touchCurrentY - this.touchStartY;
+          if (this.wrapper) {
+            this.wrapper.style.transform = '';
+            this.wrapper.style.opacity = '';
+          }
+          if (deltaY > 80) {
+            this.close();
+          }
+        }, { passive: true });
+      }
     }
 
-    isOpen(): boolean {
-      return this.modal?.getAttribute('data-open') === 'true';
-    }
-
-    open(videoId: string, trigger: HTMLElement) {
-      if (!this.modal || !this.container) return;
+    open(videoId: string, orientation: string, title: string, duration: string, trigger: HTMLElement) {
+      if (!this.dialog || !this.container) return;
       this.lastActiveElement = trigger;
 
-      // Lazy load the iframe only on user click
+      if (this.titleEl) this.titleEl.textContent = title;
+      if (this.metaEl) {
+        const ratio = orientation === 'vertical' ? '9:16 VERTICAL' : '16:9 4K';
+        this.metaEl.textContent = duration ? `${ratio} · ${duration}` : ratio;
+      }
+
+      this.container.setAttribute('data-orientation', orientation);
+
+      // Dynamically create iframe using youtube-nocookie.com
+      // Zero youtube requests happened prior to this line!
       this.container.innerHTML = `
         <iframe
           class="video-modal-iframe"
-          src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1"
-          title="Video Player"
+          src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1"
+          title="${title.replace(/"/g, '&quot;')}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
+          loading="eager"
         ></iframe>
       `;
 
-      this.modal.setAttribute('data-open', 'true');
-      document.body.style.overflow = 'hidden';
+      // Open native modal dialog
+      if (typeof this.dialog.showModal === 'function') {
+        this.dialog.showModal();
+      } else {
+        this.dialog.setAttribute('open', '');
+      }
+
       this.closeBtn?.focus();
     }
 
     close() {
-      if (!this.modal || !this.container) return;
-      this.modal.setAttribute('data-open', 'false');
-      // Completely unload the iframe to stop audio & free RAM
-      this.container.innerHTML = '';
-      document.body.style.overflow = '';
+      if (!this.dialog || !this.container) return;
 
-      if (this.lastActiveElement) {
+      // Close modal
+      if (typeof this.dialog.close === 'function') {
+        this.dialog.close();
+      } else {
+        this.dialog.removeAttribute('open');
+      }
+
+      // CRITICAL: Unload iframe immediately to stop audio, network, and RAM consumption
+      this.container.innerHTML = '';
+
+      // Return focus to invoker
+      if (this.lastActiveElement && typeof this.lastActiveElement.focus === 'function') {
         this.lastActiveElement.focus();
         this.lastActiveElement = null;
-      }
-    }
-
-    handleFocusTrap(e: KeyboardEvent) {
-      if (!this.modal) return;
-      const focusable = this.modal.querySelectorAll<HTMLElement>(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      if (!focusable.length) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
       }
     }
   }
 
   // Initialize
-  new VideoModalController();
+  new AccessibleVideoModal();
 </script>

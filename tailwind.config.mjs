@@ -19,7 +19,7 @@ export default {
         danger: 'var(--danger)',
       },
       fontFamily: {
-        display: ['Onest', 'system-ui', 'sans-serif'],
+        display: ['"Unbounded"', 'Onest', 'system-ui', 'sans-serif'],
         body: ['Onest', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },

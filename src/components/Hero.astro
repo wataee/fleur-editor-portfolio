@@ -13,124 +13,146 @@ interface Props {
 }
 
 const { hero, lang = 'ru' } = Astro.props;
+
+// Hero showreel uses the flagship AI/tech documentary edit (25:45)
+const showreelId = "cZZgi5xn930";
+const showreelDuration = "25:45";
 ---
 
-<section class="hero" aria-label="Hero">
-  <!-- Top Badges -->
-  <div class="hero-mark" data-reveal="true">
-    <div class="inline-flex items-center gap-2">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span class="eyebrow">{hero.status}</span>
+<section class="hero" aria-label="Introduction">
+  <!-- Top Meta Strip -->
+  <div class="hero-topline" data-reveal="true">
+    <div class="hero-status">
+      <span class="status-pulse" aria-hidden="true"></span>
+      <span class="font-mono text-xs uppercase tracking-wider">{hero.status}</span>
     </div>
 
-    <!-- Improvement: "No Generative AI" Badge -->
-    <div class="badge-pill ml-auto sm:ml-0" title={lang === 'ru' ? 'Весь монтаж и графика создаются вручную' : 'All editing and graphics crafted manually'}>
-      <svg class="w-3.5 h-3.5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <div class="hero-studio-meta font-mono text-xs" aria-hidden="true">
+      <span class="meta-tag">NLE // DAVINCI RESOLVE STUDIO</span>
+      <span class="meta-separator">·</span>
+      <span class="meta-tag">4K PRORES</span>
+    </div>
+
+    <div class="hero-ai-badge">
+      <svg class="w-3.5 h-3.5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
         <path d="M9 12l2 2 4-4"></path>
       </svg>
-      <span>{hero.aiBadge}</span>
+      <span class="font-mono text-xs">{hero.aiBadge}</span>
     </div>
   </div>
 
-  <!-- Headline -->
-  <div class="hero-headline">
+  <!-- Main Asymmetric Headline -->
+  <div class="hero-headline-wrap">
     <h1 class="hero-title" lang={lang} data-reveal="true">
       {hero.title}
     </h1>
   </div>
 
-  <!-- Foot: Subtitle & CTA -->
-  <div class="hero-foot">
-    <p class="hero-sub" data-reveal="true">
-      {hero.sub}
-    </p>
+  <!-- Hero Content Grid: Left Text & CTA, Right Interactive Showreel Window -->
+  <div class="hero-content-grid">
+    <div class="hero-lead-col">
+      <p class="hero-sub" data-reveal="true">
+        {hero.sub}
+      </p>
 
-    <div class="hero-actions" data-reveal="true">
-      <a class="btn-primary" href="#work">
-        {hero.cta}
-        <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </a>
-      <a class="btn-secondary" href="#difference">
-        <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
-        </svg>
-        {lang === 'ru' ? 'До и после цветокоррекции' : lang === 'kz' ? 'Түс түзетуге дейін және кейін' : 'See color grading'}
-      </a>
+      <div class="hero-actions" data-reveal="true">
+        <a class="btn-primary" href="#work">
+          <span>{hero.cta}</span>
+          <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        <a class="btn-secondary" href="#difference">
+          <span class="color-wheel-icon" aria-hidden="true"></span>
+          <span>{lang === 'ru' ? 'До и после цветокоррекции' : lang === 'kz' ? 'Түс түзетуге дейін және кейін' : 'Color grading grade'}</span>
+        </a>
+      </div>
+
+      <p class="hero-note" data-reveal="true">
+        <span class="note-label font-mono text-xs uppercase tracking-wider">[GENRE // EXPERTISE]:</span> {hero.industriesNote}
+      </p>
+    </div>
+
+    <!-- Right Column: Cinematic Showreel Monitor Facade -->
+    <div class="hero-showreel-col" data-reveal="true">
+      <div class="showreel-monitor">
+        <div class="monitor-topbar">
+          <div class="flex items-center gap-2">
+            <span class="monitor-led" aria-hidden="true"></span>
+            <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">CAM A // SONY FX3</span>
+          </div>
+          <span class="font-mono text-[11px] tracking-wider text-accent uppercase">REEL 2026</span>
+        </div>
+
+        <button
+          type="button"
+          class="showreel-screen"
+          data-video-id={showreelId}
+          data-orientation="horizontal"
+          data-video-title={lang === 'kz' ? 'Шоурил // Монтаж портфолиосы' : lang === 'en' ? 'Showreel // Video Editing Portfolio' : 'Шоурил // Портфолио монтажёра'}
+          data-video-duration={showreelDuration}
+          aria-label={lang === 'kz' ? 'Шоурилді көру' : lang === 'en' ? 'Play Showreel' : 'Смотреть шоурил'}
+        >
+          <img
+            src={`https://i.ytimg.com/vi/${showreelId}/maxresdefault.jpg`}
+            alt=""
+            loading="eager"
+            decoding="async"
+            width="1280"
+            height="720"
+            class="showreel-poster"
+          />
+
+          <!-- Viewfinder HUD Overlays -->
+          <div class="monitor-hud" aria-hidden="true">
+            <div class="hud-corner hud-tl"></div>
+            <div class="hud-corner hud-tr"></div>
+            <div class="hud-corner hud-bl"></div>
+            <div class="hud-corner hud-br"></div>
+            <div class="hud-center-cross"></div>
+
+            <div class="hud-header">
+              <span class="hud-rec font-mono text-xs">● REC</span>
+              <span class="hud-timecode font-mono text-xs">00:00:00:00</span>
+            </div>
+
+            <div class="hud-center-cta">
+              <div class="hud-play-btn">
+                <svg class="w-8 h-8 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </div>
+              <span class="hud-play-label font-mono text-xs">PLAY SHOWREEL [{showreelDuration}]</span>
+            </div>
+
+            <div class="hud-footer font-mono text-[10px]">
+              <span>PRORES 422 HQ</span>
+              <span>3840×2160 · 24.00 FPS</span>
+              <span>S-LOG3 ➔ REC.709</span>
+            </div>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Stats Grid & Industries (Integrated Proof Row) -->
-<section class="section section--stats pt-0" aria-label="Services">
-  <ul class="stats-grid" id="stats-counter-grid">
-    {hero.proofStats.map((stat, i) => (
-      <li class="stat card--interactive" data-reveal="card">
-        <p class="stat-value" data-target={stat.value}>
-          <span class="counter-display">{stat.value}</span>
-        </p>
-        <p class="stat-label">{stat.label}</p>
+<!-- Craft Pillars (Offline, Color, Motion, Sound) -->
+<section class="section section--pillars" aria-label="Craft Pillars">
+  <div class="pillars-timeline-bar" aria-hidden="true">
+    <div class="timeline-rule"></div>
+  </div>
+
+  <ul class="pillars-grid">
+    {hero.proofStats.map((stat) => (
+      <li class="pillar-card" data-reveal="card">
+        <div class="pillar-header">
+          <span class="pillar-index font-mono">{stat.value}</span>
+          <span class="pillar-channel font-mono">TRACK {stat.value}</span>
+        </div>
+        <h3 class="pillar-title">{stat.label}</h3>
       </li>
     ))}
   </ul>
-
-  <p class="stats-note" data-reveal="true">
-    {hero.industriesNote}
-  </p>
 </section>
-
-<script>
-  // Smooth counting animation for stats
-  const grid = document.getElementById('stats-counter-grid');
-  if (grid) {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-      let animated = false;
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting && !animated) {
-          animated = true;
-          observer.disconnect();
-
-          const counters = grid.querySelectorAll('.stat-value');
-          counters.forEach((el) => {
-            const raw = el.getAttribute('data-target') || '';
-            const match = raw.match(/^([^\d]*)(\d+(?:[.,]\d+)?)([\s\S]*)$/);
-            if (!match) return;
-
-            const [, prefix, numStr, suffix] = match;
-            const target = parseFloat(numStr.replace(',', '.'));
-            const isFloat = numStr.includes('.') || numStr.includes(',');
-            const duration = 1100; // ms
-            const start = performance.now();
-            const display = el.querySelector('.counter-display');
-            if (!display) return;
-            display.textContent = `${prefix}0${suffix}`;
-
-            const update = (now: number) => {
-              const elapsed = now - start;
-              const progress = Math.min(1, elapsed / duration);
-              // Ease-out cubic: 1 - Math.pow(1 - progress, 3)
-              const ease = 1 - Math.pow(1 - progress, 3);
-              const current = target * ease;
-              const formatted = isFloat ? current.toFixed(1) : Math.round(current).toString();
-              display.textContent = `${prefix}${formatted}${suffix}`;
-
-              if (progress < 1) {
-                requestAnimationFrame(update);
-              } else {
-                display.textContent = raw;
-              }
-            };
-
-            requestAnimationFrame(update);
-          });
-        }
-      }, { threshold: 0.2 });
-
-      observer.observe(grid);
-    }
-  }
-</script>
