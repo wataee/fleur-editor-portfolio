@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://fleureditor.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fleureditor.com/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fleureditor.com/ru/" />
-    <xhtml:link rel="alternate" hreflang="kz" href="https://fleureditor.com/kz/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fleureditor.com/" />
+    <loc>https://fluere.work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluere.work/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fluere.work/ru/" />
+    <xhtml:link rel="alternate" hreflang="kz" href="https://fluere.work/kz/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluere.work/" />
     <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fleureditor.com/ru/</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fleureditor.com/ru/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://fleureditor.com/" />
-    <xhtml:link rel="alternate" hreflang="kz" href="https://fleureditor.com/kz/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fleureditor.com/" />
+    <loc>https://fluere.work/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fluere.work/ru/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluere.work/" />
+    <xhtml:link rel="alternate" hreflang="kz" href="https://fluere.work/kz/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluere.work/" />
     <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://fleureditor.com/kz/</loc>
-    <xhtml:link rel="alternate" hreflang="kz" href="https://fleureditor.com/kz/" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://fleureditor.com/ru/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://fleureditor.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fleureditor.com/" />
+    <loc>https://fluere.work/kz/</loc>
+    <xhtml:link rel="alternate" hreflang="kz" href="https://fluere.work/kz/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://fluere.work/ru/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://fluere.work/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fluere.work/" />
     <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
