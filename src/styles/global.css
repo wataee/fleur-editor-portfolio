@@ -22,9 +22,11 @@
   --accent-soft: rgba(158, 42, 56, 0.16);
   --accent-line: rgba(184, 58, 73, 0.42);
   --live: #10B981;
+  --live-halo: rgba(16, 185, 129, 0.35);
+  --live-halo-0: rgba(16, 185, 129, 0);
   --live-rec: #EF4444;
-  --live-halo: rgba(239, 68, 68, 0.35);
-  --live-halo-0: rgba(239, 68, 68, 0);
+  --rec-halo: rgba(239, 68, 68, 0.35);
+  --rec-halo-0: rgba(239, 68, 68, 0);
   --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
   --shadow-header: 0 12px 32px -8px rgba(0, 0, 0, 0.7);
   --shadow-glow: 0 8px 30px -8px rgba(158, 42, 56, 0.28);
@@ -119,9 +121,11 @@ html.light, html[data-theme="light"], [data-theme="light"] {
   --accent-soft: rgba(142, 32, 46, 0.1);
   --accent-line: rgba(142, 32, 46, 0.35);
   --live: #1B7A4F;
+  --live-halo: rgba(27, 122, 79, 0.38);
+  --live-halo-0: rgba(27, 122, 79, 0);
   --live-rec: #DC2626;
-  --live-halo: rgba(220, 38, 38, 0.25);
-  --live-halo-0: rgba(220, 38, 38, 0);
+  --rec-halo: rgba(220, 38, 38, 0.25);
+  --rec-halo-0: rgba(220, 38, 38, 0);
   --shadow-card: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
   --shadow-header: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
   --shadow-glow: 0 8px 24px -8px rgba(142, 32, 46, 0.2);
