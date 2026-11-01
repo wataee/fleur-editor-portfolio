@@ -15,12 +15,47 @@ interface Props {
     eyebrow: string;
     title: string;
     sub: string;
+    briefHelper?: string;
   };
   contacts: ContactChannel[];
   lang?: string;
 }
 
 const { data, contacts, lang = 'ru' } = Astro.props;
+
+const tgMessage = lang === 'kz'
+  ? "Сәлеметсіз бе! YouTube немесе әлеуметтік желіге бейнемонтаж қажет."
+  : lang === 'en'
+  ? "Hi! I need video editing for YouTube/socials. Let's discuss."
+  : "Привет! Нужен монтаж видео для YouTube/соцсетей. Расскажу о проекте:";
+
+const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgMessage)}`;
+
+const mailSubject = lang === 'kz'
+  ? "Бейнемонтаж бойынша сұраныс (.fleur)"
+  : lang === 'en'
+  ? "Video Editing Project Inquiry (.fleur)"
+  : "Заказ монтажа видео (.fleur)";
+
+const mailUrl = `mailto:fluere.work@gmail.com?subject=${encodeURIComponent(mailSubject)}`;
+
+const tgDesc = lang === 'kz'
+  ? "1–2 сағат ішінде жылдам жауап · Негізгі байланыс"
+  : lang === 'en'
+  ? "Fast reply within 1–2 hours · Primary channel"
+  : "Быстрый ответ в течение 1–2 часов · Основной канал";
+
+const emailDesc = lang === 'kz'
+  ? "Толық техникалық тапсырма мен келісімшарттар үшін"
+  : lang === 'en'
+  ? "For detailed briefs and contracts"
+  : "Для подробных ТЗ и договоров";
+
+const briefTitle = lang === 'kz'
+  ? "Бағасын жылдам есептеу үшін:"
+  : lang === 'en'
+  ? "For a quick estimate, please share:"
+  : "Что прислать для быстрой оценки:";
 ---
 
 <section class="section" id="contact" aria-labelledby="contact-title">
@@ -35,46 +70,52 @@ const { data, contacts, lang = 'ru' } = Astro.props;
       </div>
     </div>
 
-    <!-- 3 Big Actionable Cards: Telegram, Email, X -->
+    <!-- 2 Actionable Cards: Telegram (Primary Focus) and Email (Backup) -->
     <ul class="contact-cards">
-      {contacts.map((c) => {
-        const desc = lang === 'kz' ? (c.description_kz || c.description_ru) : lang === 'ru' ? c.description_ru : c.description_en;
+      <!-- 1. Telegram Card -->
+      <li data-reveal="card">
+        <a
+          class="contact-card card--interactive border-accent bg-accent-soft/20 shadow-glow"
+          href={tgUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
+            </svg>
+          </span>
 
-        return (
-          <li data-reveal="card">
-            <a
-              class={`contact-card card--interactive ${c.primary ? 'border-accent bg-accent-soft/20' : ''}`}
-              href={c.url}
-              target={c.url.startsWith('mailto:') ? '_self' : '_blank'}
-              rel={c.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-            >
-              <span class="contact-card-icon" aria-hidden="true">
-                {c.id === 'telegram' && (
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
-                  </svg>
-                )}
+          <span class="contact-card-label">Telegram</span>
+          <p class="contact-card-value">@ffluere</p>
+          <p class="contact-card-desc">{tgDesc}</p>
 
-                {c.id === 'email' && (
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 6.5A1.5 1.5 0 014.5 5h15A1.5 1.5 0 0121 6.5v11a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 17.5v-11zm1.8.5l7.2 5.3L19.2 7H4.8z"></path>
-                  </svg>
-                )}
+          {data.briefHelper && (
+            <div class="contact-brief-helper mt-3">
+              <strong>{briefTitle}</strong>
+              <span>{data.briefHelper}</span>
+            </div>
+          )}
+        </a>
+      </li>
 
-                {c.id === 'x' && (
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
-                  </svg>
-                )}
-              </span>
+      <!-- 2. Email Card -->
+      <li data-reveal="card">
+        <a
+          class="contact-card card--interactive"
+          href={mailUrl}
+        >
+          <span class="contact-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 6.5A1.5 1.5 0 014.5 5h15A1.5 1.5 0 0121 6.5v11a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 17.5v-11zm1.8.5l7.2 5.3L19.2 7H4.8z"></path>
+            </svg>
+          </span>
 
-              <span class="contact-card-label">{c.name}</span>
-              <p class="contact-card-value">{c.handle}</p>
-              <p class="contact-card-desc">{desc}</p>
-            </a>
-          </li>
-        );
-      })}
+          <span class="contact-card-label">Email</span>
+          <p class="contact-card-value">fluere.work@gmail.com</p>
+          <p class="contact-card-desc">{emailDesc}</p>
+        </a>
+      </li>
     </ul>
   </div>
 </section>

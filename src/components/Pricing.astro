@@ -5,6 +5,7 @@ interface Plan {
   description: string;
   badge: string | null;
   features: string[];
+  published?: boolean;
 }
 
 interface Props {
@@ -17,7 +18,10 @@ interface Props {
   lang?: string;
 }
 
-const { data, lang } = Astro.props;
+const { data, lang = 'ru' } = Astro.props;
+
+// Filter out unpublished or placeholder plans (e.g. [TODO] Reels pricing)
+const visiblePlans = data.plans.filter((p) => p.published !== false && !p.price.includes('[TODO]'));
 ---
 
 <section class="section" id="pricing" aria-labelledby="pricing-title">
@@ -27,14 +31,15 @@ const { data, lang } = Astro.props;
   </div>
 
   <div class="pricing-grid">
-    {data.plans.map((plan) => (
+    {visiblePlans.map((plan) => (
       <div class="pricing-card" data-reveal="card">
-        {plan.badge && (
-          <span class="pricing-badge">{plan.badge}</span>
-        )}
-
-        <div>
-          <h3 class="pricing-name">{plan.name}</h3>
+        <div class="pricing-card-header">
+          <div class="pricing-card-top">
+            <h3 class="pricing-name">{plan.name}</h3>
+            {plan.badge && (
+              <span class="pricing-badge">{plan.badge}</span>
+            )}
+          </div>
           <p class={`pricing-price ${plan.price.length > 8 ? 'pricing-price--custom' : ''}`}>{plan.price}</p>
           <p class="pricing-desc">{plan.description}</p>
         </div>

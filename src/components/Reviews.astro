@@ -6,130 +6,104 @@ interface Props {
     eyebrow: string;
     title: string;
     sub: string;
-    demoLabel: string;
   };
   lang?: string;
 }
 
 const { data, lang = 'ru' } = Astro.props;
 
-// Build-time detection and warning for draft reviews as required by prompt 4.3
-const draftReviews = reviews.filter((r) => r.draft);
-if (draftReviews.length > 0) {
-  console.warn(
-    `\n[fleur-portfolio] ⚠️ ВНИМАНИЕ: ${draftReviews.length} отзывов имеют статус draft: true (черновики):\n` +
-    draftReviews.map((r) => `  - ${r.author_ru} | ${r.channel} (${r.id})`).join('\n') +
-    `\n  Пожалуйста, замените их реальными отзывами клиентов перед финальным продакшеном.\n`
-  );
-}
+// Only publish verified reviews where draft === false (never draft: true)
+const validReviews = (reviews || []).filter((r) => r && r.draft === false);
 
-const getAuthor = (r: typeof reviews[0]) => {
+const getAuthor = (r: typeof validReviews[0]) => {
   if (lang === 'kz') return r.author_kz || r.author_ru;
   if (lang === 'en') return r.author_en || r.author_ru;
   return r.author_ru;
 };
 
-const getRole = (r: typeof reviews[0]) => {
+const getRole = (r: typeof validReviews[0]) => {
   if (lang === 'kz') return r.role_kz || r.role_ru;
   if (lang === 'en') return r.role_en || r.role_ru;
   return r.role_ru;
 };
 
-const getText = (r: typeof reviews[0]) => {
+const getText = (r: typeof validReviews[0]) => {
   if (lang === 'kz') return r.text_kz || r.text_ru;
   if (lang === 'en') return r.text_en || r.text_ru;
   return r.text_ru;
 };
 ---
 
-<section class="section section--reviews" id="reviews" aria-labelledby="reviews-title">
-  <!-- Section Header -->
-  <div class="section-head" data-reveal="true">
-    <div class="inline-flex items-center gap-2">
-      <span class="tape-index font-mono" aria-hidden="true">[AUDIO // VOX]</span>
-      <span class="eyebrow">{data.eyebrow}</span>
+{validReviews.length > 0 && (
+  <section class="section section--reviews" id="reviews" aria-labelledby="reviews-title">
+    <!-- Section Header -->
+    <div class="section-head" data-reveal="true">
+      <div class="inline-flex items-center gap-2">
+        <span class="tape-index font-mono" aria-hidden="true">[AUDIO // VOX]</span>
+        <span class="eyebrow">{data.eyebrow}</span>
+      </div>
+      <h2 class="section-title" id="reviews-title">{data.title}</h2>
+      <p class="section-lead max-w-2xl text-text-dim text-sm sm:text-base mt-2">
+        {data.sub}
+      </p>
     </div>
-    <h2 class="section-title" id="reviews-title">{data.title}</h2>
-    <p class="section-lead max-w-2xl text-text-dim text-sm sm:text-base mt-2">
-      {data.sub}
-    </p>
-  </div>
 
-  <!-- Editorial Subtitle-Style Review Grid (Masonry feel, dynamic height) -->
-  <div class="reviews-editorial-grid">
-    {reviews.map((rev, idx) => {
-      const author = getAuthor(rev);
-      const role = getRole(rev);
-      const quote = getText(rev);
+    <!-- Editorial Subtitle-Style Review Grid -->
+    <div class="reviews-editorial-grid">
+      {validReviews.map((rev, idx) => {
+        const author = getAuthor(rev);
+        const role = getRole(rev);
+        const quote = getText(rev);
 
-      return (
-        <article
-          class="review-quote-card"
-          data-reveal="card"
-          data-draft={rev.draft ? "true" : "false"}
-        >
-          <!-- Review HUD Header: Timecode and Tape Index -->
-          <div class="review-card-top font-mono text-[11px]">
-            <div class="flex items-center gap-2">
-              <span class="review-slate-num">TAKE {String(idx + 1).padStart(2, '0')}</span>
-              <span class="text-text-mute">·</span>
-              <span class="text-accent">{rev.timecode || '00:00:00:00'}</span>
-            </div>
-            {rev.draft && (
-              <span class="review-draft-pill font-mono text-[10px]" title="Черновик отзыва для предпросмотра структуры">
-                DRAFT
-              </span>
-            )}
-          </div>
-
-          <!-- Subtitle-style blockquote -->
-          <blockquote class="review-quote-body">
-            <p class="review-quote-text">
-              <span class="quote-mark" aria-hidden="true">“</span>
-              {quote}
-              <span class="quote-mark" aria-hidden="true">”</span>
-            </p>
-          </blockquote>
-
-          <!-- Author attribution & Typographic Monogram Fallback -->
-          <div class="review-card-footer">
-            <div class="review-avatar-fallback font-mono" aria-hidden="true">
-              {rev.initials || author.slice(0, 2).toUpperCase()}
-            </div>
-
-            <div class="review-author-meta">
-              <cite class="review-author-name not-italic">{author}</cite>
-              <div class="review-author-role font-mono text-xs text-text-dim">
-                <span>{rev.channel}</span>
-                <span class="text-text-mute"> / </span>
-                <span>{role}</span>
+        return (
+          <article
+            class="review-quote-card"
+            data-reveal="card"
+          >
+            <!-- Review HUD Header: Timecode and Tape Index -->
+            <div class="review-card-top font-mono text-[11px]">
+              <div class="flex items-center gap-2">
+                <span class="review-slate-num">TAKE {String(idx + 1).padStart(2, '0')}</span>
+                <span class="text-text-mute">·</span>
+                <span class="text-accent">{rev.timecode || '00:00:00:00'}</span>
               </div>
             </div>
 
-            {rev.project_slug && (
-              <div class="review-project-badge font-mono text-[11px] ml-auto">
-                <a href="#work" class="review-project-link">
-                  <span>[SEE CUT ↗]</span>
-                </a>
-              </div>
-            )}
-          </div>
-        </article>
-      );
-    })}
-  </div>
-</section>
+            <!-- Subtitle-style blockquote -->
+            <blockquote class="review-quote-body">
+              <p class="review-quote-text">
+                <span class="quote-mark" aria-hidden="true">“</span>
+                {quote}
+                <span class="quote-mark" aria-hidden="true">”</span>
+              </p>
+            </blockquote>
 
-<script>
-  // Client-side dev warning for draft reviews as required by prompt 4.3
-  if (import.meta.env.DEV) {
-    const draftElements = document.querySelectorAll('[data-draft="true"]');
-    if (draftElements.length > 0) {
-      console.warn(
-        `%c[fleur-portfolio] %c⚠️ ${draftElements.length} draft reviews currently active in DOM. Replace with verified client quotes before launch.`,
-        'color: #E28522; font-weight: bold;',
-        'color: inherit;'
-      );
-    }
-  }
-</script>
+            <!-- Author attribution & Typographic Monogram Fallback -->
+            <div class="review-card-footer">
+              <div class="review-avatar-fallback font-mono" aria-hidden="true">
+                {rev.initials || author.slice(0, 2).toUpperCase()}
+              </div>
+
+              <div class="review-author-meta">
+                <cite class="review-author-name not-italic">{author}</cite>
+                <div class="review-author-role font-mono text-xs text-text-dim">
+                  <span>{rev.channel}</span>
+                  <span class="text-text-mute"> / </span>
+                  <span>{role}</span>
+                </div>
+              </div>
+
+              {rev.project_slug && (
+                <div class="review-project-badge font-mono text-[11px] ml-auto">
+                  <a href="#work" class="review-project-link">
+                    <span>[SEE CUT ↗]</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+)}

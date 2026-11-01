@@ -6,7 +6,10 @@ interface Props {
     title: string;
     sub: string;
     cta: string;
-    proofStats: Array<{ value: string; label: string }>;
+    ctaTg?: string;
+    colorCta?: string;
+    servicesTitle?: string;
+    proofStats: Array<{ value: string; title?: string; label?: string; desc?: string }>;
     industriesNote: string;
   };
   lang?: string;
@@ -14,9 +17,17 @@ interface Props {
 
 const { hero, lang = 'ru' } = Astro.props;
 
-// Hero showreel uses the flagship AI/tech documentary edit (25:45)
+// Hero showreel video ID and duration
 const showreelId = "cZZgi5xn930";
 const showreelDuration = "25:45";
+
+const tgPrefillMessage = lang === 'kz'
+  ? "Сәлеметсіз бе! YouTube немесе әлеуметтік желіге бейнемонтаж қажет."
+  : lang === 'en'
+  ? "Hi! I need video editing for YouTube/socials."
+  : "Привет! Нужен монтаж видео для YouTube/соцсетей. Расскажу о проекте:";
+
+const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}`;
 ---
 
 <section class="hero" aria-label="Introduction">
@@ -28,9 +39,9 @@ const showreelDuration = "25:45";
     </div>
 
     <div class="hero-studio-meta font-mono text-xs" aria-hidden="true">
-      <span class="meta-tag">NLE // DAVINCI RESOLVE STUDIO</span>
+      <span class="meta-tag">PORTFOLIO // 2026</span>
       <span class="meta-separator">·</span>
-      <span class="meta-tag">4K PRORES</span>
+      <span class="meta-tag">4K UHD</span>
     </div>
 
     <div class="hero-ai-badge">
@@ -63,9 +74,25 @@ const showreelDuration = "25:45";
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
-        <a class="btn-secondary" href="#difference">
+
+        <a
+          class="btn-secondary btn-secondary--telegram"
+          href={tgUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="w-4 h-4 text-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
+          </svg>
+          <span>{hero.ctaTg || (lang === 'kz' ? 'Telegram-ға жазу' : lang === 'en' ? 'Message on Telegram' : 'Написать в Telegram')}</span>
+        </a>
+      </div>
+
+      <div class="pt-1" data-reveal="true">
+        <a class="hero-color-link" href="#difference">
           <span class="color-wheel-icon" aria-hidden="true"></span>
-          <span>{lang === 'ru' ? 'До и после цветокоррекции' : lang === 'kz' ? 'Түс түзетуге дейін және кейін' : 'Color grading grade'}</span>
+          <span>{hero.colorCta || (lang === 'kz' ? 'Түс түзетуге дейін және кейін' : lang === 'en' ? 'Before & After Color Grading' : 'До и после цветокоррекции')}</span>
+          <span aria-hidden="true">→</span>
         </a>
       </div>
 
@@ -80,7 +107,7 @@ const showreelDuration = "25:45";
         <div class="monitor-topbar">
           <div class="flex items-center gap-2">
             <span class="monitor-led" aria-hidden="true"></span>
-            <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">CAM A // SONY FX3</span>
+            <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">PORTFOLIO // SHOWREEL</span>
           </div>
           <span class="font-mono text-[11px] tracking-wider text-accent uppercase">REEL 2026</span>
         </div>
@@ -95,12 +122,14 @@ const showreelDuration = "25:45";
           aria-label={lang === 'kz' ? 'Шоурилді көру' : lang === 'en' ? 'Play Showreel' : 'Смотреть шоурил'}
         >
           <img
-            src={`https://i.ytimg.com/vi/${showreelId}/maxresdefault.jpg`}
-            alt=""
+            src="/posters/cZZgi5xn930.webp"
+            srcset="/posters/cZZgi5xn930-480.webp 480w, /posters/cZZgi5xn930.webp 960w"
+            sizes="(max-width: 1024px) 100vw, 560px"
+            alt="Showreel Preview"
             loading="eager"
             decoding="async"
-            width="1280"
-            height="720"
+            width="960"
+            height="540"
             class="showreel-poster"
           />
 
@@ -127,9 +156,8 @@ const showreelDuration = "25:45";
             </div>
 
             <div class="hud-footer font-mono text-[10px]">
-              <span>PRORES 422 HQ</span>
-              <span>3840×2160 · 24.00 FPS</span>
-              <span>S-LOG3 ➔ REC.709</span>
+              <span>4K UHD · 24 FPS · 25:45</span>
+              <span>DAVINCI RESOLVE · REC.709</span>
             </div>
           </div>
         </button>
@@ -138,10 +166,14 @@ const showreelDuration = "25:45";
   </div>
 </section>
 
-<!-- Craft Pillars (Offline, Color, Motion, Sound) -->
-<section class="section section--pillars" aria-label="Craft Pillars">
+<!-- Craft Services ("Что я делаю") -->
+<section class="section section--pillars" aria-label={hero.servicesTitle || "What I Do"}>
   <div class="pillars-timeline-bar" aria-hidden="true">
     <div class="timeline-rule"></div>
+  </div>
+
+  <div class="mb-4" data-reveal="true">
+    <span class="eyebrow">{hero.servicesTitle || (lang === 'kz' ? 'Мен не істеймін' : lang === 'en' ? 'What I Do' : 'Что я делаю')}</span>
   </div>
 
   <ul class="pillars-grid">
@@ -149,9 +181,10 @@ const showreelDuration = "25:45";
       <li class="pillar-card" data-reveal="card">
         <div class="pillar-header">
           <span class="pillar-index font-mono">{stat.value}</span>
-          <span class="pillar-channel font-mono">TRACK {stat.value}</span>
+          <span class="pillar-channel font-mono">STEP {stat.value}</span>
         </div>
-        <h3 class="pillar-title">{stat.label}</h3>
+        <h3 class="pillar-title">{stat.title || stat.label}</h3>
+        {stat.desc && <p class="pillar-desc">{stat.desc}</p>}
       </li>
     ))}
   </ul>

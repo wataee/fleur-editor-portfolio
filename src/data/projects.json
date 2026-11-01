@@ -10,19 +10,37 @@
     "featured": true,
     "order": 1,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/cZZgi5xn930/maxresdefault.jpg",
-    "title_ru": "Монтаж в нише искусственного интеллекта",
-    "title_en": "AI Niche Narrative & Visual Deep-Dive",
-    "title_kz": "Жасанды интеллект саласындағы монтаж",
+    "thumbnail": "/posters/cZZgi5xn930.webp",
+    "title_ru": "Разбор архитектуры нейросетей",
+    "title_en": "Neural Network Architecture Deep-Dive",
+    "title_kz": "Нейрожелілер архитектурасына шолу",
     "client_ru": "YouTube-канал об ИИ",
-    "client_en": "AI YouTube Channel",
+    "client_en": "AI Explainer Channel",
     "client_kz": "AI туралы YouTube-арна",
     "format_ru": "Горизонтальное видео · 16:9 · 4K",
     "format_en": "Horizontal Video · 16:9 · 4K",
     "format_kz": "Көлденең бейне · 16:9 · 4K",
-    "body_ru": "Масштабный разбор с выверенным темпом: анимированные схемы архитектур нейросетей, кинетический моушн интерфейсов, очищенная речь спикера и плотный саунд-дизайн.",
-    "body_en": "In-depth long-form analysis featuring custom animated neural network schematics, kinetic UI recreations, and pristine vocal clarity across 25 minutes.",
-    "body_kz": "Нейрожелі архитектурасының анимациялық сызбалары, интерфейстердің кинетикалық моушны және таза дыбысы бар ауқымды талдау бейнесі."
+    "body_ru": "Длинный выпуск: вычистил паузы спикера, анимировал схемы нейросетей, собрал динамичный интро-хук и свёл звук голоса без шума.",
+    "body_en": "Long-form essay: trimmed dead air, built motion graphics for network models, created an engaging hook, and cleaned dialogue.",
+    "body_kz": "Ұзақ шығарылым: кідірістерді тазалау, схемалар анимациясы, тартымды кіріспе және таза дыбыс.",
+    "tags_ru": [
+      "Сборка и темп",
+      "Моушн-графика",
+      "Цветокоррекция",
+      "Сведение звука"
+    ],
+    "tags_en": [
+      "Pacing & Cut",
+      "Motion Graphics",
+      "Color Grading",
+      "Sound Mastering"
+    ],
+    "tags_kz": [
+      "Монтаж және ырғақ",
+      "Моушн-графика",
+      "Түс түзету",
+      "Дыбысты өңдеу"
+    ]
   },
   {
     "id": "02",
@@ -35,19 +53,37 @@
     "featured": true,
     "order": 2,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/JpYdNQUO9gA/maxresdefault.jpg",
-    "title_ru": "Аналитика крипторынка и токеномики",
-    "title_en": "Crypto Market & Tokenomics Analysis",
-    "title_kz": "Крипторынок пен токеномика сараптамасы",
-    "client_ru": "Аналитический крипто-канал",
-    "client_en": "Crypto Analytics Channel",
-    "client_kz": "Крипто-сараптамалық арна",
+    "thumbnail": "/posters/JpYdNQUO9gA.webp",
+    "title_ru": "Обзор рынка и графиков токеномики",
+    "title_en": "Market & Tokenomics Breakdown",
+    "title_kz": "Нарық пен токеномикаға шолу",
+    "client_ru": "Канал о крипторынке",
+    "client_en": "Crypto Market Channel",
+    "client_kz": "Крипто-талдау арнасы",
     "format_ru": "Горизонтальное видео · 16:9 · 4K",
     "format_en": "Horizontal Video · 16:9 · 4K",
     "format_kz": "Көлденең бейне · 16:9 · 4K",
-    "body_ru": "Динамичный темп повествования: визуализация ончейн-данных, графики ордербуков из биржевых терминалов и выверенные акценты на ключевых рисках.",
-    "body_en": "Fast-paced market breakdown with vector on-chain visualizers, order book motion graphics, and zero filler pauses.",
-    "body_kz": "Ончейн-деректердің визуалдануы, биржалық терминал кестелері және нақты екпіндері бар қарқынды нарықтық шолу."
+    "body_ru": "Динамичный монтаж с акцентами: визуализировал графики биржи, добавил всплывающие цифры и убрал провисания в речи.",
+    "body_en": "Market breakdown: animated charts, on-screen data callouts, and eliminated conversational pauses.",
+    "body_kz": "Қарқынды монтаж: биржа графиктерін визуалдау, сандар анимациясы және кідіріссіз сөйлеу ырғағы.",
+    "tags_ru": [
+      "Монтаж",
+      "Инфографика",
+      "Цветокоррекция",
+      "Звуковые акценты"
+    ],
+    "tags_en": [
+      "Editing",
+      "Infographics",
+      "Color",
+      "Sound FX"
+    ],
+    "tags_kz": [
+      "Монтаж",
+      "Инфографика",
+      "Түс",
+      "Дыбыстық екпіндер"
+    ]
   },
   {
     "id": "03",
@@ -60,19 +96,37 @@
     "featured": true,
     "order": 3,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/W80pFjEQAbk/maxresdefault.jpg",
-    "title_ru": "Подкаст: минимализм и фокус",
-    "title_en": "Studio Podcast: Minimalism & Focus",
-    "title_kz": "Студиялық подкаст: минимализм және фокус",
+    "thumbnail": "/posters/W80pFjEQAbk.webp",
+    "title_ru": "Интервью с двумя спикерами",
+    "title_en": "Two-Speaker Studio Session",
+    "title_kz": "Екі қонақпен сұхбат",
     "client_ru": "Студийный подкаст",
     "client_en": "Studio Podcast",
     "client_kz": "Студиялық подкаст",
     "format_ru": "Горизонтальное видео · 16:9",
     "format_en": "Horizontal Video · 16:9",
     "format_kz": "Көлденең бейне · 16:9",
-    "body_ru": "Разговорный формат: естественная чистка пауз, бесшовная мультикамерная склейка, выравнивание громкости голосов и фоновая атмосфера студии.",
-    "body_en": "Conversational studio cut with natural pause trimming, invisible multicam rhythm, voice level normalization, and subtle room foley.",
-    "body_kz": "Кідірістерді табиғи тазарту, камералардың байсалды ауысуы және дыбыс сапасын теңестіру қосылған студиялық формат."
+    "body_ru": "Мультикамерный подкаст: бесшовные переключения между спикерами, чистка оговорок, сведение микрофонов и выравнивание баланса.",
+    "body_en": "Multicam interview: natural angle cuts on speaking cue, breath cleanup, and balanced studio vocal mix.",
+    "body_kz": "Мультикамералық подкаст: сөйлеушілер арасындағы бірқалыпты ауысу, артық дыбыстарды тазалау және дыбыс теңгерімі.",
+    "tags_ru": [
+      "Мультикам",
+      "Чистка звука",
+      "Выравнивание громкости",
+      "Цвет"
+    ],
+    "tags_en": [
+      "Multicam",
+      "Audio Cleanup",
+      "Voice Leveling",
+      "Color"
+    ],
+    "tags_kz": [
+      "Мультикам",
+      "Дыбысты тазалау",
+      "Дыбыс деңгейі",
+      "Түс"
+    ]
   },
   {
     "id": "04",
@@ -85,19 +139,37 @@
     "featured": true,
     "order": 4,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/B5Rn-nVXL8U/maxresdefault.jpg",
-    "title_ru": "Доход от аренды · Недвижимость",
-    "title_en": "Rental Income · Real Estate",
-    "title_kz": "Жалға беру табысы · Жылжымайтын мүлік",
-    "client_ru": "Агентство недвижимости",
-    "client_en": "Real Estate Agency",
-    "client_kz": "Жылжымайтын мүлік агенттігі",
+    "thumbnail": "/posters/B5Rn-nVXL8U.webp",
+    "title_ru": "Расчёт доходности апартаментов",
+    "title_en": "Rental Yield Breakdown",
+    "title_kz": "Пәтер табыстылығын есептеу",
+    "client_ru": "Рилс для недвижимости",
+    "client_en": "Real Estate Reel",
+    "client_kz": "Жылжымайтын мүлік рилсі",
     "format_ru": "Reels · 9:16",
     "format_en": "Reels · 9:16",
     "format_kz": "Reels · 9:16",
-    "body_ru": "Экспертный рилс для удержания: акцентные плашки с цифрами доходности, трекинг текста к интерьеру и плотный саунд-дизайн переходов.",
-    "body_en": "High-retention real estate reel featuring dynamic financial callouts, 3D text tracking, and punchy auditory transition cues.",
-    "body_kz": "Қаржылық көрсеткіштері бар плашкалар, интерьерге мәтін трекингі және динамикалық саунд-дизайн бар жылжымайтын мүлік рилсі."
+    "body_ru": "Короткий ролик для продаж: анимированные плашки с расчётом окупаемости, плавный трекинг текста к стенам и плотный звук.",
+    "body_en": "Sales vertical reel: animated ROI callouts, 3D room text tracking, and crisp sound design.",
+    "body_kz": "Қысқа сату рилсі: кірістілік плашкалары, қабырғаға мәтін трекингі және нақты дыбыс.",
+    "tags_ru": [
+      "Монтаж 9:16",
+      "Трекинг текста",
+      "Субтитры",
+      "Саунд-дизайн"
+    ],
+    "tags_en": [
+      "9:16 Edit",
+      "Text Tracking",
+      "Captions",
+      "Sound Design"
+    ],
+    "tags_kz": [
+      "9:16 монтаж",
+      "Мәтін трекингі",
+      "Субтитрлер",
+      "Саунд-дизайн"
+    ]
   },
   {
     "id": "05",
@@ -110,19 +182,37 @@
     "featured": true,
     "order": 5,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/9pBFZDq8POA/maxresdefault.jpg",
-    "title_ru": "Игровой хайлайт · Киберспорт",
-    "title_en": "Gaming Highlights · Esports",
-    "title_kz": "Ойын хайлайты · Киберспорт",
-    "client_ru": "Игровой стример",
+    "thumbnail": "/posters/9pBFZDq8POA.webp",
+    "title_ru": "Нарезка лучших моментов",
+    "title_en": "Clutch Gameplay Highlight",
+    "title_kz": "Үздік ойын сәттері",
+    "client_ru": "Игровой стрим",
     "client_en": "Gaming Streamer",
-    "client_kz": "Ойын стримері",
+    "client_kz": "Ойын стримі",
     "format_ru": "Shorts · 9:16",
     "format_en": "Shorts · 9:16",
     "format_kz": "Shorts · 9:16",
-    "body_ru": "Синхронизация киллов под бит трека, спидрэмпы, кастомные экранные вспышки и мощный импакт-саунд.",
-    "body_en": "High-energy beat-synced gameplay edit with velocity ramps, screen shakes, and weighted hit impact sound design.",
-    "body_kz": "Музыка ырғағымен үндескен киллдер, жылдамдықты өзгерту (speed ramp) және қуатты импакт-дыбыстары бар ойын монтажы."
+    "body_ru": "Динамичный Short: ускорения и замедления под ритм выстрелов, плотный бас и зум-акценты на реакции игрока.",
+    "body_en": "Fast-paced Short: velocity speed ramps to impact, punchy bass hits, and punch-ins on facecam.",
+    "body_kz": "Қарқынды Short: әрекет ырғағына сәйкес үдету, салмақты бас және ойыншы реакциясына екпін.",
+    "tags_ru": [
+      "Спидрэмпы",
+      "Зум-акценты",
+      "Звуковые эффекты",
+      "Субтитры"
+    ],
+    "tags_en": [
+      "Speed Ramps",
+      "Punch-ins",
+      "Impact SFX",
+      "Subtitles"
+    ],
+    "tags_kz": [
+      "Спидрэмптер",
+      "Зум-екпіндер",
+      "Дыбыстық әсерлер",
+      "Субтитрлер"
+    ]
   },
   {
     "id": "06",
@@ -135,19 +225,37 @@
     "featured": true,
     "order": 6,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/H2MjwWcbAJE/maxresdefault.jpg",
-    "title_ru": "VroomClub · Автопрокат премиум",
-    "title_en": "VroomClub · Premium Auto Rental",
-    "title_kz": "VroomClub · Премиум көлік жалдау",
-    "client_ru": "VroomClub",
-    "client_en": "VroomClub",
-    "client_kz": "VroomClub",
+    "thumbnail": "/posters/H2MjwWcbAJE.webp",
+    "title_ru": "Динамичный обзор автопарка",
+    "title_en": "Fleet Promo Reel",
+    "title_kz": "Автопаркке динамикалық шолу",
+    "client_ru": "Сервис проката авто",
+    "client_en": "Car Rental Service",
+    "client_kz": "Көлік жалдау сервисі",
     "format_ru": "Reels · 9:16",
     "format_en": "Reels · 9:16",
     "format_kz": "Reels · 9:16",
-    "body_ru": "Стильный промо-ролик автопарка: кинематографичная цветокоррекция, маскированные пролёты и глубокий звук двигателя.",
-    "body_en": "Cinematic promotional reel for exotic car fleet with speed ramping, whip pans, seamless match cuts, and deep exhaust Foley.",
-    "body_kz": "Премиум көліктер паркіне арналған промо-ролик: кинематографиялық түс түзету, маска арқылы өтулер және қозғалтқыш дыбысы."
+    "body_ru": "Коммерческий ролик: бесшовные переходы через маски кузова, ритмичный саунд-дизайн под мотор и контрастная цветокоррекция.",
+    "body_en": "Brand reel: match cuts across car panels, engine sound sync, and punchy commercial color grade.",
+    "body_kz": "Коммерциялық ролик: көлік шанағы арқылы бірқалыпты ауысу, қозғалтқыш дыбысына саунд-дизайн және контрастты түс.",
+    "tags_ru": [
+      "Монтаж под бит",
+      "Маски и переходы",
+      "Цветокоррекция",
+      "Звук мотора"
+    ],
+    "tags_en": [
+      "Beat Sync",
+      "Mask Transitions",
+      "Commercial Grade",
+      "Foley SFX"
+    ],
+    "tags_kz": [
+      "Ырғаққа монтаж",
+      "Маскалар мен ауысулар",
+      "Түс түзету",
+      "Дыбыс дизайны"
+    ]
   },
   {
     "id": "07",
@@ -160,19 +268,37 @@
     "featured": true,
     "order": 7,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/cp-Fx5PuVco/maxresdefault.jpg",
-    "title_ru": "Эстетичный лайфстайл · Бренд",
-    "title_en": "Aesthetic Lifestyle · Brand",
-    "title_kz": "Эстетикалық лайфстайл · Бренд",
-    "client_ru": "Личный бренд",
-    "client_en": "Personal Brand",
-    "client_kz": "Жеке бренд",
+    "thumbnail": "/posters/cp-Fx5PuVco.webp",
+    "title_ru": "Атмосферный ролик дня",
+    "title_en": "Atmospheric Lifestyle Reel",
+    "title_kz": "Күн атмосферасы туралы эстетикалық ролик",
+    "client_ru": "Лайфстайл-канал",
+    "client_en": "Lifestyle Channel",
+    "client_kz": "Лайфстайл-арна",
     "format_ru": "Reels / Shorts · 9:16",
     "format_en": "Reels / Shorts · 9:16",
     "format_kz": "Reels / Shorts · 9:16",
-    "body_ru": "Атмосферный визуал с плёночной фактурой зерна, минималистичными шрифтами и тёплым винтажным грейдингом.",
-    "body_en": "Atmospheric visual piece with authentic film grain texture, minimalist typography, and warm analog color grading.",
-    "body_kz": "Пленка түйіршігінің фактурасы, минималистік шрифттер және жылы аналогтық түс түзетуі бар атмосфералық бейне."
+    "body_ru": "Мягкий визуальный ритм: плавная кинематографичная склейка кадров, выверенная палитра и атмосферный эмбиент.",
+    "body_en": "Aesthetic cut: measured pacing, coherent warm film tone, and ambient sound design.",
+    "body_kz": "Жайлы визуалды ырғақ: кадрлардың кинематографиялық үйлесімі, жылы реңктер және фондық дыбыс.",
+    "tags_ru": [
+      "Монтаж",
+      "Цвет под плёнку",
+      "Эмбиент-звук",
+      "Ритм"
+    ],
+    "tags_en": [
+      "Editing",
+      "Film Color Tone",
+      "Ambient Audio",
+      "Pacing"
+    ],
+    "tags_kz": [
+      "Монтаж",
+      "Пленкалық түс",
+      "Фондық дыбыс",
+      "Ырғақ"
+    ]
   },
   {
     "id": "08",
@@ -185,19 +311,37 @@
     "featured": false,
     "order": 8,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/Cn7qbOIXKks/maxresdefault.jpg",
-    "title_ru": "Визуальный ритм · Креатор",
-    "title_en": "Visual Rhythm · Creator",
-    "title_kz": "Визуалды ырғақ · Креатор",
-    "client_ru": "Креатор контента",
-    "client_en": "Content Creator",
-    "client_kz": "Контент креаторы",
+    "thumbnail": "/posters/Cn7qbOIXKks.webp",
+    "title_ru": "Экспертный совет в Reels",
+    "title_en": "Expert Advice Reel",
+    "title_kz": "Reels-тегі сарапшылық кеңес",
+    "client_ru": "Экспертный блог",
+    "client_en": "Creator Channel",
+    "client_kz": "Сарапшы блогы",
     "format_ru": "Shorts · 9:16",
     "format_en": "Shorts · 9:16",
     "format_kz": "Shorts · 9:16",
-    "body_ru": "Короткий ролик с выверенной композицией кадра, быстрой сменой ракурсов и акцентными звуковыми эффектами.",
-    "body_en": "Punchy micro-content with deliberate framing, rapid angle alternations, and crisp tactile audio cues.",
-    "body_kz": "Нақты кадр композициясы, ракурстардың жылдам ауысуы және тактильді дыбыстық эффектілері бар қысқа ролик."
+    "body_ru": "Удержание внимания: динамичные субтитры с выделением ключевых слов, перебивки по смыслу и чистый звук голоса.",
+    "body_en": "Talking head cut: kinetic word-by-word captions, relevant B-roll cutaways, and pristine vocal presence.",
+    "body_kz": "Көрермен назарын ұстау: сөздік субтитрлер, мағыналық B-roll кадрлар және таза дауыс.",
+    "tags_ru": [
+      "Субтитры",
+      "B-roll перебивки",
+      "Чистка пауз",
+      "Звук"
+    ],
+    "tags_en": [
+      "Captions",
+      "B-roll Cutaways",
+      "Pause Cleanup",
+      "Vocal Mix"
+    ],
+    "tags_kz": [
+      "Субтитрлер",
+      "B-roll кадрлар",
+      "Кідірісті тазалау",
+      "Дауыс"
+    ]
   },
   {
     "id": "09",
@@ -210,18 +354,36 @@
     "featured": false,
     "order": 9,
     "year": "2026",
-    "thumbnail": "https://i.ytimg.com/vi/8YToswyXOLI/maxresdefault.jpg",
-    "title_ru": "Динамичный спидрэмп · Промо",
-    "title_en": "Dynamic Speedramp · Promo",
-    "title_kz": "Динамикалық спидрэмп · Промо",
-    "client_ru": "Медиа-проект",
-    "client_en": "Media Project",
-    "client_kz": "Медиа жобасы",
+    "thumbnail": "/posters/8YToswyXOLI.webp",
+    "title_ru": "Динамичный тизер",
+    "title_en": "Fast-Paced Teaser",
+    "title_kz": "Қарқынды тизер",
+    "client_ru": "Промо-тизер",
+    "client_en": "Promo Teaser",
+    "client_kz": "Промо-тизер",
     "format_ru": "Shorts · 9:16",
     "format_en": "Shorts · 9:16",
     "format_kz": "Shorts · 9:16",
-    "body_ru": "Ультракороткий тизер с резкими переходами, эффектом глитча и насыщенным басовым саундом для максимального удержания.",
-    "body_en": "Ultra-fast promotional teaser engineered for maximum retention with glitch transitions and sub-bass whooshes.",
-    "body_kz": "Көрермен назарын барынша ұстап тұру үшін жылдам өтулері, глитч эффектісі және басты саунд-дизайны бар ультрақысқа тизер."
+    "body_ru": "Тизер для соцсетей: ритмичные склейки под музыку, моушн-акценты и звуковые эффекты переходов.",
+    "body_en": "Short teaser: aggressive rhythm cuts to beat drops, punchy transitions, and custom impact sound.",
+    "body_kz": "Әлеуметтік желіге арналған тизер: музыка ырғағына агрессивті склейкалар, моушн-екпіндер және дыбыстық ауысулар.",
+    "tags_ru": [
+      "Монтаж под бит",
+      "Динамика",
+      "Звуковые эффекты",
+      "Графика"
+    ],
+    "tags_en": [
+      "Beat Sync",
+      "High Energy",
+      "Impact SFX",
+      "Motion"
+    ],
+    "tags_kz": [
+      "Ырғаққа монтаж",
+      "Динамика",
+      "Дыбыстық әсерлер",
+      "Графика"
+    ]
   }
 ]

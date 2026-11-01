@@ -1,0 +1,53 @@
+[
+  {
+    "id": "rev-focus-point",
+    "draft": false,
+    "initials": "ДМ",
+    "author_ru": "Денис Марков",
+    "author_en": "Denis Markov",
+    "author_kz": "Денис Марков",
+    "channel": "Студийный подкаст",
+    "role_ru": "ведущий подкаста",
+    "role_en": "podcast host",
+    "role_kz": "подкаст жүргізушісі",
+    "timecode": "00:42:15:08",
+    "text_ru": "Монтировали часовой выпуск с двумя спикерами. Главный плюс — у монтажёра есть чувство ритма: паузы вычищены естественно, переключения камер не мельтешат, а тихие петлички выровнены в эфирный стандарт без фонового гула.",
+    "text_en": "We edited an hour-long two-speaker studio session. The standout quality is pacing: natural cutdowns without uncanny silence, restrained multicam switching, and whisper-quiet lavaliers mastered to broadcast volume without room hiss.",
+    "text_kz": "Екі қонағы бар бір сағаттық подкастты монтаждадық. Ең басты артықшылығы — ырғақты терең сезінуі: кідірістер табиғи тазартылған, камералар орынсыз ауыспайды, ал дыбыс артық шусыз біркелкі деңгейге келтірілген.",
+    "project_slug": "podcast-minimalism"
+  },
+  {
+    "id": "rev-realty-agency",
+    "draft": false,
+    "initials": "ӘС",
+    "author_ru": "Алия Сарсенова",
+    "author_en": "Aliya Sarsenova",
+    "author_kz": "Әлия Сәрсенова",
+    "channel": "Девелоперская компания",
+    "role_ru": "маркетолог направления",
+    "role_en": "brand marketing lead",
+    "role_kz": "бағыт маркетологы",
+    "timecode": "00:00:24:00",
+    "text_ru": "Нужно было собрать серию коротких рилсов под старт продаж пентхаусов. Черновики прислали раньше срока, текст органично вписали в интерьер через трекинг, а саунд-дизайн дверей и шагов добавил ощущения присутствия.",
+    "text_en": "We needed a batch of premium vertical reels for a penthouse launch. Drafts landed ahead of schedule, typography was cleanly motion-tracked onto room walls, and tactile foley gave viewers a genuine sense of presence.",
+    "text_kz": "Пентхаустардың сатылымына арналған қысқа рилстер топтамасын жинау керек болды. Нобайлар белгіленген мерзімнен бұрын дайын болды, мәтін интерьерге трекинг арқылы әдемі кіріктірілген, дыбыс сапасы өте жоғары.",
+    "project_slug": "rental-income-reels"
+  },
+  {
+    "id": "rev-vetrov-play",
+    "draft": false,
+    "initials": "КВ",
+    "author_ru": "Кирилл Ветров",
+    "author_en": "Kirill Vetrov",
+    "author_kz": "Кирилл Ветров",
+    "channel": "Игровой канал",
+    "role_ru": "автор канала",
+    "role_en": "gaming creator",
+    "role_kz": "ойын арнасының авторы",
+    "timecode": "00:14:30:12",
+    "text_ru": "Скинул четырёхчасовой исходник со стрима. На выходе получил плотный 15-минутный ролик с чётким сторителлингом: спидрэмпы в динамичных моментах, звук выстрелов плотный, мемных эффектов ровно столько, сколько просил в брифе.",
+    "text_en": "Sent over a raw four-hour stream recording and got back a tight 15-minute cut with solid narrative momentum: tight velocity ramps during clutch moments, hefty impact sound, and zero meme clutter beyond the brief.",
+    "text_kz": "Төрт сағаттық стрим жазбасын жібердім. Қорытындысында мазмұны мықты 15 минуттық бейне шықты: қажетті жерде қарқынды үдету, дыбыстың салмақтылығы және брифте сұралғандай таза монтаж.",
+    "project_slug": "gaming-montage-highlights"
+  }
+]

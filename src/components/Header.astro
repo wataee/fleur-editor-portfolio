@@ -1,6 +1,7 @@
 ---
 interface NavData {
   work: string;
+  difference?: string;
   process: string;
   about: string;
   pricing?: string;
@@ -34,13 +35,13 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
       <span class="wordmark-text">fleur</span>
     </a>
 
-    <!-- Desktop Navigation -->
+    <!-- Desktop Navigation (<= 6 items matching page flow) -->
     <nav class="site-nav" aria-label="Main Navigation">
       <a class="nav-link" href="#work">{nav.work}</a>
-      <a class="nav-link" href="#process">{nav.process}</a>
-      <a class="nav-link" href="#about">{nav.about}</a>
       <a class="nav-link" href="#pricing">{nav.pricing || (lang === 'kz' ? 'Бағалар' : lang === 'en' ? 'Pricing' : 'Цены')}</a>
-      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="nav-link" href="#process">{nav.process}</a>
+      <a class="nav-link" href="#difference">{nav.difference || (lang === 'kz' ? 'Түс' : lang === 'en' ? 'Color' : 'Цвет')}</a>
+      <a class="nav-link" href="#about">{nav.about}</a>
       <a class="nav-link" href="#contact">{nav.contact}</a>
     </nav>
 
@@ -114,10 +115,10 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
       <div class="nav-panel" id="nav-panel" role="region" aria-label={nav.openMenu}>
         <nav class="nav-panel-links">
           <a class="nav-panel-link" href="#work">{nav.work}</a>
-          <a class="nav-panel-link" href="#process">{nav.process}</a>
-          <a class="nav-panel-link" href="#about">{nav.about}</a>
           <a class="nav-panel-link" href="#pricing">{nav.pricing || (lang === 'kz' ? 'Бағалар' : lang === 'en' ? 'Pricing' : 'Цены')}</a>
-          <a class="nav-panel-link" href="#faq">FAQ</a>
+          <a class="nav-panel-link" href="#process">{nav.process}</a>
+          <a class="nav-panel-link" href="#difference">{nav.difference || (lang === 'kz' ? 'Түс' : lang === 'en' ? 'Color' : 'Цвет')}</a>
+          <a class="nav-panel-link" href="#about">{nav.about}</a>
           <a class="nav-panel-link" href="#contact">{nav.contact}</a>
         </nav>
         <div class="nav-panel-foot">
