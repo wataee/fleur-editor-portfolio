@@ -42,7 +42,7 @@ const enUrl = `${siteUrl}/`;
     <link rel="apple-touch-icon" href="/logo.jpg" />
     <meta name="theme-color" content="#0D0E12" />
 
-    <!-- Inline script to immediately set theme and motion before paint and prevent flash -->
+    <!-- Inline script to immediately set theme before paint and prevent flash -->
     <script is:inline>
       try {
         const storedTheme = localStorage.getItem('theme');
@@ -55,23 +55,9 @@ const enUrl = `${siteUrl}/`;
           document.documentElement.classList.remove('light');
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-
-        let storedMotion = localStorage.getItem('fleur-motion');
-        if (!storedMotion) {
-          storedMotion = 'on';
-          localStorage.setItem('fleur-motion', 'on');
-        }
-        document.documentElement.setAttribute('data-motion', storedMotion);
-        if (storedMotion === 'on') {
-          document.documentElement.classList.add('js-reveal');
-        } else {
-          document.documentElement.classList.remove('js-reveal');
-        }
       } catch (e) {
         document.documentElement.classList.add('dark');
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.documentElement.setAttribute('data-motion', 'on');
-        document.documentElement.classList.add('js-reveal');
       }
     </script>
 
@@ -98,28 +84,12 @@ const enUrl = `${siteUrl}/`;
     <!-- Google Fonts Preconnect & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Onest:wght@300;400;500;600;700;800;900&family=Unbounded:wght@400;600;700;800;900&display=swap"
-    />
-
-
-    <!-- Main Stylesheet -->
-
 
     <ClientRouter />
-    <slot name="head" />
-
   </head>
-  <body class="antialiased selection:bg-accent selection:text-white relative">
-    <!-- Film Grain Subtle Texture Overlay -->
+  <body class="bg-bg text-text selection:bg-accent selection:text-white">
+    <!-- Subtle Film Grain Overlay -->
     <div class="film-grain" aria-hidden="true"></div>
-
-    <!-- Video Editor Custom Cursor (Desktop Only) -->
-    <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
-      <div class="cursor-dot"></div>
-      <span class="cursor-pill" id="cursor-pill"></span>
-    </div>
 
     <!-- Video Editor Timeline Playhead Progress Bar -->
     <div class="playhead" aria-hidden="true">
@@ -148,13 +118,7 @@ const enUrl = `${siteUrl}/`;
       let rafId: number | null = null;
 
       const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-
-      const isMotionActive = () => {
-        const motionAttr = document.documentElement.getAttribute('data-motion');
-        if (motionAttr === 'on') return true;
-        if (motionAttr === 'off') return false;
-        return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      };
+      const isReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       const handleScrollUpdate = () => {
         const playhead = document.getElementById('playhead-fill');
@@ -183,7 +147,7 @@ const enUrl = `${siteUrl}/`;
           rafId = null;
         }
 
-        if (isFinePointer && isMotionActive()) {
+        if (isFinePointer && !isReducedMotion()) {
           lenis = new Lenis({
             duration: 1.25,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -215,7 +179,7 @@ const enUrl = `${siteUrl}/`;
               e.preventDefault();
               const headerOffset = 80;
 
-              if (lenis) {
+              if (lenis && !isReducedMotion()) {
                 lenis.scrollTo(target as HTMLElement, {
                   offset: -headerOffset,
                   duration: 1.35,
@@ -226,7 +190,7 @@ const enUrl = `${siteUrl}/`;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 window.scrollTo({
                   top: offsetPosition,
-                  behavior: isMotionActive() ? 'smooth' : 'auto'
+                  behavior: isReducedMotion() ? 'auto' : 'smooth'
                 });
               }
 
@@ -240,120 +204,50 @@ const enUrl = `${siteUrl}/`;
         const toTopBtn = document.getElementById('to-top');
         if (toTopBtn) {
           toTopBtn.addEventListener('click', () => {
-            if (lenis) {
+            if (lenis && !isReducedMotion()) {
               lenis.scrollTo(0, { duration: 1.2 });
             } else {
-              window.scrollTo({ top: 0, behavior: isMotionActive() ? 'smooth' : 'auto' });
+              window.scrollTo({ top: 0, behavior: isReducedMotion() ? 'auto' : 'smooth' });
             }
           });
         }
       };
 
       const initReveals = () => {
-        if (isMotionActive()) {
-          setTimeout(() => {
-            document.querySelectorAll('.hero [data-reveal]').forEach((el) => {
-              el.setAttribute('data-revealed', '1');
-            });
-          }, 60);
-
-          if ('IntersectionObserver' in window) {
-            const revealObserver = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    entry.target.setAttribute('data-revealed', '1');
-                    revealObserver.unobserve(entry.target);
-                  }
-                });
-              },
-              {
-                threshold: 0.08,
-                rootMargin: '0px 0px -30px 0px'
-              }
-            );
-
-            document.querySelectorAll('[data-reveal]:not(.hero [data-reveal])').forEach((el) => {
-              revealObserver.observe(el);
-            });
-          } else {
-            document.querySelectorAll('[data-reveal]').forEach((el) => el.setAttribute('data-revealed', '1'));
-          }
-        } else {
+        if (isReducedMotion()) {
           document.querySelectorAll('[data-reveal]').forEach((el) => {
             el.setAttribute('data-revealed', '1');
           });
+          return;
         }
-      };
 
-      const initCustomCursor = () => {
-        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-        const cursor = document.getElementById('custom-cursor');
-        const pill = document.getElementById('cursor-pill');
+        setTimeout(() => {
+          document.querySelectorAll('.hero [data-reveal]').forEach((el) => {
+            el.setAttribute('data-revealed', '1');
+          });
+        }, 60);
 
-        if (cursor && pill) {
-          let mouseX = -100;
-          let mouseY = -100;
-          let currentX = -100;
-          let currentY = -100;
-
-          window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            const target = (e.target as HTMLElement)?.closest('[data-cursor], .work-facade, .showreel-monitor, .ba-suite-wrapper');
-            if (target) {
-              const customLabel = target.getAttribute('data-cursor');
-              let activeLabel = 'PLAY';
-              if (customLabel) {
-                activeLabel = customLabel;
-              } else if (target.classList.contains('ba-suite-wrapper')) {
-                activeLabel = 'DRAG';
-              }
-              cursor.classList.add('has-label');
-              pill.textContent = activeLabel;
-            } else {
-              cursor.classList.remove('has-label');
-              pill.textContent = '';
+        if ('IntersectionObserver' in window) {
+          const revealObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.setAttribute('data-revealed', '1');
+                  revealObserver.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.08,
+              rootMargin: '0px 0px -30px 0px'
             }
-          }, { passive: true });
+          );
 
-          document.addEventListener('mouseleave', () => {
-            mouseX = -100;
-            mouseY = -100;
+          document.querySelectorAll('[data-reveal]:not(.hero [data-reveal])').forEach((el) => {
+            revealObserver.observe(el);
           });
-
-          const renderCursor = () => {
-            const ease = 0.16;
-            currentX += (mouseX - currentX) * ease;
-            currentY += (mouseY - currentY) * ease;
-            cursor.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
-            requestAnimationFrame(renderCursor);
-          };
-          requestAnimationFrame(renderCursor);
-        }
-      };
-
-      const updateMotionState = (state: 'on' | 'off') => {
-        document.documentElement.setAttribute('data-motion', state);
-        if (state === 'on') {
-          document.documentElement.classList.add('js-reveal');
         } else {
-          document.documentElement.classList.remove('js-reveal');
-        }
-        localStorage.setItem('fleur-motion', state);
-
-        document.querySelectorAll('.motion-toggle, .footer-motion-btn').forEach((btn) => {
-          btn.setAttribute('aria-pressed', state === 'on' ? 'true' : 'false');
-          const txt = btn.querySelector('.motion-state-text');
-          if (txt) txt.textContent = state.toUpperCase();
-        });
-
-        initLenis();
-        if (state === 'off') {
-          document.querySelectorAll('[data-reveal]').forEach((el) => {
-            el.setAttribute('data-revealed', '1');
-          });
+          document.querySelectorAll('[data-reveal]').forEach((el) => el.setAttribute('data-revealed', '1'));
         }
       };
 
@@ -365,17 +259,6 @@ const enUrl = `${siteUrl}/`;
         lenis?.start();
       });
 
-      // Global Motion Toggle Listener
-      document.addEventListener('click', (e) => {
-        const toggleBtn = (e.target as HTMLElement).closest('#motion-toggle, #motion-toggle-mobile, #motion-toggle-footer, .motion-toggle, .footer-motion-btn');
-        if (toggleBtn) {
-          e.preventDefault();
-          const current = document.documentElement.getAttribute('data-motion') || 'on';
-          const next = current === 'on' ? 'off' : 'on';
-          updateMotionState(next);
-        }
-      });
-
       const setupPage = () => {
         initLenis();
         initAnchors();
@@ -383,15 +266,12 @@ const enUrl = `${siteUrl}/`;
         handleScrollUpdate();
       };
 
-      // Initialize on load and on View Transition page changes
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
           setupPage();
-          initCustomCursor();
         });
       } else {
         setupPage();
-        initCustomCursor();
       }
 
       document.addEventListener('astro:page-load', () => {

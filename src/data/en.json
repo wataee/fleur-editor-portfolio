@@ -1,258 +1,158 @@
 {
   "lang": "en",
   "meta": {
-    "title": ".fleur — Video Editor & Motion Designer",
-    "description": "Long-form YouTube video editing, podcasts, and high-retention vertical reels. Precise storytelling cadence, DaVinci Resolve color grading, custom motion, and tactile sound design with zero AI slop.",
-    "ogTitle": ".fleur — Video Editor & Motion Designer",
-    "ogDescription": "Full-cycle post-production: offline assembly, narrative pacing, custom motion typography, S-Log3/Rec.709 color grading, and multi-track sound mastering.",
+    "title": ".fleur — Video Editor for YouTube, Podcasts & Reels",
+    "description": "Editing long-form YouTube essays, podcasts, and short-form videos. Structure, pacing, motion graphics, color and audio mastering.",
+    "ogTitle": ".fleur — Video Editor for YouTube, Podcasts & Reels",
+    "ogDescription": "Video editing for YouTube, podcasts and Reels. Telegram communication, timecode-based revisions.",
     "ogImage": "/avatar.jpg"
   },
   "nav": {
     "work": "Work",
-    "difference": "Color",
+    "pricing": "Pricing",
     "process": "Process",
-    "pricing": "Rates",
-    "reviews": "Reviews",
+    "difference": "Color",
     "about": "Principles",
-    "faq": "FAQ",
     "contact": "Contact",
-    "discuss": "Start a Project",
+    "discuss": "Let's Talk",
     "openMenu": "Menu"
   },
   "hero": {
-    "status": "Available for Select Projects",
-    "aiBadge": "Craft-First Editing",
-    "title": "High-retention video editing for YouTube & brands that scales your audience",
-    "sub": "I am .fleur, video editor & colorist. Crafting narrative YouTube essays, studio podcasts, and kinetic Reels: seamless pacing, custom motion graphics, broadcast audio mastering, and color grading. First cut in 48–72 hours.",
-    "cta": "Explore Work",
-    "proofStats": [
-      {
-        "value": "01",
-        "title": "Dynamic Editing",
-        "desc": "Hook construction in first 3 seconds, natural dead-air trimming, and audience retention"
-      },
-      {
-        "value": "02",
-        "title": "Motion Graphics",
-        "desc": "Concept visualization, animated data charts, lower thirds, and kinetic type"
-      },
-      {
-        "value": "03",
-        "title": "Color Grading",
-        "desc": "Cinematic film tone, multicam color matching, and natural skin tones"
-      },
-      {
-        "value": "04",
-        "title": "Sound Design",
-        "desc": "Vocal clarity without room hiss, impact foley, and balanced musical score"
-      }
-    ],
-    "industriesNote": "Formats: YouTube essays, studio podcasts, automotive, and creator Reels.",
+    "status": "Available for projects",
+    "title": "Video Editing for YouTube & Socials That Holds Attention and Grows Your Audience",
+    "sub": "fleur provides video editing for YouTube, podcasts, Reels and Shorts. I shape the structure, remove unnecessary pauses and mistakes, add titles and motion graphics, and take care of colour and sound. You send the footage and your notes. We communicate through Telegram, and revisions are handled using timecodes.",
+    "cta": "View Selected Work",
     "ctaTg": "Message on Telegram",
-    "colorCta": "Color grading: before & after",
-    "servicesTitle": "What I Do"
+    "colorCta": "Before & After Color Grading"
   },
   "theDifference": {
     "eyebrow": "Color Grading",
     "title": "Sony S-Log3 ➔ Cinematic Rec.709",
-    "description": "Interactive frame comparison: on the left is flat raw sensor data straight from camera, on the right is an authentic film-emulation grade with rich contrast and natural skin tones.",
+    "description": "Interactive frame comparison: raw camera log on the left, film emulation with natural skin tones and rich contrast on the right.",
     "before": "RAW / S-LOG3",
     "after": "REC.709 FILM GRADE",
-    "handleAria": "Color grading comparison slider position",
+    "handleAria": "Color grading comparison slider",
     "posterBefore": "/videos/posters/car-rental-reel.jpg",
     "posterAfter": "/videos/posters/vroomclub-reel.jpg"
   },
   "portfolio": {
-    "eyebrow": "Selected Work",
-    "title": "Featured Projects & Formats",
+    "title": "Selected Work & Formats",
     "filterAll": "All Projects",
     "niches": {
       "all": "All Projects",
       "personal_brand": "Podcasts & Brands",
-      "real_estate": "Real Estate & Auto",
+      "real_estate": "Automotive & Estates",
       "gaming": "Gaming & Kinetic"
     },
     "subsections": {
-      "main": "Long-Form Releases · 16:9",
-      "motion": "Motion Design & 3D",
+      "main": "Horizontal Video · 16:9",
+      "motion": "Motion Design & Graphics",
       "vertical": "Short-Form · Reels & Shorts (9:16)"
     },
-    "watch": "Watch on YouTube ↗",
-    "play": "Play Video",
-    "thumbAria": "Play video — ",
+    "play": "Watch Video",
+    "thumbAria": "Play — ",
     "conceptLabel": "PROJECT"
   },
-  "tools": {
-    "eyebrow": "Software Stack",
-    "title": "Daily Production Environment",
-    "items": [
-      {
-        "name": "Premiere Pro",
-        "category": "Assembly & Offline Editing",
-        "badge": "Pr"
-      },
-      {
-        "name": "After Effects",
-        "category": "Motion, Tracking & VFX",
-        "badge": "Ae"
-      },
-      {
-        "name": "DaVinci Resolve",
-        "category": "Color Grading & Mastering",
-        "badge": "Color"
-      }
-    ]
-  },
   "pricing": {
-    "eyebrow": "Pricing",
-    "title": "Clear rates and dependable timelines",
-    "cta": "Start a Project",
-    "plans": [
-      {
-        "id": "plan-reels",
-        "name": "Reels / Shorts",
-        "price": "from $[TODO]",
-        "price_hint": "Short-form vertical video",
-        "badge": null,
-        "published": false,
-        "description": "High-velocity 9:16 cuts featuring word-by-word animated captions, zooms, and punchy sound design.",
-        "features": [
-          "First cut ready in 24–48 hours",
-          "Kinetic captions & keypoint highlights",
-          "Impact sound cues and match transitions",
-          "2 rounds of revisions included"
-        ]
-      },
-      {
-        "id": "plan-youtube",
-        "name": "Long-Form Release",
-        "price": "from $200",
-        "price_hint": "YouTube essays & podcasts from 10m",
-        "badge": "Flagship Format",
-        "published": true,
-        "description": "Full-cycle editing for YouTube channels and studio podcasts: narrative rhythm, motion graphics, color, and audio mastering.",
-        "features": [
-          "First pacing cut: 48–72 hours",
-          "Pause trimming, breath cleanup & audio leveling",
-          "Custom motion graphics & lower thirds",
-          "2 revision rounds included",
-          "Final delivery: 3–5 business days"
-        ]
-      },
-      {
-        "id": "plan-motion",
-        "name": "Motion & Graphics",
-        "price": "Custom Quote",
-        "price_hint": "Depends on graphics volume",
-        "badge": null,
-        "published": true,
-        "description": "Infographics, animated schematics, recurring show packaging, kinetic typography, and visual assets.",
-        "features": [
-          "Bespoke title and lower-third style design",
-          "Schematic, document & chart animations",
-          "Milestone previews for each graphic block",
-          "To estimate: send brief and reference links"
-        ]
-      },
-      {
-        "id": "plan-retainer",
-        "name": "Monthly Retainer",
-        "price": "Package Discount",
-        "price_hint": "Fixed monthly fee for steady output",
-        "badge": "Best Value",
-        "published": true,
-        "description": "Systematic editing for your channel on an agreed weekly publishing calendar.",
-        "features": [
-          "Guaranteed calendar slots reserved",
-          "Consistent, recognizable visual identity & pacing",
-          "Priority draft turnaround (48 hours)",
-          "To estimate: share channel link and release cadence"
-        ]
-      }
-    ]
-  },
-  "reviews": {
-    "eyebrow": "Reviews",
-    "title": "What creators and channels say",
-    "sub": "What creators and channels say about collaborating and the final cut."
+    "title": "Pricing",
+    "subtitle": "Price depends on the project, calculated after reviewing your material.",
+    "reference": {
+      "main": "Long-form video — from $200",
+      "secondary": "Reels & Shorts — on request"
+    },
+    "factorsTitle": "What affects the price",
+    "factors": [
+      "Final video duration",
+      "Volume of raw footage",
+      "Complexity of graphics and animation",
+      "Turnaround urgency",
+      "Volume of videos (ongoing collaboration discussed individually)"
+    ],
+    "ctaText": "Send a link to your channel, a sample video, and approximate duration. Cost and turnaround are shared after reviewing the material.",
+    "ctaBtn": "Message on Telegram"
   },
   "process": {
-    "eyebrow": "Workflow",
-    "title": "3 clear stages without endless calls",
+    "title": "How the work goes",
+    "subtitle": "We communicate on Telegram, no unnecessary calls",
     "steps": [
       {
         "num": "01",
-        "title": "Brief & Raw Footage Transfer",
-        "period": "Days 1–2 (48–72 hrs)",
-        "desc": "Share raw files via cloud and reference videos. Receive your first structured pacing cut in 48–72 hours."
+        "title": "Brief & footage",
+        "desc": "You send raw footage, references, and your vision. I review the material and provide the timeline and cost."
       },
       {
         "num": "02",
-        "title": "Motion Graphics & Color & Sound",
-        "period": "Days 3–4",
-        "desc": "We add kinetic typography, data charts, color grade in DaVinci Resolve, and master studio vocal audio."
+        "title": "Rough cut & pacing",
+        "desc": "I build the structure, remove pauses and slips, and share the initial cut."
       },
       {
         "num": "03",
-        "title": "Revisions & Final 4K Master",
-        "period": "Days 4–5",
-        "desc": "Timecode-based revisions. Final 4K pristine master delivered in 3–5 business days."
+        "title": "Graphics, color & sound",
+        "desc": "Motion titles and animated diagrams, color grading in DaVinci, audio mastering.",
+        "tags": [
+          "Motion titles & diagrams",
+          "DaVinci Resolve grading",
+          "Audio mastering"
+        ]
+      },
+      {
+        "num": "04",
+        "title": "Revisions & final file",
+        "desc": "Timecode-based revisions, 2 rounds included, then I deliver the final master file."
       }
     ]
   },
   "whyMe": {
     "eyebrow": "Principles",
-    "title": "Why creators choose long-term collaboration",
+    "title": "My approach",
     "items": [
       {
-        "id": "about",
-        "title": "Artisan Handcrafted Editing",
-        "desc": "Zero generative AI slop or generic templates. Every cut, title card, and audio hit is curated intentionally with narrative discipline."
+        "num": "01",
+        "title": "Thoughtful structure",
+        "desc": "I trim the unnecessary, shape the sequencing, and maintain steady pacing so the video flows naturally from start to finish."
       },
       {
-        "id": "async",
-        "title": "Async Speed Without Endless Meetings",
-        "desc": "No hour-long discovery calls required. Clear Telegram updates, timestamped reviews, and structural deliverables protect your focus."
+        "num": "02",
+        "title": "Visual style of your channel",
+        "desc": "I match your references, brand identity, and tone. Titles, motion graphics, and animation enhance the story without distracting."
       },
       {
-        "id": "longterm",
-        "title": "Channel Stylistic Immersion",
-        "desc": "I study your delivery and audience taste. From project two onward, turnarounds accelerate as preferred rhythms are already locked in."
+        "num": "03",
+        "title": "Clean sound and visual grade",
+        "desc": "I refine colors, remove unwanted background noise, level volume, and ensure speech clarity. Detail makes the viewing experience comfortable."
       },
       {
-        "id": "sound",
-        "title": "Obsessive Audio & Detail Discipline",
-        "desc": "Tactile foley, room hiss removal, and natural vocal cadence so viewers stay hooked from the first hook to the outro."
+        "num": "04",
+        "title": "Transparent workflow",
+        "desc": "You send the footage and notes; I handle the editing. We communicate on Telegram and discuss revisions by timecodes — without endless calls."
       }
     ]
+  },
+  "reviews": {
+    "eyebrow": "Reviews",
+    "title": "Client Feedback",
+    "subtitle": "What creators say about working together",
+    "verifiedLabel": "Verified"
   },
   "faq": {
     "eyebrow": "FAQ",
     "title": "Frequently Asked Questions",
     "items": [
       {
-        "q": "How much does editing cost per video?",
-        "a": "Full editing for a long-form YouTube release starts at $200. Final investment depends on raw footage volume, graphics density, and pacing. An exact quote is provided within 1–2 hours after reviewing raw material and your brief."
+        "q": "How much does editing cost?",
+        "a": "Long-form video — from $200. Final cost depends on duration, raw footage volume, graphics complexity, and urgency. I provide the exact price and timeline after reviewing the footage."
       },
       {
-        "q": "What are your exact turnaround times?",
-        "a": "The first structured draft cut is delivered within 48–72 hours after receiving raw footage. The final release with motion graphics, color grading, and mastered audio is delivered in 3–5 business days."
+        "q": "What are your delivery timelines?",
+        "a": "I provide the turnaround time after reviewing the footage. It depends on video length, volume of raw material, and complexity of graphics."
       },
       {
-        "q": "How do we transfer raw video files?",
-        "a": "Via Google Drive, Dropbox, OneDrive, or Telegram. For large camera cards, direct high-speed links ensure rapid transfer without compression."
+        "q": "How do revisions work?",
+        "a": "You review the video via a private link and share timecode-based notes via Telegram. 2 comprehensive revision rounds are included in each project."
       },
       {
-        "q": "How many revision rounds are included?",
-        "a": "Every project includes 2 comprehensive timecode-based revision passes. This is consistently sufficient because core pacing is locked in the initial draft."
-      },
-      {
-        "q": "How do we handle feedback and notes?",
-        "a": "You review the private preview link and send timecode notes in Telegram or a shared document. Notes are implemented within 24 hours."
-      },
-      {
-        "q": "Do you work with international clients?",
-        "a": "Yes, I work with creators and brands worldwide (US, Europe, Central Asia). Payments are handled via USDT, cryptocurrency, or wire transfer."
+        "q": "How do I send raw footage?",
+        "a": "Via any cloud storage: Google Drive, Dropbox, or Telegram."
       }
     ]
   },
@@ -262,11 +162,10 @@
     "sub": "Reach out via Telegram or email. Let's discuss your timeline, pacing, and target launch date.",
     "briefHelper": "What to send for a quick estimate: channel link, reference video, raw footage duration, and your target deadline."
   },
-  "footer": {
-    "copy": "© .fleur 2026. Video Editing & Motion Design.",
-    "top": "Back to top"
-  },
   "stickyMobile": {
     "text": "Message on Telegram"
+  },
+  "footer": {
+    "copy": "© 2026 .fleur. Video editing & post-production."
   }
 }

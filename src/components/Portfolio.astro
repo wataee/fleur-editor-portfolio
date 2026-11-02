@@ -65,10 +65,6 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
 <section class="section section--work" id="work" aria-labelledby="work-title">
   <!-- Section Header -->
   <div class="section-head" data-reveal="true">
-    <div class="inline-flex items-center gap-2">
-      <span class="tape-index" aria-hidden="true">[REEL // 2026]</span>
-      <span class="eyebrow">{data.eyebrow}</span>
-    </div>
     <h2 class="section-title" id="work-title">{data.title}</h2>
   </div>
 
@@ -215,14 +211,7 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
                       {data.play}
                     </button>
 
-                    <a
-                      href={project.youtube_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="work-yt-link"
-                    >
-                      {data.watch}
-                    </a>
+                    
                   </div>
                 </div>
               </article>
@@ -343,14 +332,7 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
                       {data.play}
                     </button>
 
-                    <a
-                      href={project.youtube_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="work-yt-link text-xs"
-                    >
-                      YouTube ↗
-                    </a>
+                    
                   </div>
                 </div>
               </article>

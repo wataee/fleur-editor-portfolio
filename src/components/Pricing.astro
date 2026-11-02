@@ -1,66 +1,79 @@
 ---
-interface Plan {
-  name: string;
-  price: string;
-  description: string;
-  badge: string | null;
-  features: string[];
-  published?: boolean;
+interface PriceReference {
+  main: string;
+  secondary?: string;
 }
 
 interface Props {
   data: {
-    eyebrow: string;
     title: string;
-    plans: Plan[];
-    cta: string;
+    subtitle: string;
+    reference?: PriceReference;
+    factorsTitle: string;
+    factors: string[];
+    ctaText: string;
+    ctaBtn: string;
   };
   lang?: string;
 }
 
 const { data, lang = 'ru' } = Astro.props;
 
-// Filter out unpublished or placeholder plans (e.g. [TODO] Reels pricing)
-const visiblePlans = data.plans.filter((p) => p.published !== false && !p.price.includes('[TODO]'));
+const tgPrefillMessage = lang === 'kz'
+  ? "Сәлеметсіз бе! YouTube немесе әлеуметтік желіге бейнемонтаж қажет."
+  : lang === 'en'
+  ? "Hi! I need video editing for YouTube/socials."
+  : "Привет! Нужен монтаж видео для YouTube/соцсетей. Расскажу о проекте:";
+
+const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}`;
 ---
 
-<section class="section" id="pricing" aria-labelledby="pricing-title">
+<section class="section section--pricing" id="pricing" aria-labelledby="pricing-title">
   <div class="section-head" data-reveal="true">
-    <span class="eyebrow">{data.eyebrow}</span>
     <h2 class="section-title" id="pricing-title">{data.title}</h2>
+    <p class="section-lead max-w-2xl text-text-dim text-sm sm:text-base mt-2">
+      {data.subtitle}
+    </p>
   </div>
 
-  <div class="pricing-grid">
-    {visiblePlans.map((plan) => (
-      <div class="pricing-card" data-reveal="card">
-        <div class="pricing-card-header">
-          <div class="pricing-card-top">
-            <h3 class="pricing-name">{plan.name}</h3>
-            {plan.badge && (
-              <span class="pricing-badge">{plan.badge}</span>
-            )}
-          </div>
-          <p class={`pricing-price ${plan.price.length > 8 ? 'pricing-price--custom' : ''}`}>{plan.price}</p>
-          <p class="pricing-desc">{plan.description}</p>
-        </div>
-
-        <ul class="pricing-features">
-          {plan.features.map((feature) => (
-            <li class="pricing-feature">
-              <svg class="w-4 h-4 pricing-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div class="pt-2">
-          <a class="btn-primary w-full text-center" href="#contact">
-            {data.cta}
-          </a>
-        </div>
+  <div class="pricing-compact-wrap" data-reveal="true">
+    <!-- 1. Price Reference -->
+    {data.reference && data.reference.main && (
+      <div class="pricing-col pricing-col--ref">
+        <span class="pricing-col-eyebrow font-mono text-xs uppercase tracking-wider text-text-mute">
+          {lang === 'kz' ? 'Бағдар' : lang === 'en' ? 'Starting Point' : 'Ориентир'}
+        </span>
+        <div class="pricing-ref-main font-display">{data.reference.main}</div>
+        {data.reference.secondary && (
+          <div class="pricing-ref-sub text-text-dim">{data.reference.secondary}</div>
+        )}
       </div>
-    ))}
+    )}
+
+    <!-- 2. Price Factors -->
+    <div class="pricing-col pricing-col--factors">
+      <h3 class="pricing-factors-title">{data.factorsTitle}</h3>
+      <ul class="pricing-factors-list" role="list">
+        {data.factors.map((factor) => (
+          <li class="pricing-factor-item">
+            <span class="factor-dash text-accent" aria-hidden="true">—</span>
+            <span>{factor}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- 3. Brief Action & Telegram Button -->
+    <div class="pricing-col pricing-col--action">
+      <p class="pricing-cta-text text-text-dim">{data.ctaText}</p>
+      <div class="pricing-cta-btn-wrap">
+        <a class="btn-primary" href={tgUrl} target="_blank" rel="noopener noreferrer">
+          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
+          </svg>
+          <span>{data.ctaBtn}</span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>

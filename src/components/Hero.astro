@@ -2,15 +2,11 @@
 interface Props {
   hero: {
     status: string;
-    aiBadge: string;
     title: string;
     sub: string;
     cta: string;
     ctaTg?: string;
     colorCta?: string;
-    servicesTitle?: string;
-    proofStats: Array<{ value: string; title?: string; label?: string; desc?: string }>;
-    industriesNote: string;
   };
   lang?: string;
 }
@@ -37,23 +33,9 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
       <span class="status-pulse" aria-hidden="true"></span>
       <span class="font-mono text-xs uppercase tracking-wider">{hero.status}</span>
     </div>
-
-    <div class="hero-studio-meta font-mono text-xs" aria-hidden="true">
-      <span class="meta-tag">PORTFOLIO // 2026</span>
-      <span class="meta-separator">·</span>
-      <span class="meta-tag">4K UHD</span>
-    </div>
-
-    <div class="hero-ai-badge">
-      <svg class="w-3.5 h-3.5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        <path d="M9 12l2 2 4-4"></path>
-      </svg>
-      <span class="font-mono text-xs">{hero.aiBadge}</span>
-    </div>
   </div>
 
-  <!-- Main Asymmetric Headline -->
+  <!-- Main Headline -->
   <div class="hero-headline-wrap">
     <h1 class="hero-title" lang={lang} data-reveal="true">
       {hero.title}
@@ -95,10 +77,6 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
           <span aria-hidden="true">→</span>
         </a>
       </div>
-
-      <p class="hero-note" data-reveal="true">
-        <span class="note-label font-mono text-xs uppercase tracking-wider">[GENRE // EXPERTISE]:</span> {hero.industriesNote}
-      </p>
     </div>
 
     <!-- Right Column: Cinematic Showreel Monitor Facade -->
@@ -109,7 +87,6 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
             <span class="monitor-led" aria-hidden="true"></span>
             <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">PORTFOLIO // SHOWREEL</span>
           </div>
-          <span class="font-mono text-[11px] tracking-wider text-accent uppercase">REEL 2026</span>
         </div>
 
         <button
@@ -164,28 +141,4 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
       </div>
     </div>
   </div>
-</section>
-
-<!-- Craft Services ("Что я делаю") -->
-<section class="section section--pillars" aria-label={hero.servicesTitle || "What I Do"}>
-  <div class="pillars-timeline-bar" aria-hidden="true">
-    <div class="timeline-rule"></div>
-  </div>
-
-  <div class="mb-4" data-reveal="true">
-    <span class="eyebrow">{hero.servicesTitle || (lang === 'kz' ? 'Мен не істеймін' : lang === 'en' ? 'What I Do' : 'Что я делаю')}</span>
-  </div>
-
-  <ul class="pillars-grid">
-    {hero.proofStats.map((stat) => (
-      <li class="pillar-card" data-reveal="card">
-        <div class="pillar-header">
-          <span class="pillar-index font-mono">{stat.value}</span>
-          <span class="pillar-channel font-mono">STEP {stat.value}</span>
-        </div>
-        <h3 class="pillar-title">{stat.title || stat.label}</h3>
-        {stat.desc && <p class="pillar-desc">{stat.desc}</p>}
-      </li>
-    ))}
-  </ul>
 </section>

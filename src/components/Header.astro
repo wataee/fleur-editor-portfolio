@@ -38,7 +38,7 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
     <!-- Desktop Navigation (<= 6 items matching page flow) -->
     <nav class="site-nav" aria-label="Main Navigation">
       <a class="nav-link" href="#work">{nav.work}</a>
-      <a class="nav-link" href="#pricing">{nav.pricing || (lang === 'kz' ? 'Бағалар' : lang === 'en' ? 'Pricing' : 'Цены')}</a>
+      <a class="nav-link" href="#pricing">{nav.pricing || (lang === 'kz' ? 'Құны' : lang === 'en' ? 'Pricing' : 'Стоимость')}</a>
       <a class="nav-link" href="#process">{nav.process}</a>
       <a class="nav-link" href="#difference">{nav.difference || (lang === 'kz' ? 'Түс' : lang === 'en' ? 'Color' : 'Цвет')}</a>
       <a class="nav-link" href="#about">{nav.about}</a>
@@ -61,18 +61,6 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
         <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
         </svg>
-      </button>
-
-      <!-- Motion Toggle (Animations ON / OFF) -->
-      <button
-        type="button"
-        id="motion-toggle"
-        class="motion-toggle"
-        aria-label="Toggle animations (FX)"
-        title="Toggle animations (FX)"
-      >
-        <span class="motion-dot" aria-hidden="true"></span>
-        <span class="motion-label font-mono">FX</span>
       </button>
 
       <!-- 3-Language Switcher (RU / EN / KZ) -->
@@ -115,7 +103,7 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
       <div class="nav-panel" id="nav-panel" role="region" aria-label={nav.openMenu}>
         <nav class="nav-panel-links">
           <a class="nav-panel-link" href="#work">{nav.work}</a>
-          <a class="nav-panel-link" href="#pricing">{nav.pricing || (lang === 'kz' ? 'Бағалар' : lang === 'en' ? 'Pricing' : 'Цены')}</a>
+          <a class="nav-panel-link" href="#pricing">{nav.pricing || (lang === 'kz' ? 'Құны' : lang === 'en' ? 'Pricing' : 'Стоимость')}</a>
           <a class="nav-panel-link" href="#process">{nav.process}</a>
           <a class="nav-panel-link" href="#difference">{nav.difference || (lang === 'kz' ? 'Түс' : lang === 'en' ? 'Color' : 'Цвет')}</a>
           <a class="nav-panel-link" href="#about">{nav.about}</a>
@@ -132,17 +120,6 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
             </div>
 
             <div class="flex items-center gap-2">
-              <!-- Mobile Motion Toggle -->
-              <button
-                type="button"
-                id="motion-toggle-mobile"
-                class="motion-toggle"
-                aria-label="Toggle animations (FX)"
-                title="Toggle animations (FX)"
-              >
-                <span class="motion-dot" aria-hidden="true"></span>
-                <span class="motion-label font-mono">FX</span>
-              </button>
 
               <!-- Mobile Theme Toggle -->
               <button

@@ -1,15 +1,17 @@
 ---
 interface Step {
   num: string;
-  period: string;
   title: string;
   desc: string;
+  tags?: string[];
+  period?: string;
 }
 
 interface Props {
   data: {
-    eyebrow: string;
+    eyebrow?: string;
     title: string;
+    subtitle?: string;
     steps: Step[];
   };
 }
@@ -17,23 +19,41 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<section class="section" id="process" aria-labelledby="process-title">
+<section class="section section--process" id="process" aria-labelledby="process-title">
   <div class="section-head" data-reveal="true">
-    <span class="eyebrow">{data.eyebrow}</span>
+    {data.eyebrow && <span class="eyebrow">{data.eyebrow}</span>}
     <h2 class="section-title" id="process-title">{data.title}</h2>
+    {data.subtitle && (
+      <p class="section-lead max-w-xl text-text-dim text-sm sm:text-base mt-2">
+        {data.subtitle}
+      </p>
+    )}
   </div>
 
-  <ol class="process-list" role="list">
-    {data.steps.map((step) => (
-      <li class="process-step" data-reveal="card">
-        <div class="step-topline">
-          <span class="step-tc">{step.num}</span>
-          <span class="step-period">{step.period}</span>
-        </div>
-        <h3 class="step-title">{step.title}</h3>
-        <p class="step-body">{step.desc}</p>
-        <span class="step-progress" aria-hidden="true"></span>
-      </li>
-    ))}
-  </ol>
+  <div class="process-timeline-wrap" data-reveal="true">
+    <ol class="process-timeline" role="list">
+      {data.steps.map((step) => (
+        <li class="timeline-step" data-reveal="card">
+          <div class="timeline-node" aria-hidden="true">
+            <span class="timeline-node-dot"></span>
+          </div>
+
+          <div class="timeline-content">
+            <div class="timeline-num font-mono">{step.num}</div>
+            <h3 class="timeline-title">{step.title}</h3>
+            {step.period && <span class="timeline-period font-mono">{step.period}</span>}
+            <p class="timeline-desc">{step.desc}</p>
+
+            {step.tags && step.tags.length > 0 && (
+              <div class="timeline-tags">
+                {step.tags.map((tag) => (
+                  <span class="timeline-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
 </section>
