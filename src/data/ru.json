@@ -1,9 +1,9 @@
 {
   "lang": "ru",
   "meta": {
-    "title": ".fleur — Видеомонтаж для YouTube, подкастов и Reels",
+    "title": "fleur — Видеомонтаж для YouTube, подкастов и Reels",
     "description": "Монтаж длинных YouTube-выпусков, подкастов и вертикальных роликов. Структура, чистка пауз, моушн-графика, цвет и сведение звука.",
-    "ogTitle": ".fleur — Видеомонтаж для YouTube, подкастов и Reels",
+    "ogTitle": "fleur — Видеомонтаж для YouTube, подкастов и Reels",
     "ogDescription": "Видеомонтаж длинных выпусков, подкастов и Shorts. Общение в Telegram, правки по таймкодам.",
     "ogImage": "/avatar.jpg"
   },
@@ -15,7 +15,8 @@
     "about": "Принципы",
     "contact": "Контакты",
     "discuss": "Обсудить проект",
-    "openMenu": "Меню"
+    "openMenu": "Меню",
+    "faq": "FAQ"
   },
   "hero": {
     "status": "Открыт для проектов",
@@ -166,6 +167,10 @@
     "text": "Написать в Telegram"
   },
   "footer": {
-    "copy": "© 2026 .fleur. Авторский видеомонтаж."
+    "tagline": "Видеомонтаж для YouTube, подкастов, Reels и Shorts",
+    "copy": "© 2026 fleur. Авторский видеомонтаж.",
+    "navTitle": "Навигация",
+    "contactTitle": "Связь",
+    "toTop": "Наверх"
   }
 }

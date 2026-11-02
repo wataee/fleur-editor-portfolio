@@ -4,49 +4,140 @@ interface ContactChannel {
   name: string;
   handle: string;
   url: string;
+  description_ru?: string;
+  description_en?: string;
+  description_kz?: string;
+  primary?: boolean;
+}
+
+interface NavData {
+  work?: string;
+  process?: string;
+  pricing?: string;
+  faq?: string;
+  contact?: string;
+  [key: string]: any;
 }
 
 interface Props {
   data: {
+    tagline?: string;
     copy: string;
-    top?: string;
+    navTitle?: string;
+    contactTitle?: string;
     toTop?: string;
   };
+  nav?: NavData;
   contacts: ContactChannel[];
   lang?: string;
 }
 
-const { data, contacts, lang = 'ru' } = Astro.props;
+const { data, nav, contacts, lang = 'ru' } = Astro.props;
 const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#top';
+
+const currentYear = new Date().getFullYear();
+const copyText = (data.copy || '© {year} fleur. Авторский видеомонтаж.')
+  .replace(/\.fleur/g, 'fleur')
+  .replace(/\d{4}/, currentYear.toString());
+
+const navLabels = {
+  work: nav?.work || (lang === 'kz' ? 'Жобалар' : lang === 'en' ? 'Work' : 'Работы'),
+  process: nav?.process || (lang === 'kz' ? 'Процесс' : lang === 'en' ? 'Process' : 'Процесс'),
+  pricing: nav?.pricing || (lang === 'kz' ? 'Құны' : lang === 'en' ? 'Pricing' : 'Стоимость'),
+  faq: nav?.faq || 'FAQ',
+  contact: nav?.contact || (lang === 'kz' ? 'Байланыс' : lang === 'en' ? 'Contact' : 'Контакты'),
+};
+
+const getContactUrl = (c: ContactChannel) => {
+  if (c.id === 'email') {
+    const subject = lang === 'kz'
+      ? 'Бейнемонтаж бойынша сұраныс (fleur)'
+      : lang === 'en'
+      ? 'Video editing inquiry (fleur)'
+      : 'Заказ монтажа видео (fleur)';
+    return `mailto:${c.handle}?subject=${encodeURIComponent(subject)}`;
+  }
+  return c.url;
+};
+
+const navTitle = data.navTitle || (lang === 'en' ? 'Navigation' : 'Навигация');
+const contactTitle = data.contactTitle || (lang === 'kz' ? 'Байланыс' : lang === 'en' ? 'Contact' : 'Связь');
+const toTopAria = data.toTop || (lang === 'kz' ? 'Жоғарыға' : lang === 'ru' ? 'Наверх' : 'To top');
+const tagline = data.tagline || (lang === 'kz'
+  ? 'YouTube, подкасттар, Reels және Shorts үшін бейнемонтаж'
+  : lang === 'en'
+  ? 'Video editing for YouTube, podcasts, Reels and Shorts'
+  : 'Видеомонтаж для YouTube, подкастов, Reels и Shorts');
 ---
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <a class="wordmark" href={homeHref} aria-label="fleur Home">
-      <img
-        src="/avatar.jpg"
-        alt="fleur"
-        class="wordmark-avatar"
-        width="28"
-        height="28"
-        loading="lazy"
-      />
-      <span class="wordmark-text">fleur</span>
-    </a>
-
-    <nav class="footer-nav" aria-label="Social links">
-      {contacts.map((c) => (
-        <a
-          class="footer-link"
-          href={c.url}
-          target={c.url.startsWith('mailto:') ? '_self' : '_blank'}
-          rel={c.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-        >
-          {c.name}
+    <div class="footer-grid">
+      <!-- Left: Logo + avatar + short tagline -->
+      <div class="footer-brand-col">
+        <a class="wordmark" href={homeHref} aria-label="fleur Home">
+          <img
+            src="/avatar.jpg"
+            alt="fleur"
+            class="wordmark-avatar"
+            width="28"
+            height="28"
+            loading="lazy"
+          />
+          <span class="wordmark-text">fleur</span>
         </a>
-      ))}
-    </nav>
+        <p class="footer-tagline">{tagline}</p>
+      </div>
 
-<span class="footer-copy">{data.copy}</span>
+      <!-- Center: Navigation -->
+      <div class="footer-col">
+        <span class="footer-col-title">{navTitle}</span>
+        <nav class="footer-nav-list" aria-label={navTitle}>
+          <a class="footer-link" href="#work">{navLabels.work}</a>
+          <a class="footer-link" href="#process">{navLabels.process}</a>
+          <a class="footer-link" href="#pricing">{navLabels.pricing}</a>
+          <a class="footer-link" href="#faq">{navLabels.faq}</a>
+          <a class="footer-link" href="#contact">{navLabels.contact}</a>
+        </nav>
+      </div>
+
+      <!-- Right: Contacts from contacts.json -->
+      <div class="footer-col">
+        <span class="footer-col-title">{contactTitle}</span>
+        <div class="footer-contacts-list">
+          {contacts.map((c) => {
+            const href = getContactUrl(c);
+            const isMail = c.id === 'email';
+            const displayName = c.name === 'X (Twitter)' ? 'X' : c.name;
+            return (
+              <a
+                class="footer-link footer-contact-link"
+                href={href}
+                target={isMail ? '_self' : '_blank'}
+                rel={isMail ? undefined : 'noopener noreferrer'}
+              >
+                <span class="footer-contact-name">{displayName}</span>
+                <span class="footer-contact-handle">({c.handle})</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Copyright + To Top button -->
+    <div class="footer-bottom">
+      <span class="footer-copy">{copyText}</span>
+      <button
+        type="button"
+        id="to-top"
+        class="to-top"
+        aria-label={toTopAria}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M12 19V5M5 12l7-7 7 7"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </footer>

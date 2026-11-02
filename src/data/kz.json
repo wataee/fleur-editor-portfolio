@@ -1,9 +1,9 @@
 {
   "lang": "kz",
   "meta": {
-    "title": ".fleur — YouTube, подкасттар және Reels бейнемонтажы",
+    "title": "fleur — YouTube, подкасттар және Reels бейнемонтажы",
     "description": "YouTube шығарылымдары, подкасттар және қысқа роликтерге бейнемонтаж. Құрылым, кідірістерді тазалау, графика, түс және дыбыс.",
-    "ogTitle": ".fleur — YouTube, подкасттар және Reels бейнемонтажы",
+    "ogTitle": "fleur — YouTube, подкасттар және Reels бейнемонтажы",
     "ogDescription": "YouTube, подкасттар және Reels-ке арналған бейнемонтаж. Telegram арқылы байланыс, уақыт белгілері бойынша түзетулер.",
     "ogImage": "/avatar.jpg"
   },
@@ -15,7 +15,8 @@
     "about": "Тәсіл",
     "contact": "Байланыс",
     "discuss": "Жобаны талқылау",
-    "openMenu": "Мәзір"
+    "openMenu": "Мәзір",
+    "faq": "FAQ"
   },
   "hero": {
     "status": "Жобаларға ашықпын",
@@ -166,6 +167,10 @@
     "text": "Telegram-ға жазу"
   },
   "footer": {
-    "copy": "© 2026 .fleur. Бейнемонтаж және постпродакшн."
+    "tagline": "YouTube, подкасттар, Reels және Shorts үшін бейнемонтаж",
+    "copy": "© 2026 fleur. Авторлық бейнемонтаж.",
+    "navTitle": "Навигация",
+    "contactTitle": "Байланыс",
+    "toTop": "Жоғарыға"
   }
 }

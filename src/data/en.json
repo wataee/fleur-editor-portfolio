@@ -1,9 +1,9 @@
 {
   "lang": "en",
   "meta": {
-    "title": ".fleur — Video Editor for YouTube, Podcasts & Reels",
+    "title": "fleur — Video Editor for YouTube, Podcasts & Reels",
     "description": "Editing long-form YouTube essays, podcasts, and short-form videos. Structure, pacing, motion graphics, color and audio mastering.",
-    "ogTitle": ".fleur — Video Editor for YouTube, Podcasts & Reels",
+    "ogTitle": "fleur — Video Editor for YouTube, Podcasts & Reels",
     "ogDescription": "Video editing for YouTube, podcasts and Reels. Telegram communication, timecode-based revisions.",
     "ogImage": "/avatar.jpg"
   },
@@ -15,7 +15,8 @@
     "about": "Principles",
     "contact": "Contact",
     "discuss": "Let's Talk",
-    "openMenu": "Menu"
+    "openMenu": "Menu",
+    "faq": "FAQ"
   },
   "hero": {
     "status": "Available for projects",
@@ -166,6 +167,10 @@
     "text": "Message on Telegram"
   },
   "footer": {
-    "copy": "© 2026 .fleur. Video editing & post-production."
+    "tagline": "Video editing for YouTube, podcasts, Reels and Shorts",
+    "copy": "© 2026 fleur. Video editing.",
+    "navTitle": "Navigation",
+    "contactTitle": "Contact",
+    "toTop": "To top"
   }
 }

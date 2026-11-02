@@ -98,19 +98,6 @@ const enUrl = `${siteUrl}/`;
 
     <slot />
 
-    <!-- Scroll To Top Button -->
-    <button
-      type="button"
-      id="to-top"
-      class="to-top"
-      aria-label={lang === 'kz' ? 'Жоғарыға' : lang === 'ru' ? 'Наверх' : 'To top'}
-      data-visible="false"
-    >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-        <path d="M12 19V5M5 12l7-7 7 7"></path>
-      </svg>
-    </button>
-
     <script>
       import Lenis from 'lenis';
 
@@ -122,8 +109,6 @@ const enUrl = `${siteUrl}/`;
 
       const handleScrollUpdate = () => {
         const playhead = document.getElementById('playhead-fill');
-        const toTopBtn = document.getElementById('to-top');
-
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
 
@@ -131,10 +116,7 @@ const enUrl = `${siteUrl}/`;
           playhead.style.setProperty('--playhead', progress.toFixed(4));
         }
 
-        if (toTopBtn) {
-          const isScrolled = window.scrollY > window.innerHeight * 0.35;
-          toTopBtn.setAttribute('data-visible', isScrolled ? 'true' : 'false');
-        }
+        
       };
 
       const initLenis = () => {

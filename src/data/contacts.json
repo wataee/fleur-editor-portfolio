@@ -13,7 +13,7 @@
     "id": "email",
     "name": "Email",
     "handle": "fluere.work@gmail.com",
-    "url": "mailto:fluere.work@gmail.com?subject=Work%20inquiry%20/%20Связь%20по%20проекту",
+    "url": "mailto:fluere.work@gmail.com?subject=Video%20editing%20inquiry",
     "description_ru": "Для подробных ТЗ и договоров",
     "description_en": "For detailed briefs and contracts",
     "description_kz": "Толық техникалық тапсырма мен келісімшарттар үшін",
@@ -21,7 +21,7 @@
   },
   {
     "id": "x",
-    "name": "X (Twitter)",
+    "name": "X",
     "handle": "@fluer_mp4",
     "url": "https://x.com/fluer_mp4",
     "description_ru": "Прямые сообщения и новости",

@@ -47,7 +47,7 @@ const telegramContact = contactsData.find((c) => c.id === 'telegram') || contact
     <Contact data={kzData.contact} contacts={contactsData} lang="kz" />
   </main>
 
-  <Footer data={kzData.footer} contacts={contactsData} lang="kz" />
+  <Footer data={kzData.footer} nav={kzData.nav} contacts={contactsData} lang="kz" />
 
   <!-- Lazy-loaded Video Player Modal -->
   <VideoModal />
