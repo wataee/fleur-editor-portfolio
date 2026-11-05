@@ -1,10 +1,17 @@
 import fs from 'node:fs';
 
-const file = 'node_modules/astro/node_modules/vite/dist/node/chunks/dep-CkSfqg8D.js';
-let code = fs.readFileSync(file, 'utf8');
+// On Linux / Netlify / CI, Astro builds natively without Windows-specific OneDrive/symlink patches.
+if (process.platform !== 'win32') {
+  console.log('Skipping Windows-specific patches on', process.platform);
+  process.exit(0);
+}
 
-const target = 'for (const id in depsInfo) {\n        const output = esbuildOutputFromId(';
-const replacement = `for (const id in depsInfo) {
+// 1. Patch Vite 6 esbuildOutputFromId fallback for Windows OneDrive paths
+const file = 'node_modules/astro/node_modules/vite/dist/node/chunks/dep-CkSfqg8D.js';
+if (fs.existsSync(file)) {
+  let code = fs.readFileSync(file, 'utf8');
+
+  const replacement = `for (const id in depsInfo) {
         let output = esbuildOutputFromId(meta.outputs, id, processingCacheDir);
         if (!output) {
           const flatName = flattenId(id);
@@ -20,13 +27,15 @@ const replacement = `for (const id in depsInfo) {
           continue;
         }`;
 
-if (code.includes('const output = esbuildOutputFromId(')) {
-  code = code.replace(/for \(const id in depsInfo\) \{\s*const output = esbuildOutputFromId\([^)]+\);/, replacement);
-  fs.writeFileSync(file, code);
-  console.log('Successfully patched Vite 6 esbuildOutputFromId fallback');
-} else {
-  console.log('Target not found in', file);
+  if (code.includes('const output = esbuildOutputFromId(')) {
+    code = code.replace(/for \(const id in depsInfo\) \{\s*const output = esbuildOutputFromId\([^)]+\);/, replacement);
+    fs.writeFileSync(file, code);
+    console.log('Successfully patched Vite 6 esbuildOutputFromId fallback');
+  } else {
+    console.log('Target not found in', file);
+  }
 }
+
 // 2. Patch Astro core build CSS resolution on Windows symlink/OneDrive paths
 const internalFile = 'node_modules/astro/dist/core/build/internal.js';
 if (fs.existsSync(internalFile)) {
@@ -59,4 +68,3 @@ if (fs.existsSync(viteServerFile)) {
     console.log('Astro vite.js already patched');
   }
 }
-
