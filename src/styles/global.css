@@ -1746,45 +1746,72 @@ html.light .ba-handle-grip {
   line-height: 1.6;
 }
 
-/* Compact Pricing Section */
+/* Pricing Section - Two-Column Transparent Layout */
 .section--pricing {
   position: relative;
 }
-.pricing-compact-wrap {
-  display: grid;
-  grid-template-columns: 1.15fr 1.35fr 1.1fr;
-  gap: clamp(24px, 3.5vw, 48px);
-  align-items: start;
+.pricing-container {
   margin-top: var(--sp-6);
-  padding-top: var(--sp-6);
   border-top: 1px solid var(--line);
+  padding-top: var(--sp-6);
 }
-.pricing-col {
+.pricing-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+.pricing-col-tier {
   display: flex;
   flex-direction: column;
 }
-.pricing-col-eyebrow {
-  margin-bottom: 8px;
+.pricing-col-tier:first-child {
+  padding-right: clamp(24px, 4vw, 48px);
+  border-right: 1px solid var(--line);
 }
-.pricing-ref-main {
-  font-size: clamp(1.4rem, 2vw, 1.85rem);
-  font-weight: 800;
-  color: var(--accent);
-  line-height: 1.25;
-  margin: 4px 0 8px 0;
+.pricing-col-tier:last-child {
+  padding-left: clamp(24px, 4vw, 48px);
 }
-.pricing-ref-sub {
-  font-size: 0.875rem;
-  line-height: 1.5;
+.pricing-tier-header {
+  margin-bottom: 12px;
 }
-.pricing-factors-title {
+.pricing-tier-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+.pricing-tier-title {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
   font-weight: 700;
   color: var(--text);
-  margin: 0 0 12px 0;
+  margin: 6px 0 0 0;
 }
-.pricing-factors-list {
+.pricing-tier-rate {
+  margin-bottom: 24px;
+}
+.pricing-tier-price {
+  font-size: clamp(2rem, 1.4rem + 2vw, 3.25rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.pricing-tier-unit {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+.pricing-tier-includes-wrap {
+  margin-bottom: 20px;
+}
+.pricing-includes-heading {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.pricing-tier-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1792,31 +1819,94 @@ html.light .ba-handle-grip {
   flex-direction: column;
   gap: 10px;
 }
-.pricing-factor-item {
+.pricing-tier-item {
   display: flex;
   align-items: baseline;
+  gap: 10px;
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.tier-dash {
+  font-weight: 700;
+  user-select: none;
+  flex-shrink: 0;
+}
+.pricing-tier-note {
+  margin-top: auto;
+  padding-top: 14px;
+  line-height: 1.5;
+  border-top: 1px dashed var(--hairline);
+}
+.pricing-bottom-bar {
+  margin-top: clamp(28px, 4vw, 40px);
+  padding-top: clamp(24px, 3vw, 32px);
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+.pricing-factors-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.pricing-factors-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   font-size: 0.875rem;
   color: var(--text-dim);
   line-height: 1.5;
+  margin: 0;
 }
-.factor-dash {
+.pricing-factor-dot {
+  color: var(--accent);
   font-weight: 700;
   user-select: none;
 }
-.pricing-cta-text {
-  font-size: 0.875rem;
+.pricing-retainer-note {
+  line-height: 1.5;
+}
+.pricing-cta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pricing-cta-desc {
   line-height: 1.55;
-  margin: 0 0 16px 0;
+  margin: 0;
 }
 .pricing-cta-btn-wrap {
   display: flex;
   align-items: center;
 }
+.pricing-tg-btn {
+  min-height: 44px;
+  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+}
 @media (max-width: 860px) {
-  .pricing-compact-wrap {
+  .pricing-columns {
     grid-template-columns: 1fr;
-    gap: 32px;
+  }
+  .pricing-col-tier:first-child {
+    padding-right: 0;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .pricing-col-tier:last-child {
+    padding-left: 0;
+  }
+  .pricing-bottom-bar {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
@@ -2109,7 +2199,7 @@ html.light .ba-handle-grip {
 .video-modal-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 10px 16px;
   background: var(--surface);
   border-bottom: 1px solid var(--line);

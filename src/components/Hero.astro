@@ -6,7 +6,6 @@ interface Props {
     sub: string;
     cta: string;
     ctaTg?: string;
-    colorCta?: string;
   };
   lang?: string;
 }
@@ -69,14 +68,6 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
           <span>{hero.ctaTg || (lang === 'kz' ? 'Telegram-ға жазу' : lang === 'en' ? 'Message on Telegram' : 'Написать в Telegram')}</span>
         </a>
       </div>
-
-      <div class="pt-1" data-reveal="true">
-        <a class="hero-color-link" href="#difference">
-          <span class="color-wheel-icon" aria-hidden="true"></span>
-          <span>{hero.colorCta || (lang === 'kz' ? 'Түс түзетуге дейін және кейін' : lang === 'en' ? 'Before & After Color Grading' : 'До и после цветокоррекции')}</span>
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
     </div>
 
     <!-- Right Column: Cinematic Showreel Monitor Facade -->
@@ -85,7 +76,7 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
         <div class="monitor-topbar">
           <div class="flex items-center gap-2">
             <span class="monitor-led" aria-hidden="true"></span>
-            <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">PORTFOLIO // SHOWREEL</span>
+            <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">PORTFOLIO // FEATURED CASE</span>
           </div>
         </div>
 
@@ -94,15 +85,15 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
           class="showreel-screen"
           data-video-id={showreelId}
           data-orientation="horizontal"
-          data-video-title={lang === 'kz' ? 'Шоурил // Монтаж портфолиосы' : lang === 'en' ? 'Showreel // Video Editing Portfolio' : 'Шоурил // Портфолио монтажёра'}
+          data-video-title={lang === 'kz' ? 'Монтаж видео в AI-нише | Портфолио' : lang === 'en' ? 'AI Video Editing | Portfolio' : 'Монтаж видео в AI-нише | Портфолио'}
           data-video-duration={showreelDuration}
-          aria-label={lang === 'kz' ? 'Шоурилді көру' : lang === 'en' ? 'Play Showreel' : 'Смотреть шоурил'}
+          aria-label={lang === 'kz' ? 'Бейнені көру' : lang === 'en' ? 'Watch Featured Video' : 'Смотреть видео проекта'}
         >
           <img
             src="/posters/cZZgi5xn930.webp"
             srcset="/posters/cZZgi5xn930-480.webp 480w, /posters/cZZgi5xn930.webp 960w"
             sizes="(max-width: 1024px) 100vw, 560px"
-            alt="Showreel Preview"
+            alt="Featured Video Preview"
             loading="eager"
             decoding="async"
             width="960"

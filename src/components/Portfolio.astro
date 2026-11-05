@@ -345,10 +345,11 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
 </section>
 
 <script>
-  // Tab filtering logic with smooth reveal
+  // Tab filtering logic - strictly applies to horizontal cards only.
+  // Vertical videos (Shorts & Reels) are never hidden or filtered by these tabs.
   const tabs = document.querySelectorAll<HTMLButtonElement>('[data-niche-filter]');
-  const cards = document.querySelectorAll<HTMLElement>('.work-card');
-  const subsections = document.querySelectorAll<HTMLElement>('.portfolio-subsection');
+  const horizontalCards = document.querySelectorAll<HTMLElement>('.work-card--horizontal');
+  const horizontalSubsection = document.querySelector<HTMLElement>('[data-subsection="horizontal"]');
 
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -360,24 +361,29 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
         t.classList.toggle('active', isActive);
       });
 
-      let visibleCount = 0;
-      cards.forEach((card) => {
+      horizontalCards.forEach((card) => {
         const cardNiche = card.dataset.niche;
         const matches = selected === 'all' || cardNiche === selected;
         card.style.display = matches ? 'flex' : 'none';
         if (matches) {
-          visibleCount++;
-          const anim = card.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }); anim.onfinish = () => { card.style.opacity = '1'; card.style.transform = ''; anim.cancel(); };
+          const anim = card.animate(
+            [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+          );
+          anim.onfinish = () => {
+            card.style.opacity = '1';
+            card.style.transform = '';
+            anim.cancel();
+          };
         }
       });
 
-      // Hide subsection headers if all cards inside it are hidden
-      subsections.forEach((sub) => {
-        const hasVisible = Array.from(sub.querySelectorAll<HTMLElement>('.work-card')).some(
-          (c) => c.style.display !== 'none'
-        );
-        sub.style.display = hasVisible ? 'block' : 'none';
-      });
+      // Hide horizontal subsection ONLY if all horizontal cards inside it are hidden
+      if (horizontalSubsection) {
+        const hasVisible = Array.from(horizontalCards).some((c) => c.style.display !== 'none');
+        horizontalSubsection.style.display = hasVisible ? 'block' : 'none';
+      }
+      // Note: Vertical subsection (.work-card--vertical, [data-subsection="vertical"]) is NEVER filtered by these tabs!
     });
   });
 </script>

@@ -1,18 +1,24 @@
 ---
-interface PriceReference {
-  main: string;
-  secondary?: string;
+interface PricingItem {
+  id: string;
+  label: string;
+  title: string;
+  price: string;
+  unit: string;
+  note?: string;
+  includes: string[];
 }
 
 interface Props {
   data: {
     title: string;
     subtitle: string;
-    reference?: PriceReference;
+    items: PricingItem[];
     factorsTitle: string;
     factors: string[];
+    retainerNote?: string;
     ctaText: string;
-    ctaBtn: string;
+    ctaButton: string;
   };
   lang?: string;
 }
@@ -26,6 +32,8 @@ const tgPrefillMessage = lang === 'kz'
   : "Привет! Нужен монтаж видео для YouTube/соцсетей. Расскажу о проекте:";
 
 const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}`;
+
+const activeItems = (data.items || []).filter((item) => item.price && item.price.trim().length > 0);
 ---
 
 <section class="section section--pricing" id="pricing" aria-labelledby="pricing-title">
@@ -36,43 +44,79 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
     </p>
   </div>
 
-  <div class="pricing-compact-wrap" data-reveal="true">
-    <!-- 1. Price Reference -->
-    {data.reference && data.reference.main && (
-      <div class="pricing-col pricing-col--ref">
-        <span class="pricing-col-eyebrow font-mono text-xs uppercase tracking-wider text-text-mute">
-          {lang === 'kz' ? 'Бағдар' : lang === 'en' ? 'Starting Point' : 'Ориентир'}
-        </span>
-        <div class="pricing-ref-main font-display">{data.reference.main}</div>
-        {data.reference.secondary && (
-          <div class="pricing-ref-sub text-text-dim">{data.reference.secondary}</div>
-        )}
-      </div>
-    )}
+  <div class="pricing-container" data-reveal="true">
+    <!-- Two Equal Columns -->
+    <div class="pricing-columns">
+      {activeItems.map((item) => (
+        <div class="pricing-col-tier">
+          <div class="pricing-tier-header">
+            <span class="pricing-tier-label font-mono">{item.label}</span>
+            <h3 class="pricing-tier-title">{item.title}</h3>
+          </div>
 
-    <!-- 2. Price Factors -->
-    <div class="pricing-col pricing-col--factors">
-      <h3 class="pricing-factors-title">{data.factorsTitle}</h3>
-      <ul class="pricing-factors-list" role="list">
-        {data.factors.map((factor) => (
-          <li class="pricing-factor-item">
-            <span class="factor-dash text-accent" aria-hidden="true">—</span>
-            <span>{factor}</span>
-          </li>
-        ))}
-      </ul>
+          <div class="pricing-tier-rate">
+            <div class="pricing-tier-price font-display">{item.price}</div>
+            <div class="pricing-tier-unit text-text-dim">{item.unit}</div>
+          </div>
+
+          <div class="pricing-tier-includes-wrap">
+            <span class="pricing-includes-heading font-mono text-xs uppercase tracking-wider text-text-mute">
+              {lang === 'kz' ? 'Не кіреді:' : lang === 'en' ? 'What’s included:' : 'Что входит:'}
+            </span>
+            <ul class="pricing-tier-list" role="list">
+              {item.includes.map((inc) => (
+                <li class="pricing-tier-item">
+                  <span class="tier-dash text-accent" aria-hidden="true">—</span>
+                  <span>{inc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {item.note && (
+            <p class="pricing-tier-note text-text-mute text-xs">
+              {item.note}
+            </p>
+          )}
+        </div>
+      ))}
     </div>
 
-    <!-- 3. Brief Action & Telegram Button -->
-    <div class="pricing-col pricing-col--action">
-      <p class="pricing-cta-text text-text-dim">{data.ctaText}</p>
-      <div class="pricing-cta-btn-wrap">
-        <a class="btn-primary" href={tgUrl} target="_blank" rel="noopener noreferrer">
-          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
-          </svg>
-          <span>{data.ctaBtn}</span>
-        </a>
+    <!-- Full-width Bottom Strip -->
+    <div class="pricing-bottom-bar">
+      <!-- Left: Factors -->
+      <div class="pricing-factors-col">
+        <span class="pricing-factors-label font-mono text-xs uppercase tracking-wider text-text-mute">
+          {data.factorsTitle}
+        </span>
+        <p class="pricing-factors-inline">
+          {data.factors.map((factor, index) => (
+            <>
+              <span class="pricing-factor-name">{factor}</span>
+              {index < data.factors.length - 1 && <span class="pricing-factor-dot" aria-hidden="true">·</span>}
+            </>
+          ))}
+        </p>
+        {data.retainerNote && (
+          <p class="pricing-retainer-note text-text-mute text-xs mt-2">
+            {data.retainerNote}
+          </p>
+        )}
+      </div>
+
+      <!-- Right: CTA Text & Telegram Button -->
+      <div class="pricing-cta-col">
+        <p class="pricing-cta-desc text-text-dim text-sm">
+          {data.ctaText}
+        </p>
+        <div class="pricing-cta-btn-wrap">
+          <a class="btn-primary pricing-tg-btn" href={tgUrl} target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path>
+            </svg>
+            <span>{data.ctaButton}</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

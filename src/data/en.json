@@ -1,9 +1,9 @@
 {
   "lang": "en",
   "meta": {
-    "title": "fleur — Video Editor for YouTube, Podcasts & Reels",
+    "title": ".fleur - Видеомонтажер",
     "description": "Editing long-form YouTube essays, podcasts, and short-form videos. Structure, pacing, motion graphics, color and audio mastering.",
-    "ogTitle": "fleur — Video Editor for YouTube, Podcasts & Reels",
+    "ogTitle": ".fleur - Видеомонтажер",
     "ogDescription": "Video editing for YouTube, podcasts and Reels. Telegram communication, timecode-based revisions.",
     "ogImage": "/avatar.jpg"
   },
@@ -23,8 +23,7 @@
     "title": "Video Editing for YouTube & Socials That Holds Attention and Grows Your Audience",
     "sub": "fleur provides video editing for YouTube, podcasts, Reels and Shorts. I shape the structure, remove unnecessary pauses and mistakes, add titles and motion graphics, and take care of colour and sound. You send the footage and your notes. We communicate through Telegram, and revisions are handled using timecodes.",
     "cta": "View Selected Work",
-    "ctaTg": "Message on Telegram",
-    "colorCta": "Before & After Color Grading"
+    "ctaTg": "Message on Telegram"
   },
   "theDifference": {
     "eyebrow": "Color Grading",
@@ -33,8 +32,8 @@
     "before": "RAW / S-LOG3",
     "after": "REC.709 FILM GRADE",
     "handleAria": "Color grading comparison slider",
-    "posterBefore": "/videos/posters/car-rental-reel.jpg",
-    "posterAfter": "/videos/posters/vroomclub-reel.jpg"
+    "posterBefore": "/videos/posters/cinema-grade.jpg",
+    "posterAfter": "/videos/posters/cinema-grade.jpg"
   },
   "portfolio": {
     "title": "Selected Work & Formats",
@@ -48,7 +47,7 @@
     "subsections": {
       "main": "Horizontal Video · 16:9",
       "motion": "Motion Design & Graphics",
-      "vertical": "Short-Form · Reels & Shorts (9:16)"
+      "vertical": "Vertical Video · Reels & Shorts (9:16)"
     },
     "play": "Watch Video",
     "thumbAria": "Play — ",
@@ -56,21 +55,48 @@
   },
   "pricing": {
     "title": "Pricing",
-    "subtitle": "Price depends on the project, calculated after reviewing your material.",
-    "reference": {
-      "main": "Long-form video — from $200",
-      "secondary": "Reels & Shorts — on request"
-    },
-    "factorsTitle": "What affects the price",
-    "factors": [
-      "Final video duration",
-      "Volume of raw footage",
-      "Complexity of graphics and animation",
-      "Turnaround urgency",
-      "Volume of videos (ongoing collaboration discussed individually)"
+    "subtitle": "Pricing depends on the project, so the final quote is provided after reviewing the footage.",
+    "items": [
+      {
+        "id": "vertical",
+        "label": "REELS, SHORTS, TIKTOK",
+        "title": "Short-Form Videos",
+        "price": "from $20",
+        "unit": "per video up to 60 seconds",
+        "note": "",
+        "includes": [
+          "Editing: structure, pacing, trimming pauses and slip-ups",
+          "Dynamic captions, titles, and essential graphics",
+          "Color grading and audio cleanup",
+          "Timecode-based revisions (2 rounds)"
+        ]
+      },
+      {
+        "id": "horizontal",
+        "label": "YOUTUBE, PODCASTS, INTERVIEWS",
+        "title": "Long-Form Videos",
+        "price": "from $80",
+        "unit": "and up, based on duration and complexity",
+        "note": "Complex animation, detailed infographics, and custom channel intros are quoted separately.",
+        "includes": [
+          "Editing: structure, pacing, trimming pauses and slip-ups",
+          "Titles, lower-thirds, and baseline motion graphics",
+          "Color grading and vocal track mastering",
+          "Timecode-based revisions (2 rounds)"
+        ]
+      }
     ],
-    "ctaText": "Send a link to your channel, a sample video, and approximate duration. Cost and turnaround are shared after reviewing the material.",
-    "ctaBtn": "Message on Telegram"
+    "factorsTitle": "What affects the final price",
+    "factors": [
+      "runtime",
+      "volume of raw footage",
+      "graphics complexity",
+      "urgency",
+      "number of episodes"
+    ],
+    "retainerNote": "Ongoing retainer terms and volume discounts are discussed individually.",
+    "ctaText": "Send a link to your channel, a reference video, and approximate duration. I'll share the exact cost and timeline after reviewing the material.",
+    "ctaButton": "Message on Telegram"
   },
   "process": {
     "title": "How the work goes",
@@ -141,19 +167,35 @@
     "items": [
       {
         "q": "How much does editing cost?",
-        "a": "Long-form video — from $200. Final cost depends on duration, raw footage volume, graphics complexity, and urgency. I provide the exact price and timeline after reviewing the footage."
+        "a": "Short-form videos (Reels, Shorts, TikTok) — from $20, long-form videos (YouTube, podcasts) — from $80 and up. Pricing depends on duration and motion design depth. For batch orders of 10+ videos, a 15–20% discount applies, and I reserve a dedicated production slot for your channel."
       },
       {
-        "q": "What are your delivery timelines?",
-        "a": "I provide the turnaround time after reviewing the footage. It depends on video length, volume of raw material, and complexity of graphics."
+        "q": "How fast is turnaround?",
+        "a": "A single short-form video (Reels/Shorts) takes 24 to 48 hours once raw footage is received. A batch of 10 videos is delivered on a planned schedule — 2–3 finished videos every two days to keep your content calendar uninterrupted."
       },
       {
-        "q": "How do revisions work?",
-        "a": "You review the video via a private link and share timecode-based notes via Telegram. 2 comprehensive revision rounds are included in each project."
+        "q": "What do you need from me to get started?",
+        "a": "Raw footage (via Google Drive, Frame.io, or Dropbox), a brief note about the task, and 1–2 video references for pacing/style. If you don't have a full script or brief, I'll help outline the structure and propose visual hooks."
       },
       {
-        "q": "How do I send raw footage?",
-        "a": "Via any cloud storage: Google Drive, Dropbox, or Telegram."
+        "q": "How does payment work?",
+        "a": "For one-off projects: 50% deposit, 50% upon watermark preview approval. For recurring batch work, milestone-based billing is available. I accept bank transfers (Kaspi, Freedom), international payments (Payoneer), crypto (USDT), or freelance escrow contracts."
+      },
+      {
+        "q": "What if I need revisions or want changes?",
+        "a": "Every video includes 2 rounds of timecode-based revisions. We align on visual style during the first draft or test video, ensuring the final output matches expectations."
+      },
+      {
+        "q": "Do you do test tasks?",
+        "a": "I provide a short 10–15 second test cut when discussing long-term partnerships or video bundles. For single one-off orders, test edits are paid and credited toward the total project invoice."
+      },
+      {
+        "q": "Who chooses music, SFX, and fonts — could there be copyright strikes?",
+        "a": "I handle the full package: sound design, transitions, color grading, and dynamic subtitles. I use licensed music and trending royalty-safe audio optimized for Reels, Shorts, and TikTok to prevent copyright strikes."
+      },
+      {
+        "q": "Do you deliver project source files (Project Files)?",
+        "a": "By default, I deliver final renders in maximum resolution (4K/1080p, 60 fps). Handover of raw project files (After Effects / Premiere Pro / DaVinci) with all packaged assets can be arranged for an additional fee."
       }
     ]
   },
