@@ -23,16 +23,27 @@ const { text, telegramUrl } = Astro.props;
 </a>
 
 <script>
-  // Show sticky button after Hero scrolls past
-  const stickyBtn = document.getElementById('sticky-mobile-cta');
-  const heroEl = document.querySelector('.hero');
+  let stickyObserver: IntersectionObserver | null = null;
 
-  if (stickyBtn && heroEl && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(([entry]) => {
-      // Visible when hero is NOT intersecting
-      stickyBtn.setAttribute('data-visible', (!entry.isIntersecting).toString());
-    }, { threshold: 0.1 });
+  const initStickyMobileCta = () => {
+    if (stickyObserver) {
+      stickyObserver.disconnect();
+      stickyObserver = null;
+    }
 
-    observer.observe(heroEl);
-  }
+    // Show sticky button after Hero scrolls past
+    const stickyBtn = document.getElementById('sticky-mobile-cta');
+    const heroEl = document.querySelector('.hero');
+
+    if (stickyBtn && heroEl && 'IntersectionObserver' in window) {
+      stickyObserver = new IntersectionObserver(([entry]) => {
+        // Visible when hero is NOT intersecting
+        stickyBtn.setAttribute('data-visible', (!entry.isIntersecting).toString());
+      }, { threshold: 0.1 });
+
+      stickyObserver.observe(heroEl);
+    }
+  };
+
+  document.addEventListener('astro:page-load', initStickyMobileCta);
 </script>

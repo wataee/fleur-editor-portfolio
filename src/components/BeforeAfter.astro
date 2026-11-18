@@ -132,10 +132,13 @@ const frameSource = data.posterAfter || "/videos/posters/vroomclub-reel.jpg";
 </section>
 
 <script>
-  const container = document.getElementById('ba-container');
-  const handle = document.getElementById('ba-handle');
+  const initBeforeAfter = () => {
+    const container = document.getElementById('ba-container');
+    const handle = document.getElementById('ba-handle');
 
-  if (container && handle) {
+    if (!container || !handle || container.dataset.bound === '1') return;
+    container.dataset.bound = '1';
+
     let pos = 50;
 
     const setPosition = (newPos: number) => {
@@ -147,6 +150,7 @@ const frameSource = data.posterAfter || "/videos/posters/vroomclub-reel.jpg";
 
     const calcPosFromClientX = (clientX: number) => {
       const rect = container.getBoundingClientRect();
+      if (!rect.width) return pos;
       return ((clientX - rect.left) / rect.width) * 100;
     };
 
@@ -195,5 +199,7 @@ const frameSource = data.posterAfter || "/videos/posters/vroomclub-reel.jpg";
       e.preventDefault();
       setPosition(newPos);
     });
-  }
+  };
+
+  document.addEventListener('astro:page-load', initBeforeAfter);
 </script>

@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://fluere.work',
+  site: 'https://fleur-editor.netlify.app',
   devToolbar: {
     enabled: false
   },

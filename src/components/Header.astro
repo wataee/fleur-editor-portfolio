@@ -149,32 +149,34 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
 </header>
 
 <script>
-  // Mobile drawer: close on outside click or link click
-  const navToggle = document.getElementById('mobile-nav-toggle') as HTMLDetailsElement | null;
-  if (navToggle) {
-    const summary = navToggle.querySelector('summary');
-    navToggle.addEventListener('toggle', () => {
-      if (summary) {
-        summary.setAttribute('aria-expanded', navToggle.open ? 'true' : 'false');
-      }
-    });
-
-    navToggle.querySelectorAll('.nav-panel-link, .btn-primary').forEach((link) => {
-      link.addEventListener('click', () => {
-        navToggle.open = false;
+  const initHeader = () => {
+    // Mobile drawer: close on outside click or link click
+    const navToggle = document.getElementById('mobile-nav-toggle') as HTMLDetailsElement | null;
+    if (navToggle && navToggle.dataset.bound !== '1') {
+      navToggle.dataset.bound = '1';
+      const summary = navToggle.querySelector('summary');
+      navToggle.addEventListener('toggle', () => {
+        if (summary) {
+          summary.setAttribute('aria-expanded', navToggle.open ? 'true' : 'false');
+        }
       });
-    });
-  }
 
-  // Theme toggle button logic (Desktop & Mobile)
-  const setupThemeToggle = () => {
+      navToggle.querySelectorAll('.nav-panel-link, .btn-primary').forEach((link) => {
+        link.addEventListener('click', () => {
+          navToggle.open = false;
+        });
+      });
+    }
+
+    // Theme toggle button logic (Desktop & Mobile)
     const toggles = [
       document.getElementById('theme-toggle'),
       document.getElementById('theme-toggle-mobile')
     ];
 
     toggles.forEach((btn) => {
-      if (!btn) return;
+      if (!btn || btn.dataset.bound === '1') return;
+      btn.dataset.bound = '1';
       btn.addEventListener('click', () => {
         const isDark = document.documentElement.classList.contains('dark');
         const nextTheme = isDark ? 'light' : 'dark';
@@ -198,5 +200,5 @@ const homeHref = lang === 'ru' ? '/ru/#top' : lang === 'kz' ? '/kz/#top' : '/#to
     });
   };
 
-  setupThemeToggle();
+  document.addEventListener('astro:page-load', initHeader);
 </script>

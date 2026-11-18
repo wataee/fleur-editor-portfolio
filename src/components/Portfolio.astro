@@ -345,45 +345,57 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
 </section>
 
 <script>
-  // Tab filtering logic - strictly applies to horizontal cards only.
-  // Vertical videos (Shorts & Reels) are never hidden or filtered by these tabs.
-  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-niche-filter]');
-  const horizontalCards = document.querySelectorAll<HTMLElement>('.work-card--horizontal');
-  const horizontalSubsection = document.querySelector<HTMLElement>('[data-subsection="horizontal"]');
+  const initPortfolioTabs = () => {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('[data-niche-filter]');
+    const allCards = document.querySelectorAll<HTMLElement>('.work-card');
+    const horizontalCards = document.querySelectorAll<HTMLElement>('.work-card--horizontal');
+    const verticalCards = document.querySelectorAll<HTMLElement>('.work-card--vertical');
+    const horizontalSubsection = document.querySelector<HTMLElement>('[data-subsection="horizontal"]');
+    const verticalSubsection = document.querySelector<HTMLElement>('[data-subsection="vertical"]');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const selected = tab.dataset.nicheFilter || 'all';
+    tabs.forEach((tab) => {
+      if (tab.dataset.bound === '1') return;
+      tab.dataset.bound = '1';
 
-      tabs.forEach((t) => {
-        const isActive = t === tab;
-        t.setAttribute('aria-selected', String(isActive));
-        t.classList.toggle('active', isActive);
-      });
+      tab.addEventListener('click', () => {
+        const selected = tab.dataset.nicheFilter || 'all';
 
-      horizontalCards.forEach((card) => {
-        const cardNiche = card.dataset.niche;
-        const matches = selected === 'all' || cardNiche === selected;
-        card.style.display = matches ? 'flex' : 'none';
-        if (matches) {
-          const anim = card.animate(
-            [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
-            { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
-          );
-          anim.onfinish = () => {
-            card.style.opacity = '1';
-            card.style.transform = '';
-            anim.cancel();
-          };
+        tabs.forEach((t) => {
+          const isActive = t === tab;
+          t.setAttribute('aria-selected', String(isActive));
+          t.classList.toggle('active', isActive);
+        });
+
+        allCards.forEach((card) => {
+          const cardNiche = card.dataset.niche;
+          const matches = selected === 'all' || cardNiche === selected;
+          card.style.display = matches ? 'flex' : 'none';
+          if (matches) {
+            const anim = card.animate(
+              [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+              { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+            );
+            anim.onfinish = () => {
+              card.style.opacity = '1';
+              card.style.transform = '';
+              anim.cancel();
+            };
+          }
+        });
+
+        const hasHorizontal = Array.from(horizontalCards).some((c) => c.style.display !== 'none');
+        const hasVertical = Array.from(verticalCards).some((c) => c.style.display !== 'none');
+
+        if (horizontalSubsection) {
+          horizontalSubsection.style.display = hasHorizontal ? 'block' : 'none';
+        }
+        if (verticalSubsection) {
+          verticalSubsection.style.display = hasVertical ? 'block' : 'none';
+          verticalSubsection.classList.toggle('mt-16', hasHorizontal);
         }
       });
-
-      // Hide horizontal subsection ONLY if all horizontal cards inside it are hidden
-      if (horizontalSubsection) {
-        const hasVisible = Array.from(horizontalCards).some((c) => c.style.display !== 'none');
-        horizontalSubsection.style.display = hasVisible ? 'block' : 'none';
-      }
-      // Note: Vertical subsection (.work-card--vertical, [data-subsection="vertical"]) is NEVER filtered by these tabs!
     });
-  });
+  };
+
+  document.addEventListener('astro:page-load', initPortfolioTabs);
 </script>

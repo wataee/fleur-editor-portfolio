@@ -75,9 +75,12 @@ const { data } = Astro.props;
 </section>
 
 <script>
-  // Accordion Logic: At most one item open at a time
-  const accordion = document.getElementById('faq-accordion-list');
-  if (accordion) {
+  const initFaq = () => {
+    // Accordion Logic: At most one item open at a time
+    const accordion = document.getElementById('faq-accordion-list');
+    if (!accordion || accordion.dataset.bound === '1') return;
+    accordion.dataset.bound = '1';
+
     const items = accordion.querySelectorAll<HTMLElement>('.faq-item');
 
     items.forEach((item) => {
@@ -101,5 +104,7 @@ const { data } = Astro.props;
         }
       });
     });
-  }
+  };
+
+  document.addEventListener('astro:page-load', initFaq);
 </script>

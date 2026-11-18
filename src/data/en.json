@@ -1,11 +1,11 @@
 {
   "lang": "en",
   "meta": {
-    "title": ".fleur - Видеомонтажер",
+    "title": ".fleur — Video Editor | YouTube, Podcasts & Short-Form",
     "description": "Editing long-form YouTube essays, podcasts, and short-form videos. Structure, pacing, motion graphics, color and audio mastering.",
-    "ogTitle": ".fleur - Видеомонтажер",
+    "ogTitle": ".fleur — Video Editor | YouTube, Podcasts & Short-Form",
     "ogDescription": "Video editing for YouTube, podcasts and Reels. Telegram communication, timecode-based revisions.",
-    "ogImage": "/avatar.jpg"
+    "ogImage": "/og-image.png"
   },
   "nav": {
     "work": "Work",
@@ -40,9 +40,9 @@
     "filterAll": "All Projects",
     "niches": {
       "all": "All Projects",
+      "finance": "AI, Finance & Crypto",
       "personal_brand": "Podcasts & Brands",
-      "real_estate": "Automotive & Estates",
-      "gaming": "Gaming & Kinetic"
+      "real_estate": "Automotive & Estates"
     },
     "subsections": {
       "main": "Horizontal Video · 16:9",
@@ -203,7 +203,7 @@
     "eyebrow": "Inquiries",
     "title": "Tell me about your upcoming project",
     "sub": "Reach out via Telegram or email. Let's discuss your timeline, pacing, and target launch date.",
-    "briefHelper": "What to send for a quick estimate: channel link, reference video, raw footage duration, and your target deadline."
+    "briefHelper": "Channel link, reference video, raw footage duration, and your target deadline."
   },
   "stickyMobile": {
     "text": "Message on Telegram"

@@ -23,6 +23,12 @@ const tgPrefillMessage = lang === 'kz'
   : "Привет! Нужен монтаж видео для YouTube/соцсетей. Расскажу о проекте:";
 
 const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}`;
+const htmlLang = lang === 'kz' ? 'kk' : lang;
+const showreelTitle = lang === 'kz'
+  ? 'AI саласындағы бейнемонтаж | Портфолио'
+  : lang === 'en'
+  ? 'AI Video Editing | Portfolio'
+  : 'Монтаж видео в AI-нише | Портфолио';
 ---
 
 <section class="hero" aria-label="Introduction">
@@ -36,7 +42,7 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
 
   <!-- Main Headline -->
   <div class="hero-headline-wrap">
-    <h1 class="hero-title" lang={lang} data-reveal="true">
+    <h1 class="hero-title" lang={htmlLang} data-reveal="true">
       {hero.title}
     </h1>
   </div>
@@ -85,7 +91,7 @@ const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}
           class="showreel-screen"
           data-video-id={showreelId}
           data-orientation="horizontal"
-          data-video-title={lang === 'kz' ? 'Монтаж видео в AI-нише | Портфолио' : lang === 'en' ? 'AI Video Editing | Portfolio' : 'Монтаж видео в AI-нише | Портфолио'}
+          data-video-title={showreelTitle}
           data-video-duration={showreelDuration}
           aria-label={lang === 'kz' ? 'Бейнені көру' : lang === 'en' ? 'Watch Featured Video' : 'Смотреть видео проекта'}
         >
