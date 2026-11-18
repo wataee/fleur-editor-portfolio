@@ -352,6 +352,85 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
     const verticalCards = document.querySelectorAll<HTMLElement>('.work-card--vertical');
     const horizontalSubsection = document.querySelector<HTMLElement>('[data-subsection="horizontal"]');
     const verticalSubsection = document.querySelector<HTMLElement>('[data-subsection="vertical"]');
+    const workSection = document.getElementById('work');
+
+    const normalizeNicheParam = (raw: string | null): string => {
+      const val = (raw || '').trim().toLowerCase();
+      if (!val || val === 'all') return 'all';
+      if (['finance', 'ai', 'crypto', 'tech', 'saas'].includes(val)) return 'finance';
+      if (['personal_brand', 'podcast', 'interview', 'youtube', 'brand', 'personal-brand'].includes(val)) {
+        return 'personal_brand';
+      }
+      if (['real_estate', 'auto', 'commercial', 'ads', 'real-estate'].includes(val)) {
+        return 'real_estate';
+      }
+      return 'all';
+    };
+
+    const normalizeFormatParam = (rawFormat: string | null, rawCategory: string | null): string => {
+      const val = (rawFormat || rawCategory || '').trim().toLowerCase();
+      if (['vertical', 'reels', 'shorts', 'tiktok', 'short', 'shortform'].includes(val)) return 'vertical';
+      if (['horizontal', 'long', 'longform', '16:9'].includes(val)) return 'horizontal';
+      return '';
+    };
+
+    const applyFilter = (selectedNiche: string, updateUrl = false, formatOverride = '') => {
+      const targetTab = Array.from(tabs).find((t) => (t.dataset.nicheFilter || 'all') === selectedNiche) || tabs[0];
+      const activeNiche = targetTab?.dataset.nicheFilter || 'all';
+
+      tabs.forEach((t) => {
+        const isActive = t === targetTab;
+        t.setAttribute('aria-selected', String(isActive));
+        t.classList.toggle('active', isActive);
+      });
+
+      if (targetTab) {
+        targetTab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+
+      allCards.forEach((card) => {
+        const cardNiche = card.dataset.niche;
+        const cardOrient = card.dataset.orientation || '';
+        const matchesNiche = activeNiche === 'all' || cardNiche === activeNiche;
+        const matchesFormat = !formatOverride || cardOrient === formatOverride;
+        const matches = matchesNiche && matchesFormat;
+        card.style.display = matches ? 'flex' : 'none';
+        if (matches) {
+          const anim = card.animate(
+            [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+          );
+          anim.onfinish = () => {
+            card.style.opacity = '1';
+            card.style.transform = '';
+            anim.cancel();
+          };
+        }
+      });
+
+      const hasHorizontal = Array.from(horizontalCards).some((c) => c.style.display !== 'none');
+      const hasVertical = Array.from(verticalCards).some((c) => c.style.display !== 'none');
+
+      if (horizontalSubsection) {
+        horizontalSubsection.style.display = hasHorizontal ? 'block' : 'none';
+      }
+      if (verticalSubsection) {
+        verticalSubsection.style.display = hasVertical ? 'block' : 'none';
+        verticalSubsection.classList.toggle('mt-16', hasHorizontal);
+      }
+
+      if (updateUrl && typeof window !== 'undefined') {
+        const url = new URL(window.location.href);
+        if (activeNiche === 'all') {
+          url.searchParams.delete('niche');
+        } else {
+          url.searchParams.set('niche', activeNiche);
+        }
+        url.searchParams.delete('category');
+        url.searchParams.delete('format');
+        window.history.replaceState({}, '', url);
+      }
+    };
 
     tabs.forEach((tab) => {
       if (tab.dataset.bound === '1') return;
@@ -359,42 +438,29 @@ const verticalProjects = projects.filter((p) => p.orientation === 'vertical');
 
       tab.addEventListener('click', () => {
         const selected = tab.dataset.nicheFilter || 'all';
-
-        tabs.forEach((t) => {
-          const isActive = t === tab;
-          t.setAttribute('aria-selected', String(isActive));
-          t.classList.toggle('active', isActive);
-        });
-
-        allCards.forEach((card) => {
-          const cardNiche = card.dataset.niche;
-          const matches = selected === 'all' || cardNiche === selected;
-          card.style.display = matches ? 'flex' : 'none';
-          if (matches) {
-            const anim = card.animate(
-              [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
-              { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
-            );
-            anim.onfinish = () => {
-              card.style.opacity = '1';
-              card.style.transform = '';
-              anim.cancel();
-            };
-          }
-        });
-
-        const hasHorizontal = Array.from(horizontalCards).some((c) => c.style.display !== 'none');
-        const hasVertical = Array.from(verticalCards).some((c) => c.style.display !== 'none');
-
-        if (horizontalSubsection) {
-          horizontalSubsection.style.display = hasHorizontal ? 'block' : 'none';
-        }
-        if (verticalSubsection) {
-          verticalSubsection.style.display = hasVertical ? 'block' : 'none';
-          verticalSubsection.classList.toggle('mt-16', hasHorizontal);
-        }
+        applyFilter(selected, true);
       });
     });
+
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const rawNiche = params.get('niche');
+      const rawCategory = params.get('category');
+      const rawFormat = params.get('format');
+      const resolvedNiche = normalizeNicheParam(rawNiche || rawCategory);
+      const resolvedFormat = normalizeFormatParam(rawFormat, rawCategory);
+
+      if (rawNiche || rawCategory || rawFormat) {
+        applyFilter(resolvedNiche, false, resolvedFormat);
+        requestAnimationFrame(() => {
+          const scrollTarget =
+            resolvedFormat === 'vertical' && verticalSubsection && verticalSubsection.style.display !== 'none'
+              ? verticalSubsection
+              : workSection;
+          scrollTarget?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    }
   };
 
   document.addEventListener('astro:page-load', initPortfolioTabs);
