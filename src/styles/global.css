@@ -1807,6 +1807,17 @@ html.light .ba-handle-grip {
   color: var(--accent);
   line-height: 1.1;
   letter-spacing: -0.02em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+}
+.pricing-tier-alt {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.35rem);
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: normal;
 }
 .pricing-tier-unit {
   font-size: 0.875rem;

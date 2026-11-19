@@ -61,8 +61,8 @@
         "id": "vertical",
         "label": "REELS, SHORTS, TIKTOK",
         "title": "Short-Form Videos",
-        "price": "from $20",
-        "unit": "per video up to 60 seconds",
+        "price": "from $25",
+        "unit": "per video up to 60 seconds (1 min)",
         "note": "",
         "includes": [
           "Editing: structure, pacing, trimming pauses and slip-ups",
@@ -75,7 +75,7 @@
         "id": "horizontal",
         "label": "YOUTUBE, PODCASTS, INTERVIEWS",
         "title": "Long-Form Videos",
-        "price": "from $80",
+        "price": "from $70",
         "unit": "and up, based on duration and complexity",
         "note": "Complex animation, detailed infographics, and custom channel intros are quoted separately.",
         "includes": [
@@ -167,7 +167,7 @@
     "items": [
       {
         "q": "How much does editing cost?",
-        "a": "Short-form videos (Reels, Shorts, TikTok) — from $20, long-form videos (YouTube, podcasts) — from $80 and up. Pricing depends on duration and motion design depth. For batch orders of 10+ videos, a 15–20% discount applies, and I reserve a dedicated production slot for your channel."
+        "a": "Short-form videos (Reels, Shorts, TikTok) — from $25, long-form videos (YouTube, podcasts) — from $70 and up. Pricing depends on duration and motion design depth. For batch orders of 10+ videos, a 15–20% discount applies, and I reserve a dedicated production slot for your channel."
       },
       {
         "q": "How fast is turnaround?",

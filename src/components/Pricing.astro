@@ -4,6 +4,7 @@ interface PricingItem {
   label: string;
   title: string;
   price: string;
+  altPrice?: string;
   unit: string;
   note?: string;
   includes: string[];
@@ -55,7 +56,12 @@ const activeItems = (data.items || []).filter((item) => item.price && item.price
           </div>
 
           <div class="pricing-tier-rate">
-            <div class="pricing-tier-price font-display">{item.price}</div>
+            <div class="pricing-tier-price font-display">
+              <span>{item.price}</span>
+              {item.altPrice && (
+                <span class="pricing-tier-alt">({item.altPrice})</span>
+              )}
+            </div>
             <div class="pricing-tier-unit text-text-dim">{item.unit}</div>
           </div>
 
