@@ -742,15 +742,13 @@ html.light .theme-icon-moon {
   letter-spacing: -0.025em;
   color: var(--text);
   margin: 0;
-  max-width: 28ch;
+  max-width: 38ch;
   text-wrap: balance;
 }
 
 .hero-content-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  align-items: center;
-  gap: clamp(24px, 4vw, 56px);
+  display: block;
+  max-width: 68ch;
 }
 .hero-lead-col {
   display: flex;

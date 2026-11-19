@@ -12,10 +12,6 @@ interface Props {
 
 const { hero, lang = 'ru' } = Astro.props;
 
-// Hero showreel video ID and duration
-const showreelId = "cZZgi5xn930";
-const showreelDuration = "25:45";
-
 const tgPrefillMessage = lang === 'kz'
   ? "Сәлеметсіз бе! YouTube немесе әлеуметтік желіге бейнемонтаж қажет."
   : lang === 'en'
@@ -24,11 +20,6 @@ const tgPrefillMessage = lang === 'kz'
 
 const tgUrl = `https://t.me/ffluere?text=${encodeURIComponent(tgPrefillMessage)}`;
 const htmlLang = lang === 'kz' ? 'kk' : lang;
-const showreelTitle = lang === 'kz'
-  ? 'AI саласындағы бейнемонтаж | Портфолио'
-  : lang === 'en'
-  ? 'AI Video Editing | Portfolio'
-  : 'Монтаж видео в AI-нише | Портфолио';
 ---
 
 <section class="hero" aria-label="Introduction">
@@ -47,7 +38,7 @@ const showreelTitle = lang === 'kz'
     </h1>
   </div>
 
-  <!-- Hero Content Grid: Left Text & CTA, Right Interactive Showreel Window -->
+  <!-- Hero Content: Left Text & CTA -->
   <div class="hero-content-grid">
     <div class="hero-lead-col">
       <p class="hero-sub" data-reveal="true">
@@ -73,68 +64,6 @@ const showreelTitle = lang === 'kz'
           </svg>
           <span>{hero.ctaTg || (lang === 'kz' ? 'Telegram-ға жазу' : lang === 'en' ? 'Message on Telegram' : 'Написать в Telegram')}</span>
         </a>
-      </div>
-    </div>
-
-    <!-- Right Column: Cinematic Showreel Monitor Facade -->
-    <div class="hero-showreel-col" data-reveal="true">
-      <div class="showreel-monitor">
-        <div class="monitor-topbar">
-          <div class="flex items-center gap-2">
-            <span class="monitor-led" aria-hidden="true"></span>
-            <span class="font-mono text-[11px] tracking-wider uppercase text-text-dim">PORTFOLIO // FEATURED CASE</span>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          class="showreel-screen"
-          data-video-id={showreelId}
-          data-orientation="horizontal"
-          data-video-title={showreelTitle}
-          data-video-duration={showreelDuration}
-          aria-label={lang === 'kz' ? 'Бейнені көру' : lang === 'en' ? 'Watch Featured Video' : 'Смотреть видео проекта'}
-        >
-          <img
-            src="/posters/cZZgi5xn930.webp"
-            srcset="/posters/cZZgi5xn930-480.webp 480w, /posters/cZZgi5xn930.webp 960w"
-            sizes="(max-width: 1024px) 100vw, 560px"
-            alt="Featured Video Preview"
-            loading="eager"
-            decoding="async"
-            width="960"
-            height="540"
-            class="showreel-poster"
-          />
-
-          <!-- Viewfinder HUD Overlays -->
-          <div class="monitor-hud" aria-hidden="true">
-            <div class="hud-corner hud-tl"></div>
-            <div class="hud-corner hud-tr"></div>
-            <div class="hud-corner hud-bl"></div>
-            <div class="hud-corner hud-br"></div>
-            <div class="hud-center-cross"></div>
-
-            <div class="hud-header">
-              <span class="hud-rec font-mono text-xs">● REC</span>
-              <span class="hud-timecode font-mono text-xs">00:00:00:00</span>
-            </div>
-
-            <div class="hud-center-cta">
-              <div class="hud-play-btn">
-                <svg class="w-8 h-8 fill-current translate-x-0.5" viewBox="0 0 24 24">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </div>
-              <span class="hud-play-label font-mono text-xs">PLAY SHOWREEL [{showreelDuration}]</span>
-            </div>
-
-            <div class="hud-footer font-mono text-[10px]">
-              <span>4K UHD · 24 FPS · 25:45</span>
-              <span>DAVINCI RESOLVE · REC.709</span>
-            </div>
-          </div>
-        </button>
       </div>
     </div>
   </div>
